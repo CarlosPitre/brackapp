@@ -35,7 +35,7 @@
                         	<td>{{sector.descripcion}} </td>
                         	<td>{{sector.estado}} </td>
                         	<td>
-                        		<a href="">Modficiar</a>
+                        		<a href="javascript:;" ng-click="modificar(sector)" data-toggle="modal" data-target="#modal-responsive">Modficiar</a>
                         		<a href="">Eliminar</a>
                         	</td>
                         </tr>
@@ -62,14 +62,15 @@
 		        	<div class="form-group">
 		    			<div class="t-center">
 		            		<label for="field-1" class="control-label">Descripción</label>
-		            		<input type="text" class="form-control form-white" id="field-1" placeholder="Ej: Sistemas,Plomeria,Electricidad...">
+		            		<input type="text" class="form-control form-white" id="field-1" placeholder="Ej: Sistemas,Plomeria,Electricidad..." ng-model="Sector.descripcion">
 		          		</div>     		
 		        	</div>	              
 		        </div>
 		       </div>
 		    </div>
 		    <div class="modal-footer text-center">
-		      <button type="button" class="btn btn-primary btn-embossed bnt-square" data-dismiss="modal"><i class="fa fa-check"></i> Validate</button>
+		      <button type="button" class="btn btn-primary btn-embossed bnt-square" ng-click="save()" ng-show="openButton"><i class="fa fa-check"></i> Guardar</button>
+		      <button type="button" class="btn btn-primary btn-embossed bnt-square" ng-click="update()" ng-hide="openButton"><i class="fa fa-check"></i> Modificar</button>
 		    </div>
 		  </div>
 		</div>

@@ -7,4 +7,8 @@ app.service('sectorService', ['$http', function($http){
 		var req = $http.get(uri + '/app/sectores');
 		return req;
 	}
+	this.put = function  (object) {
+		var req = $http.put(uri + '/app/sectores', object);
+		return req;
+	}
 }])

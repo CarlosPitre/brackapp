@@ -26,6 +26,37 @@ class Sectores extends REST_Controller {
 		};
 	}
 
+	public function sectores_post()
+	{
+		$datos = array(
+			"descripcion" => $this->post("descripcion"),
+			"estado" => "ACTIVO"
+		);
+		$guardar= $this->model_sector->save($datos);
+		if ($guardar) {
+			$message = "Datos Guardados Correctamente";
+			$this->response($message, REST_Controller::HTTP_CREATED);
+		}else{
+			$message = "Error";
+			$this->response($message, REST_Controller::HTTP_BAD_REQUEST);
+		};
+	}
+
+	public function sectores_put()
+	{
+		$datos = array(
+			"descripcion" => $this->put("descripcion"),
+		);
+		$guardar= $this->model_sector->update($datos,$this->put("id"));
+		if ($guardar) {
+			$message = "Datos Guardados Correctamente";
+			$this->response($message, REST_Controller::HTTP_CREATED);
+		}else{
+			$message = "Error";
+			$this->response($message, REST_Controller::HTTP_BAD_REQUEST);
+		};
+	}
+
 }
 
 /* End of file sectores.php */

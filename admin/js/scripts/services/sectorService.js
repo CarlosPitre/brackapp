@@ -3,4 +3,8 @@ app.service('sectorService', ['$http', function($http){
 		var req = $http.post(uri + '/app/sectores', object);
 		return req;
 	}
+	this.getSectores = function  () {
+		var req = $http.get(uri + '/app/sectores');
+		return req;
+	}
 }])

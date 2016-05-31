@@ -57,6 +57,21 @@ class Sectores extends REST_Controller {
 		};
 	}
 
+	public function sectores_delete($id)
+	{
+		$datos = array(
+			"estado" => "Inactivo",
+		);
+		$guardar= $this->model_sector->update($datos,$id);
+		if ($guardar) {
+			$message = "Datos Guardados Correctamente";
+			$this->response($message, REST_Controller::HTTP_CREATED);
+		}else{
+			$message = "Error";
+			$this->response($message, REST_Controller::HTTP_BAD_REQUEST);
+		};
+	}
+
 }
 
 /* End of file sectores.php */

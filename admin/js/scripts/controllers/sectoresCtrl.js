@@ -50,4 +50,15 @@ app.controller('sectoresCtrl',  function($scope,sectorService){
 		$scope.openButton = false;
 	}
 
+	$scope.delete = function  (id) {
+		var promiseGet = sectorService.delete(id); 
+		promiseGet.then(function (pl) {
+            alert(pl.data);
+            loadSectores();
+        },
+        function (errorPl) {
+        	console.log('Error Al Cargar Datos', errorPl);
+        });
+	}
+
 })

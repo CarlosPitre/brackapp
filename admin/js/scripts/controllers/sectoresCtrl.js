@@ -51,6 +51,7 @@ app.controller('sectoresCtrl',  function($scope,sectorService){
 	}
 
 	$scope.delete = function  (id) {
+		alert("message");
 		var promiseGet = sectorService.delete(id); 
 		promiseGet.then(function (pl) {
             alert(pl.data);

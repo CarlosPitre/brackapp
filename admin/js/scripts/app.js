@@ -14,6 +14,12 @@ var app;
                     controller : 'sectoresCtrl'
             	}				
 			)
+			.when("/admin/servicios",{
+                    templateUrl: 'pages/servicios.html',
+                    controller : 'serviciosCtrl'
+            	}				
+			)
+
 			.otherwise({
                 redirectTo:"/inicio"
             });

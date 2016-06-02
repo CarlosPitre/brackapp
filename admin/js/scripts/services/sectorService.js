@@ -11,4 +11,10 @@ app.service('sectorService', ['$http', function($http){
 		var req = $http.put(uri + '/app/sectores', object);
 		return req;
 	}
+
+    this.delete = function  (id) {
+		var req = $http.delete(uri + '/app/sectores/' + id);
+		return req;
+	}
+
 }])

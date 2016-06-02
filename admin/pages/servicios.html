@@ -12,7 +12,10 @@
 		</div>		
 	</div>
 
-	 <div class="row">
+
+
+
+	<div class="row">
             <div class="col-lg-12 portlets">
               <div class="panel">
                 <div class="panel-header panel-controls">
@@ -20,23 +23,24 @@
                 </div>
                 <div class="panel-content">
                   <div class="filter-left">
-                    <table class="table table-dynamic table-tools ">
+                    <table class="table table-dynamic table-tools">
                       <thead>
                         <tr>
                           <th>#</th>
                           <th>Descripción</th>
                           <th >Estado</th>
-                          <th >Opciones</th>                       
+                          <th >Tipo</th>                       
                         </tr>
                       </thead>
                       <tbody>
-                        <tr ng-repeat="sector in Sectores | filter:filter ">
-                        	<td>{{sector.id}}</td>
-                        	<td>{{sector.descripcion}} </td>
-                        	<td>{{sector.estado}} </td>
+                        <tr ng-repeat="servicio in Servicios | filter:filter">
+                        	<td>{{servicio.id}}</td>
+                        	<td>{{servicio.descripcion}} </td>
+                        	<td>{{servicio.estado}} </td>
+                        	<td>{{servicio.idTipo}} </td>
                         	<td>
-                        		<a href="javascript:;" ng-click="modificar(sector)" data-toggle="modal" data-target="#modal-responsive">Modficiar</a>
-                        		<a href="javascript:;" ng-click="delete(sector.id)">Eliminar</a>
+                        		<a href="javascript:;" ng-click="modificar(servicio)" data-toggle="modal" data-target="#modal-responsive">Modficiar</a>
+                        		<a href="javascript:;" ng-click="delete(servicio.id)">Eliminar</a>
                         	</td>
                         </tr>
                       </tbody>
@@ -52,7 +56,7 @@
 		  <div class="modal-content">
 		    <div class="modal-header">
 		      <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="icons-office-52"></i></button>
-		      <h4 class="modal-title">GESTIÓN DE SECTORES</h4>
+		      <h4 class="modal-title">GESTIÓN DE SERVICIOS</h4>
 		    </div>
 		    <div class="modal-body">
 		     	
@@ -62,7 +66,7 @@
 		        	<div class="form-group">
 		    			<div class="t-center">
 		            		<label for="field-1" class="control-label">Descripción</label>
-		            		<input type="text" class="form-control form-white" id="field-1" placeholder="Ej: Sistemas,Plomeria,Electricidad..." ng-model="Sector.descripcion">
+		            		<input type="text" class="form-control form-white" id="field-1" placeholder="Ej: Sistemas,Plomeria,Electricidad..." ng-model="Servicio.descripcion">
 		          		</div>     		
 		        	</div>	              
 		        </div>
@@ -76,7 +80,11 @@
 		</div>
 	</div>
 
-</div>
+
+
+
+
+
 <script src="../assets/global/plugins/modernizr/modernizr-2.6.2-respond-1.1.0.min.js"></script>
 <script src="../assets/global/plugins/datatables/jquery.dataTables.min.js"></script> <!-- Tables Filtering, Sorting & Editing -->
 <script src="../assets/global/js/pages/table_dynamic.js"></script>

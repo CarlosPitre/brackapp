@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 31-05-2016 a las 21:56:22
+-- Tiempo de generación: 02-06-2016 a las 21:40:43
 -- Versión del servidor: 5.6.26
 -- Versión de PHP: 5.6.12
 
@@ -28,11 +28,20 @@ SET time_zone = "+00:00";
 
 CREATE TABLE IF NOT EXISTS `cliente` (
   `id` int(11) NOT NULL,
+  `nombres` varchar(60) COLLATE utf8_spanish_ci NOT NULL,
+  `apellidos` varchar(60) COLLATE utf8_spanish_ci NOT NULL,
   `correo` varchar(60) COLLATE utf8_spanish_ci NOT NULL,
   `telefono` varchar(15) COLLATE utf8_spanish_ci NOT NULL,
   `direccion` varchar(60) COLLATE utf8_spanish_ci NOT NULL,
   `estado` enum('Activo','Inactivo') COLLATE utf8_spanish_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `cliente`
+--
+
+INSERT INTO `cliente` (`id`, `nombres`, `apellidos`, `correo`, `telefono`, `direccion`, `estado`) VALUES
+(1, 'Carlos', 'Pitre', 'carlosjpitre@gmail.com', '3004706152', 'calle falsa 123', 'Activo');
 
 -- --------------------------------------------------------
 
@@ -1305,7 +1314,14 @@ CREATE TABLE IF NOT EXISTS `profesional` (
   `calificacion` float NOT NULL,
   `idMunicipio` int(11) NOT NULL,
   `estado` enum('Activo','Inactivo') COLLATE utf8_spanish_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `profesional`
+--
+
+INSERT INTO `profesional` (`id`, `idCliente`, `identificacion`, `latitud`, `longitud`, `foto`, `profesion`, `pago`, `experiencia`, `calificacion`, `idMunicipio`, `estado`) VALUES
+(1, 1, '1065654572', '10.4820084', '-73.2750313', 'null', 'Ingeniero de Sistemas', 'Activo', 'Desarrollador Brackapp', 5, 2, 'Activo');
 
 -- --------------------------------------------------------
 
@@ -1318,7 +1334,14 @@ CREATE TABLE IF NOT EXISTS `profesionalServicio` (
   `idProfesional` int(11) NOT NULL,
   `idServicio` int(11) NOT NULL,
   `porcentaje` float NOT NULL DEFAULT '0'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `profesionalServicio`
+--
+
+INSERT INTO `profesionalServicio` (`id`, `idProfesional`, `idServicio`, `porcentaje`) VALUES
+(1, 1, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -1364,7 +1387,15 @@ CREATE TABLE IF NOT EXISTS `servicio` (
   `descripcion` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
   `estado` enum('Activo','Inactivo') COLLATE utf8_spanish_ci NOT NULL,
   `idTipo` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `servicio`
+--
+
+INSERT INTO `servicio` (`id`, `descripcion`, `estado`, `idTipo`) VALUES
+(1, 'Mantenimiento de Computadores', 'Activo', 1),
+(2, 'Pulidora', 'Activo', 2);
 
 -- --------------------------------------------------------
 
@@ -1510,7 +1541,7 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `cliente`
 --
 ALTER TABLE `cliente`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT de la tabla `departamento`
 --
@@ -1540,12 +1571,12 @@ ALTER TABLE `perfil`
 -- AUTO_INCREMENT de la tabla `profesional`
 --
 ALTER TABLE `profesional`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT de la tabla `profesionalServicio`
 --
 ALTER TABLE `profesionalServicio`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT de la tabla `sector`
 --
@@ -1560,7 +1591,7 @@ ALTER TABLE `sectorServicio`
 -- AUTO_INCREMENT de la tabla `servicio`
 --
 ALTER TABLE `servicio`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT de la tabla `solicitud`
 --

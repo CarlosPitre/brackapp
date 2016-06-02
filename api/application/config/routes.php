@@ -10,7 +10,6 @@ $route['translate_uri_dashes'] = FALSE;
 /*
 	route['app/{recurso}']
 	'controlador/controlador'
-
 */
 
 $route['app/clientes']  = 'clientes/clientes';
@@ -19,3 +18,4 @@ $route['app/servicios']  = 'servicios/servicios';
 $route['app/sectores/(:num)'] = 'sectores/sectores/$1';
 $route['app/menu'] = 'menu/menu'; 
 $route['app/perfil/(:num)/menu']  = 'menu/menu/$1'; 
+$route['app/servicio/(:num)/profesionales'] = 'profesionales/profesionalesByServicio/$1';

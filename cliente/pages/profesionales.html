@@ -1,0 +1,32 @@
+<div class="row">
+
+<div class="m-b-10">
+                <div class="rateit" data-value="2.5" data-readonly="true"></div>
+              </div>
+	<table class="table">
+      <thead>
+        <tr>
+          <th>Imagen</th>
+          <th>Nombres</th>
+          <th>Calificación</th>
+          <th>Ciudad</th>
+          <th>Seleccionar</th>                       
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="profesional in Profesionales ">
+        	<td>{{profesional.foto}}</td>
+        	<td>{{profesional.nombres}} {{profesional.apellidos}} </td>
+        	<td>
+        		  <div class="m-b-10">
+                <div class="rateit" data-value="2.5" data-readonly="true"></div>
+              </div>
+        	</td>        	
+        	<td>{{profesional.municipio}} </td>
+        	
+        </tr>
+      </tbody>
+    </table>
+</div>
+
+

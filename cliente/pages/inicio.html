@@ -6,13 +6,13 @@
                   <div id="loader"></div>
               </div>
               <div class="col-md-6">
-              	 <h2>Bienvenido a <strong>BRACKAPP</strong>!</h2>
-                  <p>Por favor escribe el servicio que buscas.</p>
+              	 <h2 style="color:#1f3649">Bienvenido a <strong>BRACKAPP</strong>!</h2>
+                  <p style="color:#1f3649">Por favor escribe el servicio que buscas.</p>
                   <div class="input-group"> 
                    
                       <angucomplete id="ex2" placeholder="Ejem: Plomeria, Mantenimiento de Computadores, etc..." pause="300"  localdata="Servicio" selectedobject="selectedServicio" searchfields="descripcion,sector" titlefield="descripcion" descriptionfield="sector" minlength="1" inputclass="form-control-buscar" matchclass="highlight" />
                       <span class="input-group-btn"> 
-                      <button ng-click="Buscar(selectedServicio.originalObject.id)" class="btn btn-primary">Buscar</button>
+                        <a href="javascript:;" class="btn btn-primary" style="color:white;" ng-click="Buscar(selectedServicio.originalObject.id)">Buscar</a>                      
                       </span>
                   </div>
               </div>             

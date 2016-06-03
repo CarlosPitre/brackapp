@@ -9,6 +9,10 @@ var app;
                     controller : 'mainCtrl'
             	}				
 			)
+			.when("/servicio/:idServicio/profesionales",{
+					templateUrl : 'pages/profesionales.html',
+					controller : 'profesionalCtrl'
+			})
 			.otherwise({
                 redirectTo:"/inicio"
             });

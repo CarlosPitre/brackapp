@@ -9,23 +9,12 @@ var app;
                     controller : 'mainCtrl'
             	}				
 			)
-			.when("/admin/sectores",{
-                    templateUrl: 'pages/sectores.html',
-                    controller : 'sectoresCtrl'
+			.when("/empresa/miPerfil",{
+                    templateUrl: 'pages/miperfil.html',
+                    controller : 'miperfilCtrl'
             	}				
 			)
-			.when("/admin/servicios",{
-                    templateUrl: 'pages/servicios.html',
-                    controller : 'serviciosCtrl'
-            	}				
-			)
-
-			.when("/admin/clientes",{
-                    templateUrl: 'pages/clientes.html',
-                    controller : 'clienteCtrl'
-            	}				
-			)
-
+			
 			.otherwise({
                 redirectTo:"/inicio"
             });

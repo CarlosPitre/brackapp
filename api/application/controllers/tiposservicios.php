@@ -3,21 +3,21 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 require APPPATH . '/libraries/REST_Controller.php';
 
-class Clientes extends REST_Controller {
+class Tiposservicios extends REST_Controller {
 
 	public function __construct()
 	{
 		parent::__construct();
-		$this->load->model('model_cliente');
+		$this->load->model('Model_tiposservicios');
 	}
 
-	public function clientes_get($id = null)
+	public function tiposservicios_get($id = null)
 	{
 		if ($id == null) {
-			$clientes = $this->model_cliente->getClientes();
+			$Tiposservicios = $this->Model_tiposservicios->getTiposservicios();
 		}
-		if ($clientes) {
-			$this->response($clientes, REST_Controller::HTTP_OK);
+		if ($Tiposservicios) {
+			$this->response($Tiposservicios, REST_Controller::HTTP_OK);
 		}else{
 	        $this->response([
        			'status' => FALSE,
@@ -27,6 +27,3 @@ class Clientes extends REST_Controller {
 	}
 
 }
-
-/* End of file clientes.php */
-/* Location: ./application/controllers/clientes.php */

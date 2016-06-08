@@ -16,5 +16,10 @@ app.service('serviciosService', ['$http', function($http){
 		var req = $http.delete(uri + '/app/servicios/' + id);
 		return req;
 	}
+	
+	this.getTiposservicios = function  () {
+		var req = $http.get(uri + '/app/tiposservicios');
+		return req;
+	}
 
 }])

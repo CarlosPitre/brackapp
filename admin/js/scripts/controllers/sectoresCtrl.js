@@ -1,4 +1,7 @@
-app.controller('sectoresCtrl',  function($scope,sectorService){
+app.controller('sectoresCtrl',  function($scope,sectorService,pluginsService){
+	
+
+
 	$scope.Sectores = [];
 
 	loadSectores();

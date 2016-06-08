@@ -26,13 +26,17 @@ class Servicios extends REST_Controller {
 		};
 	}
 
-	public function sectores_post()
+
+   
+
+	public function servicios_post()
 	{
 		$datos = array(
 			"descripcion" => $this->post("descripcion"),
+			"idTipo"=> $this->post("idTipo"),
 			"estado" => "ACTIVO"
 		);
-		$guardar= $this->model_sector->save($datos);
+		$guardar= $this->model_servicios->save($datos);
 		if ($guardar) {
 			$message = "Datos Guardados Correctamente";
 			$this->response($message, REST_Controller::HTTP_CREATED);
@@ -42,12 +46,13 @@ class Servicios extends REST_Controller {
 		};
 	}
 
-	public function sectores_put()
+	public function servicios_put()
 	{
 		$datos = array(
 			"descripcion" => $this->put("descripcion"),
+			"idTipo"=>$this->put("idTipo")
 		);
-		$guardar= $this->model_sector->update($datos,$this->put("id"));
+		$guardar= $this->model_servicios->update($datos,$this->put("id"));
 		if ($guardar) {
 			$message = "Datos Guardados Correctamente";
 			$this->response($message, REST_Controller::HTTP_CREATED);
@@ -57,14 +62,14 @@ class Servicios extends REST_Controller {
 		};
 	}
 
-	public function sectores_delete($id)
+	public function servicios_delete($id)
 	{
 		$datos = array(
 			"estado" => "Inactivo",
 		);
-		$guardar= $this->model_sector->update($datos,$id);
+		$guardar= $this->model_servicios->update($datos,$id);
 		if ($guardar) {
-			$message = "Datos Guardados Correctamente";
+			$message = "Datos eliminado Correctamente";
 			$this->response($message, REST_Controller::HTTP_CREATED);
 		}else{
 			$message = "Error";

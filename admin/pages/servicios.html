@@ -37,7 +37,7 @@
                         	<td>{{servicio.id}}</td>
                         	<td>{{servicio.descripcion}} </td>
                         	<td>{{servicio.estado}} </td>
-                        	<td>{{servicio.idTipo}} </td>
+                        	<td>{{servicio.tipo}} </td>
                         	<td>
                         		<a href="javascript:;" ng-click="modificar(servicio)" data-toggle="modal" data-target="#modal-responsive">Modficiar</a>
                         		<a href="javascript:;" ng-click="delete(servicio.id)">Eliminar</a>
@@ -61,24 +61,42 @@
 		    <div class="modal-body">
 		     	
 		      <div class="row">
-		        <div class="col-md-12">
+		        <div class="col-md-6">
+
+
 		        	
 		        	<div class="form-group">
 		    			<div class="t-center">
 		            		<label for="field-1" class="control-label">Descripción</label>
-		            		<input type="text" class="form-control form-white" id="field-1" placeholder="Ej: Sistemas,Plomeria,Electricidad..." ng-model="Servicio.descripcion">
+		            		<input type="text" class="form-control form-white t-center" id="field-1" placeholder="Ej: Sistemas,Electricidad,repuestos..." ng-model="Servicio.descripcion ">
 		          		</div>     		
-		        	</div>	              
+		        	</div>	
+
+		        	
+		        	
+                    <div class="col-md-3"></div>
+                        <div class="t-center">
+                        <div class="form-group">
+                          <label>Tipo De Servicio</label>
+                          <select class="form-control form-white" data-style="white" data-placeholder="Select a country..." ng-model = "Servicio.tipo" >
+                            <option ng-repeat=" tipo in tiposservicios"  value="{{tipo.id}}">{{tipo.tipo}}</option>
+                           </select>
+                        </div>
+                    </div>
+                 </div>
+
 		        </div>
 		       </div>
-		    </div>
+		   
 		    <div class="modal-footer text-center">
 		      <button type="button" class="btn btn-primary btn-embossed bnt-square" ng-click="save()" ng-show="openButton"><i class="fa fa-check"></i> Guardar</button>
 		      <button type="button" class="btn btn-primary btn-embossed bnt-square" ng-click="update()" ng-hide="openButton"><i class="fa fa-check"></i> Modificar</button>
 		    </div>
 		  </div>
+		  </div>
 		</div>
 	</div>
+</div>
 
 
 

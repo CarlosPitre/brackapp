@@ -12,8 +12,9 @@ class Model_servicios extends CI_Model {
 	{
 		if ($id == null) {
 			$query=$this->db
-				->select("*")
-				->from("servicio")				
+				->select('s.*,t.tipo')
+				->from('servicio s')
+				->join('tiposservicios t', ' s.idTipo = t.id', 'inner')				
 				->get();
 		}
 		return $query->result();
@@ -21,14 +22,14 @@ class Model_servicios extends CI_Model {
 
 	public function save($datos = array())
 	{
-		$this->db->insert('sector', $datos);
+		$this->db->insert('servicio', $datos);
 		return true;
 	}
 
 	public function update($datos = array(), $id)
 	{
 		$this->db->where('id', $id);
-		$this->db->update('sector', $datos);
+		$this->db->update('servicio', $datos);
 		return true;
 	}
 

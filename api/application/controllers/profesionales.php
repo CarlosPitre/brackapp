@@ -11,9 +11,19 @@ class Profesionales extends REST_Controller {
 		$this->load->model('model_profesional');
 	}
 
-	public function profesionales_get()
+	public function profesionales_get($id = null)
 	{
-		
+		if ($id != null) {
+			$profesional = $this->model_profesional->getprofesional($id);
+		}
+		if ($profesional) {
+			$this->response($profesional, REST_Controller::HTTP_OK);
+		}else{
+	        $this->response([
+       			'status' => FALSE,
+        		'message' => 'No users were found'
+            ], REST_Controller::HTTP_NOT_FOUND); 
+		};
 	}
 
 	public function profesionalesByServicio_get($idServicio)

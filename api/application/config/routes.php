@@ -21,4 +21,10 @@ $route['app/sectores/(:num)'] = 'sectores/sectores/$1';
 $route['app/menu'] = 'menu/menu'; 
 $route['app/perfil/(:num)/menu']  = 'menu/menu/$1'; 
 $route['app/servicio/(:num)/profesionales'] = 'profesionales/profesionalesByServicio/$1';
+<<<<<<< HEAD
 
+=======
+$route['app/usuario/login'] = 'usuario/login';
+$route['app/profesionales/(:num)'] = 'profesionales/profesionales/$1';
+$route['app/profesionales'] = 'profesionales/profesionales';
+>>>>>>> 52584d387cc392a2586fc656b6302a7649d106d3

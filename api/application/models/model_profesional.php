@@ -21,6 +21,16 @@ class Model_profesional extends CI_Model {
 		return $query->result();
 	}
 
+	public function getprofesional($id)
+	{
+		$query=$this->db
+					->select('*')
+					->from("profesional")
+					->where("id",$id)
+					->get();
+		return $query->row();
+	}
+
 }
 
 /* End of file model_profesional.php */

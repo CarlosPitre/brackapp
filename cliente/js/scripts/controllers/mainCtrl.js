@@ -39,10 +39,11 @@ app.controller('mainCtrl', function($scope,menuService){
 	}
 
 	$scope.Buscar = function  (id) {
-		alert(id);
-		window.location = '#/servicio/' + id + '/profesionales';
-
-		//href("#/sectores/"+id+'/profesionales');
+		if (id == null) {
+			alert("Por Escribe Un Servicio")
+		}else{
+			window.location = '#/servicio/' + id + '/profesionales';
+		};
 	}
 
 

@@ -1,41 +1,15 @@
-app.controller('profesionalCtrl', function($scope,profesionalService,$routeParams,pluginsService){
+app.controller('profesionalCtrl', function($scope,profesionalService,$routeParams,pluginsService,clienteService){
 
+	$scope.rate = 2;
+	$scope.max = 5;
+	$scope.isReadonly = true;
+	$scope.idProfesional;
 
-	 $scope.$on('$viewContentLoaded', function () { 
-        
-	      /**** DATE AND TIME PLUGINS ****/
+	$scope.hoveringOver = function(value) {
+		$scope.overStar = value;
+		$scope.percent = 100 * (value / $scope.max);
+	};
 
-	      /* Inline Date & Time picker */
-	      $('#inline_datetimepicker').datetimepicker({
-	          altField: "#inline_datetimepicker_alt",
-	          altFieldTimeOnly: false,
-	          isRTL: $('body').hasClass('rtl') ? true : false
-	      });
-
-	      /**** COLOR PICKER PLUGINS ****/
-
-	      /* Color Picker */
-	      /* You can initialize all options directly in input except for palette */
-	      $("#colorpicker1").spectrum({
-	          palette: [
-	              ['black', 'white', 'blanchedalmond'],
-	              ['rgb(255, 128, 0);', 'hsv 100 70 50', 'lightyellow']
-	          ]
-	      });
-
-	      $("#colorpicker2").spectrum({
-	          palette: [
-	              ['black', 'white', 'blanchedalmond',
-	              'rgb(255, 128, 0);', 'hsv 100 70 50'],
-	              ['red', 'yellow', 'green', 'blue', 'violet']
-	          ]
-	      });
-
-	      $("#colorpicker1, #colorpicker2").show();
-
-	      
-	      pluginsService.init();
-	  });
 
 	$scope.Profesionales = [];
 	$scope.Profesional= {};
@@ -51,6 +25,46 @@ app.controller('profesionalCtrl', function($scope,profesionalService,$routeParam
         	console.log('Error Al Cargar Datos', errorPl);
         });
 	}
+
+	$scope.Detalles = function  (profesional) {
+		
+		var idCliente = localStorage.getItem("idCliente_br")
+		if (idCliente == null) {
+			$scope.idProfesional = profesional.id;
+			$('#modalProfesional').modal('show');
+		}else{
+			$scope.idProfesional = localStorage.getItem("idPerfil_br");
+			llamarVista();
+		};		 
+	}
+
+	$scope.login = function  () {
+		var data = {
+			user : $scope.user,
+			pass : $scope.pass
+		};
+		var promiseGet = clienteService.login(data); 
+        promiseGet.then(function (pl) {
+        	var status = pl.data.status;
+        	if (status == 1) {
+        		localStorage.setItem("idCliente_br",pl.data.usuario.idCliente);
+        		localStorage.setItem("idPerfil_br",pl.data.usuario.idPerfil);
+        		localStorage.setItem("idUsuario_br",pl.data.usuario.id);
+        		$scope.idProfesional = pl.data.usuario.idPerfil;
+        		llamarVista();
+        	}else{
+        		alert(pl.data.message)
+        	};
+            
+        },
+        function (errorPl) {
+        	console.log('Error Al Cargar Datos', errorPl);
+        });
+	}
+
+	function llamarVista () {
+		window.location = "#/profesional/" + $scope.idProfesional;
+	} 
 
 
 })

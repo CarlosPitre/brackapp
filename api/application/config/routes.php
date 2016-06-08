@@ -19,3 +19,4 @@ $route['app/sectores/(:num)'] = 'sectores/sectores/$1';
 $route['app/menu'] = 'menu/menu'; 
 $route['app/perfil/(:num)/menu']  = 'menu/menu/$1'; 
 $route['app/servicio/(:num)/profesionales'] = 'profesionales/profesionalesByServicio/$1';
+$route['app/usuario/login'] = 'usuario/login';

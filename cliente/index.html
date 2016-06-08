@@ -18,9 +18,22 @@
   </head>
 
   <body class="account separate-inputs" >
-
-      <div class="container" id="lockscreen-block" ng-view>
-          
+        <div class="topbar" style="background:#6E62B5;">
+            <div class="header-right">
+                <ul class="header-menu nav navbar-nav">              
+                  <li class="dropdown" id="user-header">
+                    <a href="#" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                    <img src="../assets/global/images/avatars/avatar7_big.png" alt="user image">
+                    <span style="color:white;">Hola</span>
+                    </a> 
+                 </li>              
+                </ul>
+            </div>
+        </div>
+        <br>
+        <div class="page-content">
+            <div class="container" id="lockscreen-block" ng-view>
+        </div>         
       </div>
       <div class="loader-overlay loaded">
           <div class="loader-inner">
@@ -116,12 +129,11 @@
     <script src="../assets/global/plugins/autosize/autosize.min.js"></script>
     <script src="../assets/global/js/widgets/widget_weather.js"></script>
     <script src="../assets/global/js/pages/ecommerce.js"></script>
+    <script src="../js/ui-bootstrap.js"></script>
 
 
     
     <script src="../assets/admin/layout3/js/layout.js"></script>
-
-
     
 
     <script src='js/scripts/app.js'></script>
@@ -129,7 +141,7 @@
     <script src='js/scripts/services/menuService.js'></script>
     <script src='js/scripts/controllers/profesionalCtrl.js'></script>
     <script src='js/scripts/services/profesionalService.js'></script>
-
+    <script src='js/scripts/services/clienteService.js'></script>
     
     <script src="js/builder.js"></script>
     <script src="js/application.js"></script>

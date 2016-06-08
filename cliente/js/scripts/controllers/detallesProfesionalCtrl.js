@@ -15,6 +15,8 @@ app.controller('detallesProfesionalCtrl', function($scope,$routeParams,profesion
         });
 	}
 
+	
+
 
 
 })

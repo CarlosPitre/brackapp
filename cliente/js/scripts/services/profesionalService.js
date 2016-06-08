@@ -3,4 +3,9 @@ app.service('profesionalService', function($http){
 		var req = $http.get(uri + '/app/servicio/' + idServicio + '/profesionales');
 		return req;
 	}
+
+	this.getDatos = function  (idProfesional) {
+		$http.get(uri + '/app/profesional/' + idProfesional );
+		return req;
+	}
 })

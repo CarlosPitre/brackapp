@@ -24,9 +24,10 @@ class Model_profesional extends CI_Model {
 	public function getprofesional($id)
 	{
 		$query=$this->db
-					->select('*')
-					->from("profesional")
-					->where("id",$id)
+					->select('p.*, m.nombre as municipio')
+					->from("profesional p")
+					->join('municipio m', 'm.id = p.idMunicipio', 'inner')
+					->where("p.id",$id)
 					->get();
 		return $query->row();
 	}

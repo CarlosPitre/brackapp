@@ -5,7 +5,7 @@ app.service('profesionalService', function($http){
 	}
 
 	this.getDatos = function  (idProfesional) {
-		$http.get(uri + '/app/profesional/' + idProfesional );
+		var req = $http.get(uri + '/app/profesionales/' + idProfesional );
 		return req;
 	}
 })

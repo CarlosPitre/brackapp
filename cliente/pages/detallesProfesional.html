@@ -1,4 +1,4 @@
-<div class="container">
+
 	<div class="row">
 		<div class="col-lg-6 portlets">
 			<div class="panel">
@@ -6,6 +6,11 @@
 				  	<h1><i class="icon-calendar"></i> Profesional : <strong>{{Profesional.razonSocial}}</strong></h2>
 				</div>
 				<div class="panel-content">
+					<div class="row">
+						<div class="t-center">
+							<img src="../img/logoUbuntu.png" alt="" style="width:180px;height:180px;">
+						</div>						
+					</div>
 					<div class="row">
 						<h3>Nit o Cédula: <strong>{{Profesional.identificacion}}</strong></h3>
 					</div>
@@ -27,5 +32,20 @@
 				</div>
 			</div>
 		</div>
+		<div class="col-lg-6">
+			<div id="floating-panel">
+		    	<b>Mode of Travel: </b>
+			    <select id="mode">
+			      <option value="DRIVING">Driving</option>
+			      <option value="WALKING">Walking</option>
+			      <option value="BICYCLING">Bicycling</option>
+			      <option value="TRANSIT">Transit</option>
+			    </select>
+		    </div>		
+			<div id="map" style=" position: relative;float: left; width: 500px;height: 500px">
+			</div>
+		</div>
 	</div>
-</div>
+
+
+

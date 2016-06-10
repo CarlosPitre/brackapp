@@ -4,6 +4,8 @@ app.controller('profesionalCtrl', function($scope,profesionalService,$routeParam
 	$scope.max = 5;
 	$scope.isReadonly = true;
 	$scope.idProfesional;
+	$scope.titleButton = "Ver mas";
+	$scope.mostrar1 = true;
 
 	$scope.hoveringOver = function(value) {
 		$scope.overStar = value;

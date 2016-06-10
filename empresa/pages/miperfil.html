@@ -1,67 +1,82 @@
  
 
  <h3><strong>Datos </strong> Personales</h3>
-    <div class="row">
-
-    
-
-
-   <div class="col-lg-5">
-            <div class="panel widget-member2">
+<div class="row">
+  <div class="col-lg-5">
+            <div class="panel widget-member2 " style="background:">
                 <div class="row">
                     <!--<div class="col-lg-2 col-xs-3">
                         <img src="../../../assets/global/images/avatars/user2.png">
                     </div>-->
-                    <div class="col-lg-10 col-xs-9">
+                    <div >
                         <div class="clearfix">
-                            <p><STRONG class="member-job"> Razon Social :</STRONG> {{Profesional.razonSocial}} </p>
+                            <h3 style="margin-left:15px; color:black;" > Razon Social : {{Profesional.razonSocial}}  </h3> 
                         </div>
+
+                        <br>
                         
                           <div class="row">
                             <div class="col-sm-12">
-                                <p><STRONG class="member-job"> Identificación :</STRONG>  {{Profesional.identificacion}} </p>
+                                <h3 style="margin-left:15px;"> Identificación :  {{Profesional.identificacion}} </h3>
                             </div>
                         </div>
+
+                        <br>
 
                          <div class="row">
                             <div class="col-sm-12">
-                                <p><STRONG class="member-job"> Correo :</STRONG>  {{Profesional.correo}} </p>
+                                <h3 style="margin-left:15px;" > Correo :  {{Profesional.correo}} </h3>
                             </div>
                         </div>
+
+                        <br>
                          
                            <div class="row">
                             <div class="col-sm-12">
-                                <p><STRONG class="member-job"> Telefono :</STRONG>  {{Profesional.telefono}}  </p>
+                                <h3 style="margin-left:15px;" > Telefono :  {{Profesional.telefono}}  </h3>
                             </div>
                         </div>
-                         
+                         <br>
                            <div class="row">
                             <div class="col-sm-12">
-                                <p><STRONG class="member-job"> Experiencia :</STRONG> {{Profesional.experiencia}}
-                                </p>
+                                <h3 style="margin-left:15px;"> Experiencia : {{Profesional.experiencia}}
+                                </h3>
                             </div>
-                        </div>  
+                        </div>
                     <!--  <h3 style="color:yellow"> 
                         <uib-rating ng-model="Profesional.calificacion" max="max" read-only="isReadonly" on-hover="hoveringOver(value)" on-leave="overStar = null" titles="['one','two','three']" aria-labelledby="default-rating">  </uib-rating>
                      </h3>-->
-                      
+                     
+
                      </div>
+                      
+            
                 </div>
             </div>
-
-
         </div>
 
- 
+        <div class="col-lg-2">
+            <div class="panel widget-member2 ">
+            <img src="../img/aleja.jpg" alt="" style="width:110px;height:110px;">
+            </div>
+            
+            
+             <div class=" t-center">
+                      <button type="button"  style="background:#4A89DC;"  class="btn btn-white btn-lg " data-toggle="modal"  data-target="#modal-responsive"><i class="fa fa-edit faa-vertical animated"></i></button>
+                    </div>
+                    
 
-
-
-
-    <div class="col-md-8" style="margin-top:15px;x">
-        <button type="button"  style="background:#4A89DC;"  class="btn btn-white btn-lg" data-toggle="modal"  data-target="#modal-responsive"><i class="fa fa-edit"></i></button>
+                </div>
+                </div>   
+            </div> 
+                  
+        
     </div>
 
-</div>
+
+
+
+    
 
 
 <div class="modal fade" id="modal-responsive" aria-hidden="true">

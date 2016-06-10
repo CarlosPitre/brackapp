@@ -42,6 +42,28 @@ class Profesionales extends REST_Controller {
 		};
 	}
 
+
+
+		public function profesionales_put()
+	{
+		$datos = array(
+			"razonSocial" => $this->put("razonSocial"),
+			"identificacion"=>$this->put("identificacion"),
+			"correo"=>$this->put("correo"),
+			"telefono"=>$this->put("telefono"),
+			"experiencia"=>$this->put("experiencia")
+		);
+		$guardar= $this->model_profesional->update($datos,$this->put("id"));
+		if ($guardar) {
+			$message = "Datos Guardados Correctamente";
+			$this->response($message, REST_Controller::HTTP_CREATED);
+		}else{
+			$message = "Error";
+			$this->response($message, REST_Controller::HTTP_BAD_REQUEST);
+		};
+	}
+
+
 }
 
 /* End of file profesionales.php */

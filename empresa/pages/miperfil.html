@@ -1,6 +1,12 @@
+ 
+
  <h3><strong>Datos </strong> Personales</h3>
     <div class="row">
-        <div class="col-lg-5">
+
+    
+
+
+   <div class="col-lg-5">
             <div class="panel widget-member2">
                 <div class="row">
                     <!--<div class="col-lg-2 col-xs-3">
@@ -8,40 +14,108 @@
                     </div>-->
                     <div class="col-lg-10 col-xs-9">
                         <div class="clearfix">
-                            <p><STRONG class="member-job"> Razon Social :</STRONG>  LUIS SERGE MARTINEZ </p>
+                            <p><STRONG class="member-job"> Razon Social :</STRONG> {{Profesional.razonSocial}} </p>
                         </div>
                         
                           <div class="row">
                             <div class="col-sm-12">
-                                <p><STRONG class="member-job"> Identificación :</STRONG>  1065814650 </p>
+                                <p><STRONG class="member-job"> Identificación :</STRONG>  {{Profesional.identificacion}} </p>
                             </div>
                         </div>
 
                          <div class="row">
                             <div class="col-sm-12">
-                                <p><STRONG class="member-job"> Numero :</STRONG>  1065814650 </p>
+                                <p><STRONG class="member-job"> Correo :</STRONG>  {{Profesional.correo}} </p>
                             </div>
                         </div>
                          
                            <div class="row">
                             <div class="col-sm-12">
-                                <p><STRONG class="member-job"> Profesion :</STRONG>  Ingeniero De Sistemas </p>
+                                <p><STRONG class="member-job"> Telefono :</STRONG>  {{Profesional.telefono}}  </p>
                             </div>
                         </div>
                          
                            <div class="row">
                             <div class="col-sm-12">
-                                <p><STRONG class="member-job"> Experiencia :</STRONG>  Desarrollador Brackapp  
+                                <p><STRONG class="member-job"> Experiencia :</STRONG> {{Profesional.experiencia}}
                                 </p>
                             </div>
-                        </div>
-
-                        
-                    </div>
+                        </div>  
+                    <!--  <h3 style="color:yellow"> 
+                        <uib-rating ng-model="Profesional.calificacion" max="max" read-only="isReadonly" on-hover="hoveringOver(value)" on-leave="overStar = null" titles="['one','two','three']" aria-labelledby="default-rating">  </uib-rating>
+                     </h3>-->
+                      
+                     </div>
                 </div>
             </div>
+
+
         </div>
- </div>
+
+ 
+
+
+
+
+    <div class="col-md-8" style="margin-top:15px;x">
+        <button type="button"  style="background:#4A89DC;"  class="btn btn-white btn-lg" data-toggle="modal"  data-target="#modal-responsive"><i class="fa fa-edit"></i></button>
+    </div>
+
+</div>
+
+
+<div class="modal fade" id="modal-responsive" aria-hidden="true">
+        <div class="modal-dialog ">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="icons-office-52"></i></button>
+              <h4 class="modal-title">Datos Personales</h4>
+            </div>
+            <div class="modal-body">
+                
+              <div class="row">
+                <div class="col-md-8">
+                    
+                    <div class="form-group">
+                        <div class="t-center">
+                            <label for="field-1" class="control-label">Razon Social</label>
+                            <input type="text" class="form-control form-white" id="field-1 " ng-model="Profesional.razonSocial">
+                            
+                        </div>          
+                    </div> 
+                     <div class="form-group">
+                        <div class="t-center">
+                            <label for="field-1" class="control-label">Identifiacion</label>
+                            <input type="text" class="form-control form-white" id="field-1" ng-model="Profesional.identificacion">
+                        </div>          
+                    </div> 
+                     <div class="form-group">
+                        <div class="t-center">
+                            <label for="field-1" class="control-label">Correo</label>
+                            <input type="text" class="form-control form-white" id="field-1" ng-model="Profesional.correo" >
+                        </div>          
+                    </div> 
+                     <div class="form-group">
+                        <div class="t-center">
+                            <label for="field-1" class="control-label">Telefono</label>
+                            <input type="text" class="form-control form-white " id="field-1" ng-model="Profesional.telefono">
+                        </div>          
+                    </div> 
+                     <div class="form-group">
+                        <div class="t-center">
+                            <label for="field-1" class="control-label">Experiencia</label>
+                            <input type="text" class="form-control form-white" id="field-1" ng-model="Profesional.experiencia">
+                        </div>          
+                    </div>                
+                </div>
+               </div>
+            </div>
+            <div class="modal-footer text-center">
+              <button type="button" class="btn btn-primary btn-embossed bnt-square" ng-click="update()"><i class="fa fa-check"></i> Modificar</button>
+            </div>
+          </div>
+        </div>
+    </div>
 
 
 
@@ -54,7 +128,7 @@
 <script src="../assets/global/plugins/datatables/jquery.dataTables.min.js"></script> <!-- Tables Filtering, Sorting & Editing -->
 <script src="../assets/global/js/pages/table_dynamic.js"></script>
 
-
+<script src="../js/ui-bootstrap.js"></script>
 
 <script src="js/builder.js"></script>
     <script src="js/application.js"></script>

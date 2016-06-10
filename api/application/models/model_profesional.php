@@ -31,6 +31,13 @@ class Model_profesional extends CI_Model {
 		return $query->row();
 	}
 
+	public function update($datos = array(), $id)
+	{
+		$this->db->where('id', $id);
+		$this->db->update('profesional', $datos);
+		return true;
+	}
+
 }
 
 /* End of file model_profesional.php */

@@ -1,18 +1,5 @@
-<div class="row">
-	<table class="table table-hover">
-      <thead>
-        <tr>
-          <th class="t-center">Imagen</th>
-          <th class="t-center">Nombres</th>
-          <th class="t-center">Calificación</th>
-          <th class="t-center">Ciudad</th>
-          <th class="t-center">Seleccionar</th>                       
-        </tr>
-      </thead>
-      <tbody>
-        <tr ng-repeat="profesional in Profesionales ">
-        	<td class="t-center">
 
+<<<<<<< HEAD
             <img src="../img/logoUbuntu.png" alt="" style="width:90px;height:90px;">
           </td>
         	<td class="t-center">
@@ -39,7 +26,58 @@
         </tr>
       </tbody>
     </table>
+=======
+<div ng-repeat="profesional in Profesionales">
+    <div class="col-md-3">
+  
+    </div>
+    <div class="row">
+      <div class="panel panel-notif col-md-8" >     
+        <div class="panel-header border-bottom panel-controls">
+          <h3>Empresa: <strong>{{profesional.nombres}} {{profesional.apellidos}}</strong></h3>
+        </div>    
+        <div class="panel-content">
+          <div class="row">
+            <div class="col-md-3">                
+              <img src="../img/logoUbuntu.png" alt="" style="width:90px;height:90px;margin:20px;">        
+            </div>
+            <div class="col-md-7">
+              <div class="row">
+                <h4>
+                  {{profesional.municipio}}
+                </h4>
+              </div>
+              <div class="row">
+                <h4 style="color:#F6AB3F;">              
+                  <uib-rating ng-model="profesional.calificacion" max="max" read-only="isReadonly" on-hover="hoveringOver(value)" on-leave="overStar = null" titles="['one','two','three']" aria-labelledby="default-rating"></uib-rating>
+                </h4>
+                <h4>Personas que lo han calificado: <strong>{{profesional.numeroPersonas}}</strong></h4>
+                <div class="font-animation">
+                  <button class="btn btn-primary" ng-click="Detalles(profesional)">
+                    <i class="fa fa-hand-o-right faa-horizontal animated"></i>
+                    &nbsp; {{titleButton}}                 
+                  </button>                          
+                </div>                        
+              </div>
+            </div>
+          </div>          
+        </div>
+      </div>          
+    </div>
+    <div class="row">
+        <div class="panel panel-notif col-md-8" ng-hide="mostrar{{profesional.id}}">
+          <div class="panel-header border-bottom panel-controls">
+            <h3>Empresa: <strong>{{profesional.nombres}} {{profesional.apellidos}}</strong></h3>
+          </div>    
+          <div class="panel-content">
+            <h4>Hola</h4>
+          </div>
+        </div>
+    </div>
+>>>>>>> 78b2a58d740e3f534bbb9ff97648e916fb98fd05
 </div>
+
+
 
 <div class="modal fade" id="modalProfesional" aria-hidden="true" >
   <div class="modal-dialog ">

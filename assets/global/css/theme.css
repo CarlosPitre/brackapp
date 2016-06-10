@@ -19,6 +19,12 @@
 /******* THEMES *******/
 /**** SIDEBAR DARK / TOPBAR WHITE ****/
 /* SD/TW : theme default */
+.map_container {
+    position: relative;
+    float: left;
+    width: 100%; 
+    height: 50%
+}
 .theme-sdtl.color-default:not(.sidebar-top) .logopanel {
   background: #181a1d;
 }

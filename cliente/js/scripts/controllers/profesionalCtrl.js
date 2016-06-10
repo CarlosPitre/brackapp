@@ -4,6 +4,8 @@ app.controller('profesionalCtrl', function($scope,profesionalService,$routeParam
 	$scope.max = 5;
 	$scope.isReadonly = true;
 	$scope.idProfesional;
+	$scope.titleButton = "Ver mas";
+	$scope.mostrar1 = true;
 
 	$scope.hoveringOver = function(value) {
 		$scope.overStar = value;
@@ -27,13 +29,11 @@ app.controller('profesionalCtrl', function($scope,profesionalService,$routeParam
 	}
 
 	$scope.Detalles = function  (profesional) {
-		
+		$scope.idProfesional = profesional.id;
 		var idCliente = localStorage.getItem("idCliente_br")
-		if (idCliente == null) {
-			$scope.idProfesional = profesional.id;
+		if (idCliente == null) {			
 			$('#modalProfesional').modal('show');
 		}else{
-			$scope.idProfesional = localStorage.getItem("idPerfil_br");
 			llamarVista();
 		};		 
 	}
@@ -50,7 +50,6 @@ app.controller('profesionalCtrl', function($scope,profesionalService,$routeParam
         		localStorage.setItem("idCliente_br",pl.data.usuario.idCliente);
         		localStorage.setItem("idPerfil_br",pl.data.usuario.idPerfil);
         		localStorage.setItem("idUsuario_br",pl.data.usuario.id);
-        		$scope.idProfesional = pl.data.usuario.idPerfil;
         		llamarVista();
         	}else{
         		alert(pl.data.message)

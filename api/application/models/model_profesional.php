@@ -10,9 +10,8 @@ class Model_profesional extends CI_Model {
 
 	public function getProfesionalesByServicio($idServicio)
 	{
-		$query = $this->db->select('p.*, c.*, m.nombre as municipio')
+		$query = $this->db->select('p.*, m.nombre as municipio')
 							->from('profesional p')
-							->join('cliente c', ' p.idCliente = c.id', 'inner')
 							->join('profesionalServicio ps', 'ps.idProfesional = p.id','inner')
 							->join('servicio s', 's.id = ps.idServicio', 'inner')
 							->join('municipio m', 'm.id = p.idMunicipio', 'inner')

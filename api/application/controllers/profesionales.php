@@ -28,7 +28,12 @@ class Profesionales extends REST_Controller {
 
 	public function profesionalesByServicio_get($idServicio)
 	{
-		$profesionales = $this->model_profesional->getProfesionalesByServicio($idServicio);
+		$profesionales = $this->model_profesional->getProfesionalesByServicio($idServicio); 
+
+		/*for ($i=0; $i < count($profesionales); $i++) { 
+			array_push($profesionales[$i], "status" => FALSE)
+		}*/
+
 		if ($profesionales) {			
 			$this->response([
        			'status' => 1,

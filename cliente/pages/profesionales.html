@@ -1,32 +1,4 @@
 
-<<<<<<< HEAD
-            <img src="../img/logoUbuntu.png" alt="" style="width:90px;height:90px;">
-          </td>
-        	<td class="t-center">
-            <h2 style="color:black">
-              {{profesional.nombres}} {{profesional.apellidos}} 
-            </h2>
-          </td>
-        	<td class="t-center">
-            <h2 style="color:black">              
-              <uib-rating ng-model="profesional.calificacion" max="max" read-only="isReadonly" on-hover="hoveringOver(value)" on-leave="overStar = null" titles="['one','two','three']" aria-labelledby="default-rating"></uib-rating>
-            </h2>
-            <h4>Personas que lo han calificado: <strong>{{profesional.numeroPersonas}}</strong></h4>
-        	</td>        	
-        	<td class="t-center">
-            <h2 style="color:black">
-              {{profesional.municipio}}
-            </h2>          
-          </td>
-          <td class="t-center">
-            <button class="btn btn-primary btn-lg faa-bounce animated" ng-click="Detalles(profesional)">
-              <i class="fa fa-hand-o-left"></i>
-            </button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-=======
 <div ng-repeat="profesional in Profesionales">
     <div class="col-md-3">
   
@@ -74,7 +46,6 @@
           </div>
         </div>
     </div>
->>>>>>> 78b2a58d740e3f534bbb9ff97648e916fb98fd05
 </div>
 
 

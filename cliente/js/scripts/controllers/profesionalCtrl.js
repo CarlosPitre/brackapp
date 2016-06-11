@@ -22,6 +22,7 @@ app.controller('profesionalCtrl', function($scope,profesionalService,$routeParam
 		var promiseGet = profesionalService.get($routeParams.idServicio); 
         promiseGet.then(function (pl) {
             $scope.Profesionales = pl.data.profesionales;
+         
         },
         function (errorPl) {
         	console.log('Error Al Cargar Datos', errorPl);

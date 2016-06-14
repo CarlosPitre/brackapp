@@ -4347,7 +4347,7 @@ body:not(.fixed-sidebar):not(.fixed-topbar):not(.sidebar-top) .sidebar .logopane
   content: " ";
   display: table;
 }
-.main-content .page-content .panel .panel-content h1 {
+.main-content .page-content .panel .sent h1 {
   font-family: 'Lato';
   font-weight: 100;
   font-size: 28px;
@@ -4404,7 +4404,7 @@ body:not(.fixed-sidebar):not(.fixed-topbar):not(.sidebar-top) .sidebar .logopane
   -ms-transition: all 0.4s ease;
   transition: all 0.4s ease;
 }
-.main-content .page-content .panel .panel-header .control-btn > a .icon-size-fullscreen:before {
+.main-content .page-content .panel .panel-header .control-btn > a {
   display: inline-block;
   width: 14px;
 }

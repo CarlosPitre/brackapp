@@ -4,7 +4,6 @@ app.controller('profesionalCtrl', function($scope,profesionalService,$routeParam
 	$scope.max = 5;
 	$scope.isReadonly = true;
 	$scope.idProfesional;
-	$scope.titleButton = "Ver mas";
 	$scope.mostrar1 = true;
 
 	$scope.hoveringOver = function(value) {
@@ -22,7 +21,6 @@ app.controller('profesionalCtrl', function($scope,profesionalService,$routeParam
 		var promiseGet = profesionalService.get($routeParams.idServicio); 
         promiseGet.then(function (pl) {
             $scope.Profesionales = pl.data.profesionales;
-         
         },
         function (errorPl) {
         	console.log('Error Al Cargar Datos', errorPl);
@@ -30,13 +28,76 @@ app.controller('profesionalCtrl', function($scope,profesionalService,$routeParam
 	}
 
 	$scope.Detalles = function  (profesional) {
-		$scope.idProfesional = profesional.id;
+
+		$scope.Profesional = profesional;
+
+		if (profesional.status == false) {
+			profesional.status = true;
+			profesional.button = "Ver Menos";
+			if (profesional.mapa == false) {
+				profesional.mapa = true;
+				initMap(profesional.id);
+			};
+			
+		}else{
+			profesional.status = false;
+			profesional.button = "Ver Mas";
+		};
+
+		
+		/*$scope.idProfesional = profesional.id;
 		var idCliente = localStorage.getItem("idCliente_br")
 		if (idCliente == null) {			
 			$('#modalProfesional').modal('show');
 		}else{
 			llamarVista();
-		};		 
+		};		*/ 
+	}
+
+
+	function initMap(id) {
+    	
+      	var directionsDisplay = new google.maps.DirectionsRenderer;
+		var directionsService = new google.maps.DirectionsService;
+		var map = new google.maps.Map(document.getElementById('map' + id), {
+			zoom: 14,
+			center: {lat: 37.77, lng: -122.447}
+		});
+
+		directionsDisplay.setMap(map);
+
+		calculateAndDisplayRoute(directionsService, directionsDisplay);
+		document.getElementById('mode').addEventListener('change', function() {
+			calculateAndDisplayRoute(directionsService, directionsDisplay);
+		});
+
+    }
+
+    function calculateAndDisplayRoute(directionsService, directionsDisplay ) {
+
+		var selectedMode = document.getElementById('mode').value;
+		if (navigator.geolocation) {
+			navigator.geolocation.getCurrentPosition(function(position) {
+
+				var latitud = parseFloat($scope.Profesional.latitud);
+				var longitud = parseFloat($scope.Profesional.longitud);		  
+
+		       directionsService.route({
+					origin: {lat: position.coords.latitude, lng: position.coords.longitude},  
+					destination: {lat: latitud, lng: longitud},  
+					travelMode: google.maps.TravelMode[selectedMode]
+					}, function(response, status) {
+					if (status == google.maps.DirectionsStatus.OK) {
+					  directionsDisplay.setDirections(response);
+					} else {
+					  window.alert('Directions request failed due to ' + status);
+					}
+				});
+
+		    }, function() {
+		      
+		    });
+		};		
 	}
 
 	$scope.login = function  () {

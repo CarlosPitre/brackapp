@@ -24,7 +24,7 @@ app.controller('detallesProfesionalCtrl', function($scope,$routeParams,profesion
     	
       	var directionsDisplay = new google.maps.DirectionsRenderer;
 		var directionsService = new google.maps.DirectionsService;
-		var map = new google.maps.Map(document.getElementById('map'), {
+		var map = new google.maps.Map(document.getElementById('map' + id), {
 			zoom: 14,
 			center: {lat: 37.77, lng: -122.447}
 		});

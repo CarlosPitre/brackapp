@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 02-06-2016 a las 21:40:43
+-- Tiempo de generación: 14-06-2016 a las 18:34:54
 -- Versión del servidor: 5.6.26
 -- Versión de PHP: 5.6.12
 
@@ -91,6 +91,18 @@ INSERT INTO `departamento` (`id`, `nombre`) VALUES
 (30, 'VALLE DEL CAUCA'),
 (31, 'VAUPÉS'),
 (32, 'VICHADA');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `marca`
+--
+
+CREATE TABLE IF NOT EXISTS `marca` (
+  `id` int(11) NOT NULL,
+  `descripcion` varchar(60) COLLATE utf8_spanish_ci NOT NULL,
+  `estado` enum('Activo','Inactivo') COLLATE utf8_spanish_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 -- --------------------------------------------------------
 
@@ -1298,30 +1310,78 @@ INSERT INTO `perfil` (`id`, `descripcion`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `producto`
+--
+
+CREATE TABLE IF NOT EXISTS `producto` (
+  `id` int(11) NOT NULL,
+  `descripcion` varchar(60) COLLATE utf8_spanish_ci NOT NULL,
+  `estado` enum('Activo','Inactivo') COLLATE utf8_spanish_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `profesional`
 --
 
 CREATE TABLE IF NOT EXISTS `profesional` (
   `id` int(11) NOT NULL,
-  `idCliente` int(11) NOT NULL,
+  `razonSocial` varchar(60) COLLATE utf8_spanish_ci NOT NULL,
   `identificacion` varchar(15) COLLATE utf8_spanish_ci NOT NULL,
   `latitud` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
   `longitud` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
   `foto` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
+  `correo` varchar(60) COLLATE utf8_spanish_ci NOT NULL,
+  `telefono` varchar(15) COLLATE utf8_spanish_ci NOT NULL,
   `profesion` varchar(60) COLLATE utf8_spanish_ci NOT NULL,
   `pago` enum('Activo','Inactivo') COLLATE utf8_spanish_ci NOT NULL,
   `experiencia` text COLLATE utf8_spanish_ci NOT NULL,
   `calificacion` float NOT NULL,
   `idMunicipio` int(11) NOT NULL,
-  `estado` enum('Activo','Inactivo') COLLATE utf8_spanish_ci NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+  `estado` enum('Activo','Inactivo') COLLATE utf8_spanish_ci NOT NULL,
+  `numeroPersonas` int(11) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `profesional`
 --
 
-INSERT INTO `profesional` (`id`, `idCliente`, `identificacion`, `latitud`, `longitud`, `foto`, `profesion`, `pago`, `experiencia`, `calificacion`, `idMunicipio`, `estado`) VALUES
-(1, 1, '1065654572', '10.4820084', '-73.2750313', 'null', 'Ingeniero de Sistemas', 'Activo', 'Desarrollador Brackapp', 5, 2, 'Activo');
+INSERT INTO `profesional` (`id`, `razonSocial`, `identificacion`, `latitud`, `longitud`, `foto`, `correo`, `telefono`, `profesion`, `pago`, `experiencia`, `calificacion`, `idMunicipio`, `estado`, `numeroPersonas`) VALUES
+(1, 'Carlos Pitre', '1065654572', '10.4820084', '-73.2750313', 'null', 'carlosjpitre@gmail.com', '3004706152', 'Ingeniero de Sistemas', 'Activo', 'Desarrollador Brackapp', 3.4, 2, 'Activo', 0),
+(2, 'Brakapp', '123456789', '0', '0', 'null', 'brakapp@gmail.com', '89086543', 'Empresa', 'Activo', 'De Todo', 3, 19, 'Activo', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `profesionalesProductos`
+--
+
+CREATE TABLE IF NOT EXISTS `profesionalesProductos` (
+  `id` int(11) NOT NULL,
+  `idProfesional` int(11) NOT NULL,
+  `idProducto` int(11) NOT NULL,
+  `idMarca` int(11) NOT NULL,
+  `porcentaje` int(11) NOT NULL,
+  `estatus` enum('Disponible','Agotado') COLLATE utf8_spanish_ci NOT NULL DEFAULT 'Disponible',
+  `estado` enum('Activo','Inactivo') COLLATE utf8_spanish_ci NOT NULL DEFAULT 'Activo'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `profesionalProducto`
+--
+
+CREATE TABLE IF NOT EXISTS `profesionalProducto` (
+  `id` int(11) NOT NULL,
+  `idProfesional` int(11) NOT NULL,
+  `idProducto` int(11) NOT NULL,
+  `idMarca` int(11) NOT NULL,
+  `porcentaje` int(11) NOT NULL,
+  `estatus` enum('Disponible','Agotado') COLLATE utf8_spanish_ci NOT NULL DEFAULT 'Disponible',
+  `estado` enum('Activo','Inactivo') COLLATE utf8_spanish_ci NOT NULL DEFAULT 'Activo'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 -- --------------------------------------------------------
 
@@ -1334,14 +1394,15 @@ CREATE TABLE IF NOT EXISTS `profesionalServicio` (
   `idProfesional` int(11) NOT NULL,
   `idServicio` int(11) NOT NULL,
   `porcentaje` float NOT NULL DEFAULT '0'
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `profesionalServicio`
 --
 
 INSERT INTO `profesionalServicio` (`id`, `idProfesional`, `idServicio`, `porcentaje`) VALUES
-(1, 1, 1, 0);
+(1, 1, 1, 60),
+(2, 2, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -1441,7 +1502,14 @@ CREATE TABLE IF NOT EXISTS `usuario` (
   `password` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
   `idPerfil` int(11) NOT NULL,
   `idCliente` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `usuario`
+--
+
+INSERT INTO `usuario` (`id`, `usuario`, `password`, `idPerfil`, `idCliente`) VALUES
+(1, 'user', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 2, 1);
 
 --
 -- Índices para tablas volcadas
@@ -1458,6 +1526,12 @@ ALTER TABLE `cliente`
 -- Indices de la tabla `departamento`
 --
 ALTER TABLE `departamento`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `marca`
+--
+ALTER TABLE `marca`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -1486,9 +1560,27 @@ ALTER TABLE `perfil`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indices de la tabla `producto`
+--
+ALTER TABLE `producto`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indices de la tabla `profesional`
 --
 ALTER TABLE `profesional`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `profesionalesProductos`
+--
+ALTER TABLE `profesionalesProductos`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `profesionalProducto`
+--
+ALTER TABLE `profesionalProducto`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -1548,6 +1640,11 @@ ALTER TABLE `cliente`
 ALTER TABLE `departamento`
   MODIFY `id` smallint(5) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=33;
 --
+-- AUTO_INCREMENT de la tabla `marca`
+--
+ALTER TABLE `marca`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
 -- AUTO_INCREMENT de la tabla `menu`
 --
 ALTER TABLE `menu`
@@ -1568,15 +1665,30 @@ ALTER TABLE `municipio`
 ALTER TABLE `perfil`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 --
+-- AUTO_INCREMENT de la tabla `producto`
+--
+ALTER TABLE `producto`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
 -- AUTO_INCREMENT de la tabla `profesional`
 --
 ALTER TABLE `profesional`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT de la tabla `profesionalesProductos`
+--
+ALTER TABLE `profesionalesProductos`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT de la tabla `profesionalProducto`
+--
+ALTER TABLE `profesionalProducto`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT de la tabla `profesionalServicio`
 --
 ALTER TABLE `profesionalServicio`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT de la tabla `sector`
 --
@@ -1606,7 +1718,7 @@ ALTER TABLE `tiposServicios`
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

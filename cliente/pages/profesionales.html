@@ -1,97 +1,146 @@
+<div class="page-content">
+    
+    <div class="row">
+      <div class="col-md-8">
+        <div class="append-icon">
+              <input type="text" name="firstname" id="finder" class="form-control form-white input-lg" placeholder="Search..." autofocus ng-model="filter">
+              <i class="icon-magnifier"></i>
+            </div>
+      </div>
+    </div>
 
-<div ng-repeat="profesional in Profesionales">
-    <div class="col-md-3">
-  
-    </div>
-    <div class="row">
-      <div class="panel panel-notif col-md-8" >     
-        <div class="panel-header border-bottom panel-controls">
-          <h3>Empresa: <strong>{{profesional.nombres}} {{profesional.apellidos}}</strong></h3>
-        </div>    
-        <div class="panel-content">
-          <div class="row">
-            <div class="col-md-3">                
-              <img src="../img/logoUbuntu.png" alt="" style="width:90px;height:90px;margin:20px;">        
-            </div>
-            <div class="col-md-7">
-              <div class="row">
-                <h4>
-                  {{profesional.municipio}}
-                </h4>
-              </div>
-              <div class="row">
-                <h4 style="color:#F6AB3F;">              
-                  <uib-rating ng-model="profesional.calificacion" max="max" read-only="isReadonly" on-hover="hoveringOver(value)" on-leave="overStar = null" titles="['one','two','three']" aria-labelledby="default-rating"></uib-rating>
-                </h4>
-                <h4>Personas que lo han calificado: <strong>{{profesional.numeroPersonas}}</strong></h4>
-                <div class="font-animation">
-                  <button class="btn btn-primary" ng-click="Detalles(profesional)">
-                    <i class="fa fa-hand-o-right faa-horizontal animated"></i>
-                    &nbsp; {{titleButton}}                 
-                  </button>                          
-                </div>                        
-              </div>
-            </div>
-          </div>          
-        </div>
-      </div>          
-    </div>
-    <div class="row">
-        <div class="panel panel-notif col-md-8" ng-hide="mostrar{{profesional.id}}">
+    <br>
+
+    <div ng-repeat="profesional in Profesionales | filter : filter">
+      <div class="row">
+        <div class="panel panel-notif col-md-12" >     
           <div class="panel-header border-bottom panel-controls">
-            <h3>Empresa: <strong>{{profesional.nombres}} {{profesional.apellidos}}</strong></h3>
+            <h3>Empresa: <strong>{{profesional.razonSocial}}</strong></h3>
           </div>    
           <div class="panel-content">
-            <h4>Hola</h4>
+            <div class="row">
+              <div class="col-md-2">                
+                <img src="../img/logoUbuntu.png" alt="" style="width:90px;height:90px;margin:10px;">        
+              </div>
+              <div class="col-md-7">
+                <div class="row">
+                  <h4>
+                    Ciudad: <strong>{{profesional.municipio}}</strong>
+                  </h4>
+                </div>
+                <div class="row">
+                  <h4 style="color:#F6AB3F;">            
+                    <uib-rating ng-model="profesional.calificacion" max="max" read-only="isReadonly" on-hover="hoveringOver(value)" on-leave="overStar = null" titles="['one','two','three']" aria-labelledby="default-rating"></uib-rating>
+                  </h4>
+                  <h4>Personas que lo han calificado: <strong>{{profesional.numeroPersonas}}</strong></h4>                            
+                </div>
+              </div>
+              <div class="col-md-2">
+
+                <div class="t-center">
+                    <h4>Porcentaje de Descuento</h4>
+
+                    <h1>{{profesional.porcentaje}} %</h1>
+                    <div class="font-animation">
+                      <button class="btn btn-rounded btn-success" ng-click="Detalles(profesional)">
+                        <i class="fa fa-hand-o-right faa-horizontal animated"></i>
+                        &nbsp; {{profesional.button}}                 
+                      </button>                          
+                    </div> 
+                </div>               
+              </div>
+            </div>          
           </div>
-        </div>
-    </div>
-</div>
-
-
-
-<div class="modal fade" id="modalProfesional" aria-hidden="true" >
-  <div class="modal-dialog ">
-    <div class="modal-content" style="background:black;" >
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="icons-office-52"></i></button>
-        <h1 class="modal-title">
-         Login
-        </h1>
+        </div>          
       </div>
-      <div class="modal-body">   
-        <br><br>     
-        <div class="row">
-            <div class="col-md-2">
+      <div class="row">
+          <div class="panel panel-notif col-md-12" ng-show="profesional.status">
+            <div class="panel-header border-bottom panel-controls">
+              <h3>Detalles</h3>
+            </div>    
+            <div class="panel-content">
+              <div class="col-md-6">
+                <div class="row">
+                  <h3>Correo: <strong>{{Profesional.correo}}</strong></h3>
+                </div>
+                <div class="row">
+                  <h3>Teléfono: <strong>{{Profesional.telefono}}</strong></h3>
+                </div>
+                <div class="row">
+                  <h3>Profesión: <strong>{{Profesional.profesion}}</strong></h3>
+                </div>
+                <div class="row">
+                  <h3>Experiencia Laboral: <strong>{{Profesional.experiencia}}</strong></h3>
+                </div>
+                <div class="row"> 
+                  <h3>Ciudad: <strong>{{Profesional.municipio}}</strong></h3>
+                </div>
+                
+              </div>
+              <div class="col-md-6">
+                <div id="floating-panel">
+                    <b>Mode of Travel: </b>
+                    <select id="mode">
+                      <option value="DRIVING">Driving</option>
+                      <option value="WALKING">Walking</option>
+                      <option value="BICYCLING">Bicycling</option>
+                      <option value="TRANSIT">Transit</option>
+                    </select>
+                </div>    
+                <div id="map{{profesional.id}}" style=" position: relative;float: left; width: 500px;height: 300px"></div>
+              </div>
               
             </div>
-            <div class="col-md-8">
-                <i class="user-img icons-faces-users-03"></i>
-                <div class="append-icon">
-                  <input type="text" name="name" id="name" class="form-control form-white username" placeholder="Username" required ng-model= "user">
-                  <i class="icon-user"></i>
-                </div>
-                <div class="append-icon m-b-20">
-                  <input type="password" name="password" class="form-control form-white password" placeholder="Password" required ng-model= "pass">
-                  <i class="icon-lock"></i>
-                </div>
-                <button type="submit" id="submit-form" class="btn btn-lg btn-danger btn-block ladda-button" data-style="expand-left" ng-click="login()">Sign In</button>
-                <div class="social-btn">
-                    <button type="button" class="btn-fb btn btn-lg btn-block btn-primary"><i class="icons-socialmedia-08 pull-left"></i>Connect with Facebook</button>
-                    <button type="button" class="btn btn-lg btn-block btn-blue"><i class="icon-social-twitter pull-left"></i>Login with Twitter</button>
-                </div>
-                <div class="clearfix">
-                    <p class="pull-left m-t-20"><a id="password" href="#">Olvidaste Contraseña?</a></p>
-                    <p class="pull-right m-t-20"><a href="user-signup-v1.html">Eres Nuevo? Registrarte</a></p>
-                </div>
-            </div>
-        </div>
+          </div>
       </div>
-      <div class="modal-footer text-center">
-        
+  </div>
+
+
+
+  <div class="modal fade" id="modalProfesional" aria-hidden="true" >
+    <div class="modal-dialog ">
+      <div class="modal-content" style="background:black;" >
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="icons-office-52"></i></button>
+          <h1 class="modal-title">
+           Login
+          </h1>
+        </div>
+        <div class="modal-body">   
+          <br><br>     
+          <div class="row">
+              <div class="col-md-2">
+                
+              </div>
+              <div class="col-md-8">
+                  <i class="user-img icons-faces-users-03"></i>
+                  <div class="append-icon">
+                    <input type="text" name="name" id="name" class="form-control form-white username" placeholder="Username" required ng-model= "user">
+                    <i class="icon-user"></i>
+                  </div>
+                  <div class="append-icon m-b-20">
+                    <input type="password" name="password" class="form-control form-white password" placeholder="Password" required ng-model= "pass">
+                    <i class="icon-lock"></i>
+                  </div>
+                  <button type="submit" id="submit-form" class="btn btn-lg btn-danger btn-block ladda-button" data-style="expand-left" ng-click="login()">Sign In</button>
+                  <div class="social-btn">
+                      <button type="button" class="btn-fb btn btn-lg btn-block btn-primary"><i class="icons-socialmedia-08 pull-left"></i>Connect with Facebook</button>
+                      <button type="button" class="btn btn-lg btn-block btn-blue"><i class="icon-social-twitter pull-left"></i>Login with Twitter</button>
+                  </div>
+                  <div class="clearfix">
+                      <p class="pull-left m-t-20"><a id="password" href="#">Olvidaste Contraseña?</a></p>
+                      <p class="pull-right m-t-20"><a href="user-signup-v1.html">Eres Nuevo? Registrarte</a></p>
+                  </div>
+              </div>
+          </div>
+        </div>
+        <div class="modal-footer text-center">
+          
+        </div>
       </div>
     </div>
   </div>
 </div>
+
 
 

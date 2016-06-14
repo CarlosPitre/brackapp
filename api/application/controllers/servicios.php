@@ -77,4 +77,13 @@ class Servicios extends REST_Controller {
 		};
 	}
 
+	public function getAleatorios_get()
+	{
+		$servicios = array(
+			
+		);
+		
+		$this->response($servicios, REST_Controller::HTTP_CREATED);
+	}
+
 }

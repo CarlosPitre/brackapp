@@ -4,8 +4,8 @@ app.service('menuService', function($http){
 		var req = $http.get(uri + '/app/perfil/' + idPerfil + '/menu');
 		return req;
 	}
-	this.getAleatorios = function  () {
-		var req = $http.get(uri + '/app/aleatorio');
+	this.getJSON = function  () {
+		var req = $http.get(uri + '/app/json');
 		return req;
 	}
 })

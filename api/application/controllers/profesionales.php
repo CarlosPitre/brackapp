@@ -26,9 +26,45 @@ class Profesionales extends REST_Controller {
 		};
 	}
 
-	public function profesionalesByServicio_get($idServicio)
+	/*
+
+		Busqueda en todas las tablas de marca, sectores, servicios, profesionales y productos
+		Recibo por json los parametros de busqueda, obtengo el campo tipo que es el que me va a 
+		ayudar a saber en que tabla debo buscar por medio de un switch, retorno el profesional final.
+
+	*/
+
+
+	public function busquedaGeneralProfesionales_post()
 	{
-		$profesionales = $this->model_profesional->getProfesionalesByServicio($idServicio); 
+
+		$tipo = $this->post("tipo");
+
+		switch ($tipo) {
+			case 'Sector':
+				$id = $this->post("idSector");
+				$profesionales = $this->model_profesional->getProfesionalesBySector($id); 
+				break;
+			case 'Marca':
+				$id = $this->post("idMarca");
+				$profesionales = $this->model_profesional->getProfesionalesByMarca($id);				
+				break;
+			case 'Servicio':
+				$id = $this->post("idServicio");
+				$profesionales = $this->model_profesional->getProfesionalesByServicio($id);
+				break;
+			case 'Empresa':
+				$id = $this->post("idProfesional");
+				$profesionales = $this->model_profesional->getProfesionalesByProfesional($id);
+				break;
+			case 'Producto':
+				$id = $this->post("idProducto");
+				$profesionales = $this->model_profesional->getProfesionalesByProducto($id);
+				break;			
+			default:
+				# code...
+				break;
+		} 
 
 		for ($i=0; $i < count($profesionales); $i++) { 
 			$profesionales[$i]->status = FALSE;

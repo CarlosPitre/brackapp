@@ -1,4 +1,4 @@
-app.controller('profesionalCtrl', function($scope,profesionalService,$routeParams,pluginsService,clienteService){
+app.controller('profesionalCtrl', function($scope,profesionalService,$routeParams,pluginsService,clienteService,serverData){
 
 	$scope.rate = 2;
 	$scope.max = 5;
@@ -18,13 +18,16 @@ app.controller('profesionalCtrl', function($scope,profesionalService,$routeParam
 	getProfesionales();
 
 	function getProfesionales () {
-		var promiseGet = profesionalService.get($routeParams.idServicio); 
+
+		alert(JSON.stringify(serverData.json));
+
+		/*var promiseGet = profesionalService.get($routeParams.idServicio); 
         promiseGet.then(function (pl) {
             $scope.Profesionales = pl.data.profesionales;
         },
         function (errorPl) {
         	console.log('Error Al Cargar Datos', errorPl);
-        });
+        });*/
 	}
 
 	$scope.Detalles = function  (profesional) {

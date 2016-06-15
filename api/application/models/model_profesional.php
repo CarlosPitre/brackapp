@@ -10,7 +10,7 @@ class Model_profesional extends CI_Model {
 
 	public function getProfesionalesByServicio($idServicio)
 	{
-		$query = $this->db->select('p.*, m.nombre as municipio, ps.porcentaje')
+		$query = $this->db->select('p.*, m.nombre as municipio, ps.porcentaje,s.descripcion as servicio')
 							->from('profesional p')
 							->join('profesionalServicio ps', 'ps.idProfesional = p.id','inner')
 							->join('servicio s', 's.id = ps.idServicio', 'inner')
@@ -37,6 +37,20 @@ class Model_profesional extends CI_Model {
 		$this->db->update('profesional', $datos);
 		return true;
 	}
+
+	public function getProfesionalesBySector($id)
+	{
+		$query = $this->db->select('p.*, m.nombre as municipio, ps.porcentaje, s.descripcion as servicio')
+							->from('profesional p')
+							->join('profesionalServicio ps', 'ps.idProfesional = p.id','inner')
+							->join('servicio s', 's.id = ps.idServicio', 'inner')
+							->join('sectorServicio ss','ss.idServicio = s.id')
+							->join('municipio m', 'm.id = p.idMunicipio', 'inner')
+							->where('ss.idSector', $id)
+							->get();
+		return $query->result();
+	}
+
 
 }
 

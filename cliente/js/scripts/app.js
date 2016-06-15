@@ -9,7 +9,7 @@ var app;
                     controller : 'mainCtrl'
             	}				
 			)
-			.when("/servicio/:idServicio/profesionales",{
+			.when("/servicio/profesionales",{
 					templateUrl : 'pages/profesionales.html',
 					controller : 'profesionalCtrl'
 			})
@@ -23,6 +23,13 @@ var app;
                 redirectTo:"/inicio"
             });
 	}]);
+
+	app.service('serverData', [function () 
+	{
+		return {
+			json : {}
+		};
+	}])
 
 	app.factory('MarkerCreatorService', function () {
 

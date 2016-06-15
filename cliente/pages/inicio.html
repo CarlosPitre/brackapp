@@ -2,20 +2,19 @@
       <div class="col-md-8 col-md-offset-1">
           <div class="account-wall">
               <div class="user-image">
-                  <img src="../assets/global/images/profil_page/friend8.jpg" class="img-responsive img-circle" alt="friend 8">
-                  <div id="loader"></div>
+                 
               </div>
-              <div class="col-md-6">
+              <div class="col-md-8">
               	 <h2 style="color:#1f3649">Bienvenido a <strong>BRAKAPP</strong>!</h2>
                   <p style="color:#1f3649">Por favor escribe el servicio que buscas.</p>
                   <div class="input-group"> 
                    
-                     <!-- <angucomplete id="ex2" placeholder="Ejem: Plomeria, Mantenimiento de Computadores, etc..." pause="300"  localdata="Servicio" selectedobject="selectedServicio" searchfields="descripcion,sector" titlefield="descripcion,sector" descriptionfield="tipo" minlength="1" inputclass="form-control-buscar" matchclass="highlight" /> -->
+                     <angucomplete id="ex2" placeholder="Ejem: Plomeria, Mantenimiento de Computadores, etc..." pause="300"  localdata="Servicio" selectedobject="selectedServicio" searchfields="descripcion" titlefield="descripcion" descriptionfield="tipo" minlength="1" inputclass="form-control-buscar" matchclass="highlight" />
 
-                    <input id="demo1" type="text" class="span4" placeholder="Search cities..." autocomplete="off" />
+                    <!--<input id="filtro" type="text" class="span4 form-control-buscar" placeholder="Ejem: Plomeria, Mantenimiento de Computadores, etc..." autocomplete="off" />-->
 
                      <span class="input-group-btn"> 
-                        <a href="javascript:;" class="btn btn-primary" style="color:white;" ng-click="Buscar(selectedServicio.originalObject.id)">Buscar</a>                      
+                        <a href="javascript:;" class="btn btn-success" style="color:white;" ng-click="Buscar(selectedServicio.originalObject)">Buscar</a>                      
                       </span>
                   </div>
               </div>             

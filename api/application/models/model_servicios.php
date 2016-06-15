@@ -33,4 +33,55 @@ class Model_servicios extends CI_Model {
 		return true;
 	}
 
+	public function getProfesionales()
+	{
+		$query=$this->db
+				->select('id, razonSocial')
+				->from('profesional')
+				->where('estado', 'Activo')			
+				->where('pago', 'Activo')	
+				->get();
+		return $query->result();
+	}
+
+	public function getSectores()
+	{
+		$query=$this->db
+				->select('id, descripcion')
+				->from('sector')
+				->where('estado', 'Activo')						
+				->get();
+		return $query->result();
+	}
+
+	public function getMarca()
+	{
+		$query=$this->db
+				->select('id, descripcion')
+				->from('marca')
+				->where('estado', 'Activo')						
+				->get();
+		return $query->result();
+	}
+
+	public function getServicio()
+	{
+		$query=$this->db
+				->select('id, descripcion')
+				->from('servicio')
+				->where('estado', 'Activo')						
+				->get();
+		return $query->result();
+	}
+
+	public function getProducto()
+	{
+		$query=$this->db
+				->select('id, descripcion')
+				->from('producto')
+				->where('estado', 'Activo')						
+				->get();
+		return $query->result();
+	}
+
 }

@@ -77,13 +77,67 @@ class Servicios extends REST_Controller {
 		};
 	}
 
-	public function getAleatorios_get()
+	public function getJson_get()
 	{
-		$servicios = array(
-			
-		);
+		$json = array();
+		$profesionales = $this->model_servicios->getProfesionales();
+		$sectores = $this->model_servicios->getSectores();
+		$marcas = $this->model_servicios->getMarca();
+		$servicios = $this->model_servicios->getServicio();
+		$productos = $this->model_servicios->getProducto();
+
+		$index = 0;
+		for ($i=0; $i < count($sectores); $i++) { 
+			$json[] = array(
+				"id" => $index,
+				"idSector" => $sectores[$i]->id,
+				"descripcion" => $sectores[$i]->descripcion,
+				"tipo" => "Sector"
+			);
+			$index = $index + 1;
+		}
+
+		for ($i=0; $i < count($marcas); $i++) { 
+			$json[] = array(
+				"id" => $index,
+				"idMarca" => $marcas[$i]->id,
+				"descripcion" => $marcas[$i]->descripcion,
+				"tipo" => "Marca"
+			);
+			$index = $index + 1;
+		}
+
+		for ($i=0; $i < count($servicios); $i++) { 
+			$json[] = array(
+				"id" => $index,
+				"idServicio" => $servicios[$i]->id,
+				"descripcion" => $servicios[$i]->descripcion,
+				"tipo" => "Servicio"
+			);
+			$index = $index + 1;
+		}
+
+		for ($i=0; $i < count($profesionales); $i++) { 
+			$json[] = array(
+				"id" => $index,
+				"idProfesional" => $profesionales[$i]->id,
+				"descripcion" => $profesionales[$i]->razonSocial,
+				"tipo" => "Empresa"
+			);
+			$index = $index + 1;
+		}
+
+		for ($i=0; $i < count($productos); $i++) { 
+			$json[] = array(
+				"id" => $index,
+				"idProducto" => $productos[$i]->id,
+				"descripcion" => $productos[$i]->descripcion,
+				"tipo" => "Producto"
+			);
+			$index = $index + 1;
+		}
 		
-		$this->response($servicios, REST_Controller::HTTP_CREATED);
+		$this->response($json, REST_Controller::HTTP_CREATED);
 	}
 
 }

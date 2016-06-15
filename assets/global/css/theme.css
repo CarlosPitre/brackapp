@@ -3654,7 +3654,7 @@
 .bg-light-dark .sidebar-mailbox.sidebar .sidebar-inner .nav-sidebar > li.active > a,
 .bg-light-dark .sidebar-mailbox.sidebar .nav-sidebar > li.active > a:hover,
 .bg-light-dark .sidebar-mailbox.sidebar .nav-sidebar > li.active > a:focus {
-  background: #dce1e4;
+  background: #EBECED;
 }
 /* Main Color Primary */
 .topbar .header-left .topnav > ul > li > a::before,

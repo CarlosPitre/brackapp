@@ -14,12 +14,6 @@ var app;
                     controller : 'sectoresCtrl'
             	}				
 			)
-			.when("/admin/servicios",{
-                    templateUrl: 'pages/servicios.html',
-                    controller : 'serviciosCtrl'
-            	}				
-			)
-
 			.when("/admin/clientes",{
                     templateUrl: 'pages/clientes.html',
                     controller : 'clienteCtrl'

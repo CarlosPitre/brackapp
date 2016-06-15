@@ -1,7 +1,6 @@
 app.controller('sectoresCtrl',  function($scope,sectorService,pluginsService){
 	
 
-
 	$scope.Sectores = [];
 
 	loadSectores();
@@ -18,6 +17,23 @@ app.controller('sectoresCtrl',  function($scope,sectorService,pluginsService){
         	console.log('Error Al Cargar Datos', errorPl);
         });
 	}
+
+
+
+	$scope.nuevo = function  () {
+
+		$scope.Sector = {};
+		$scope.openButton = true;
+		$('#modal-responsive').modal('show');
+
+	}
+
+
+
+
+
+
+
 
 	$scope.save = function  () {
 		var datos = {

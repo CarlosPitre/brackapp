@@ -80,8 +80,9 @@ class Profesionales extends REST_Controller {
 		}else{
 	        $this->response([
        			'status' => 0,
-        		'message' => 'No hay Empleados Con Ese Servicios'
-            ], REST_Controller::HTTP_NOT_FOUND); 
+        		'message' => 'No hay Empleados Con Ese Servicios',
+        		'profesionales' => []
+            ], REST_Controller::HTTP_OK); 
 		};
 	}
 

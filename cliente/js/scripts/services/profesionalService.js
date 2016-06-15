@@ -1,6 +1,6 @@
 app.service('profesionalService', function($http){
-	this.get = function  (idServicio) {
-		var req = $http.get(uri + '/app/servicio/' + idServicio + '/profesionales');
+	this.postJSON = function  (object) {
+		var req = $http.post(uri + '/app/servicio/profesionales', object);
 		return req;
 	}
 

@@ -8,17 +8,7 @@ class Model_profesional extends CI_Model {
 		parent::__construct();	
 	}
 
-	public function getProfesionalesByServicio($idServicio)
-	{
-		$query = $this->db->select('p.*, m.nombre as municipio, ps.porcentaje,s.descripcion as servicio')
-							->from('profesional p')
-							->join('profesionalServicio ps', 'ps.idProfesional = p.id','inner')
-							->join('servicio s', 's.id = ps.idServicio', 'inner')
-							->join('municipio m', 'm.id = p.idMunicipio', 'inner')
-							->where('s.id', $idServicio)
-							->get();
-		return $query->result();
-	}
+	
 
 	public function getprofesional($id)
 	{
@@ -50,6 +40,44 @@ class Model_profesional extends CI_Model {
 							->get();
 		return $query->result();
 	}
+
+	public function getProfesionalesByServicio($idServicio)
+	{
+		$query = $this->db->select('p.*, m.nombre as municipio, ps.porcentaje,s.descripcion as servicio')
+							->from('profesional p')
+							->join('profesionalServicio ps', 'ps.idProfesional = p.id','inner')
+							->join('servicio s', 's.id = ps.idServicio', 'inner')
+							->join('municipio m', 'm.id = p.idMunicipio', 'inner')
+							->where('s.id', $idServicio)
+							->get();
+		return $query->result();
+	}
+
+	public function getProfesionalesByMarca($id)
+	{
+		$query = $this->db->select('p.*, m.nombre as municipio, pp.porcentaje,p.descripcion as servicio')
+							->from('profesional p')
+							->join('profesionalProducto pp', 'pp.idProfesional = p.id','inner')
+							->join('producto p', 'p.id = ps.idProducto', 'inner')
+							->join('municipio m', 'm.id = p.idMunicipio', 'inner')
+							->where('pp.idMarca', $id)
+							->get();
+		return $query->result();
+	}
+
+	public function getProfesionalesByProducto($id)
+	{
+		$query = $this->db->select('p.*, m.nombre as municipio, pp.porcentaje,p.descripcion as servicio')
+							->from('profesional p')
+							->join('profesionalProducto pp', 'pp.idProfesional = p.id','inner')
+							->join('producto p', 'p.id = ps.idProducto', 'inner')
+							->join('municipio m', 'm.id = p.idMunicipio', 'inner')
+							->where('pp.idProducto', $id)
+							->get();
+		return $query->result();
+	}
+
+
 
 
 }

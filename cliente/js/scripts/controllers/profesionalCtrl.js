@@ -19,15 +19,15 @@ app.controller('profesionalCtrl', function($scope,profesionalService,$routeParam
 
 	function getProfesionales () {
 
-		alert(JSON.stringify(serverData.json));
-
-		/*var promiseGet = profesionalService.get($routeParams.idServicio); 
+		//alert();
+		console.log(JSON.stringify(serverData.json));
+		var promiseGet = profesionalService.postJSON(serverData.json); 
         promiseGet.then(function (pl) {
             $scope.Profesionales = pl.data.profesionales;
         },
         function (errorPl) {
         	console.log('Error Al Cargar Datos', errorPl);
-        });*/
+        });
 	}
 
 	$scope.Detalles = function  (profesional) {

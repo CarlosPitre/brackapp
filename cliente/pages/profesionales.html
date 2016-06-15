@@ -13,16 +13,16 @@
 
     <div ng-repeat="profesional in Profesionales | filter : filter">
       <div class="row">
-        <div class="panel panel-notif col-md-12" >     
-          <div class="panel-header border-bottom panel-controls">
+        <div class="panel  col-md-12" >     
+          <div class="panel-header panel-controls">
             <h3>Empresa: <strong>{{profesional.razonSocial}}</strong></h3>
           </div>    
           <div class="panel-content">
             <div class="row">
-              <div class="col-md-2">                
-                <img src="../img/logoUbuntu.png" alt="" style="width:90px;height:90px;margin:10px;">        
+              <div class="col-md-2 ">                
+                <img src="../img/logoUbuntu.png" alt="" style="width:90px;height:90px;margin:5px;">        
               </div>
-              <div class="col-md-7">
+              <div class="col-md-4 line-separator">
                 <div class="row">
                   <h4>
                     Ciudad: <strong>{{profesional.municipio}}</strong>
@@ -32,22 +32,25 @@
                   <h4 style="color:#F6AB3F;">            
                     <uib-rating ng-model="profesional.calificacion" max="max" read-only="isReadonly" on-hover="hoveringOver(value)" on-leave="overStar = null" titles="['one','two','three']" aria-labelledby="default-rating"></uib-rating>
                   </h4>
-                  <h4>Personas que lo han calificado: <strong>{{profesional.numeroPersonas}}</strong></h4>                            
+                  <p>Personas que lo han calificado: <strong>{{profesional.numeroPersonas}}</strong></p>                            
                 </div>
               </div>
-              <div class="col-md-2">
+              <div class="col-md-2 line-separator">
 
                 <div class="t-center">
-                    <h4>Porcentaje de Descuento</h4>
+                    <p style="text-align:center">Porcentaje de Descuento</p>
 
                     <h1>{{profesional.porcentaje}} %</h1>
-                    <div class="font-animation">
+                   
+                </div>               
+              </div>
+              <div class="col-md-1">
+                 <div class="font-animation">
                       <button class="btn btn-rounded btn-success" ng-click="Detalles(profesional)">
                         <i class="fa fa-hand-o-right faa-horizontal animated"></i>
                         &nbsp; {{profesional.button}}                 
                       </button>                          
                     </div> 
-                </div>               
               </div>
             </div>          
           </div>

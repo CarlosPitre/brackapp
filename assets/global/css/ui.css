@@ -2522,7 +2522,7 @@ h4.alert-title {
   text-align: center;
 }
 .modal-panel .btn {
-  margin-bottom: 10px;
+  margin-bottom: 90px;
 }
 ul.list-unstyled {
   list-style: none;
@@ -2595,12 +2595,14 @@ ul.list-unstyled {
   -webkit-transform: translate3d(0, 0, 0);
   transform: translate3d(0, 0, 0);
   transition: transform 0.3s ease-out;
+
 }
 .modal.fade.modal-bottomfull .modal-dialog {
   -o-transform: translate3d(0, 25%, 0);
   -webkit-transform: translate3d(0, 25%, 0);
   transform: translate3d(0, 25%, 0);
   transition: transform 0.3s ease-out;
+
 }
 .modal-slideright .modal-dialog {
   bottom: 0;

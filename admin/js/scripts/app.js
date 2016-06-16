@@ -19,8 +19,7 @@ var app;
                     controller : 'clienteCtrl'
             	}				
 			)
-
-			.otherwise({
+            .otherwise({
                 redirectTo:"/inicio"
             });
 	}])

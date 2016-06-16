@@ -14,6 +14,11 @@ var app;
                     controller : 'miperfilCtrl'
             	}				
 			)
+			.when("/empresa/misServicios",{
+                    templateUrl: 'pages/miservicios.html',
+                    controller : 'miservicioCtrl'
+            	}				
+			)
 			
 			.otherwise({
                 redirectTo:"/inicio"

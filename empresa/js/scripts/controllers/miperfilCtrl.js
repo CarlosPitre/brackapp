@@ -2,17 +2,32 @@ app.controller('miperfilCtrl', function($scope,miperfilService,$routeParams,plug
 	
 
 
-   
-
 	$scope.Profesionales = [];
 	$scope.Profesional = {};
 	$scope.idProfesional = "1" //localstorage.getItem("idPro")
 
 
 	loadDatos();
+	
 
+function initMap() {
+    	
+var myLatlng = new google.maps.LatLng(parseFloat($scope.Profesional.latitud),parseFloat($scope.Profesional.longitud));
+var mapOptions = {
+  zoom: 4,
+  center: myLatlng
+}
+var map = new google.maps.Map(document.getElementById("map"), mapOptions);
 
+// Place a draggable marker on the map
+var marker = new google.maps.Marker({
+    position: myLatlng,
+    map: map,
+    draggable:true,
+    title:"Drag me!"
+});
 
+	}
 
 
 
@@ -26,6 +41,7 @@ app.controller('miperfilCtrl', function($scope,miperfilService,$routeParams,plug
 		var promiseGet = miperfilService.getDatos($scope.idProfesional); 
         promiseGet.then(function (pl) {
             $scope.Profesional = pl.data;
+            initMap();
         },
         function (errorPl) {
         	console.log('Error Al Cargar Datos', errorPl);
@@ -42,6 +58,7 @@ app.controller('miperfilCtrl', function($scope,miperfilService,$routeParams,plug
 			correo : $scope.Profesional.correo,
 			telefono : $scope.Profesional.telefono,
 			experiencia : $scope.Profesional.experiencia
+
 		};
 		var promiseGet = miperfilService.put(datos); 
 		promiseGet.then(function (pl) {

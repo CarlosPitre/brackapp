@@ -12,9 +12,9 @@ class Model_servicios extends CI_Model {
 	{
 		if ($id == null) {
 			$query=$this->db
-				->select('s.*,t.tipo')
+				->select('s.*,t.descripcion as sector')
 				->from('servicio s')
-				->join('tiposservicios t', ' s.idTipo = t.id', 'inner')				
+				->join('sector t', ' s.idSector = t.id', 'inner')
 				->get();
 		}
 		return $query->result();

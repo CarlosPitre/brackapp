@@ -16,7 +16,7 @@ class Servicios extends REST_Controller {
 		if ($id == null) {
 			$servicios = $this->model_servicios->getServicios();
 		}
-		if ($servicios) {
+		if ($servicios) { 
 			$this->response($servicios, REST_Controller::HTTP_OK);
 		}else{
 	        $this->response([
@@ -33,8 +33,8 @@ class Servicios extends REST_Controller {
 	{
 		$datos = array(
 			"descripcion" => $this->post("descripcion"),
-			"idTipo"=> $this->post("idTipo"),
-			"estado" => "ACTIVO"
+			"estado" => "ACTIVO",
+			"idSector" => $this->post("idSector")
 		);
 		$guardar= $this->model_servicios->save($datos);
 		if ($guardar) {
@@ -46,11 +46,13 @@ class Servicios extends REST_Controller {
 		};
 	}
 
+
+
 	public function servicios_put()
 	{
 		$datos = array(
 			"descripcion" => $this->put("descripcion"),
-			"idTipo"=>$this->put("idTipo")
+			"idSector"=>$this->put("idSector")
 		);
 		$guardar= $this->model_servicios->update($datos,$this->put("id"));
 		if ($guardar) {
@@ -65,7 +67,7 @@ class Servicios extends REST_Controller {
 	public function servicios_delete($id)
 	{
 		$datos = array(
-			"estado" => "Inactivo",
+			"estado" => "Inactivo"
 		);
 		$guardar= $this->model_servicios->update($datos,$id);
 		if ($guardar) {

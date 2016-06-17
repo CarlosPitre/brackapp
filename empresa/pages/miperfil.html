@@ -4,56 +4,49 @@
                 <div class="col-md-6 portlets">
                   <div class="panel">
                     <div class="panel-header panel-header ">
-                      <h3><strong>Datos</strong> Personales</h3>
+                      <div style="background:#95C92C;"> <h4 style="color:white;" class="modal-title">DATOS PERSONALES</h4> </div>
                     </div>
                     <div class="panel-content">
                       <ul class="nav nav-tabs">
-                        <li class="active"  ><a href="#tab1_1" data-toggle="tab" style="background:#95C92C;color:white;">Home</a></li>
-                        <li class=""  ><a href="#tab1_2" data-toggle="tab" style="background:#95C92C;color:white;">Profile</a></li>
+                        <li class="active"  ><a href="#tab1_1" data-toggle="tab" style="background:#95C92C;color:white;">Perfíl</a></li>
                       </ul>
                       <div class="tab-content">
                         <div class="tab-pane fade active in" id="tab1_1">
-                          <div class="row column-seperation">
-                            <div class="col-md-6 line-separator">
-                               <img src="{{Profesional.foto}}" alt="" style="width:180px;height:210px;margin-right:20px; background-repeat:no-repeat;">
+                          <div  class="row column-seperation">
+                            <div  class="col-md-6 line-separator">
+                               <img src="../img/aleja.jpg" alt="" style="width:180px;height:210px;margin-right:20px; background-repeat:no-repeat;">
 
                             </div>
                             <div class="col-md-6">
                               <div class="col-sm-12">
-                                <h3 style="color:black ;">   {{Profesional.razonSocial}} </h3>
+                                <h4 style="color:black;">   {{Profesional.razonSocial}} </h4>
                             </div>
-                            <div class="col-sm-12">
-                                <h3 style="color:black ;">   {{Profesional.identificacion}} </h3>
+                            <div class="col-sm-10">
+                                <h4 style="color:black ;">   {{Profesional.identificacion}} </h4>
                             </div>
-                            <div class="col-sm-12">
+                            <div class="col-sm-10">
+                             <h4 style="color:black;" >   {{Profesional.correo}}  </h4>
+                            </div>
+                            
+                            <div class="col-sm-10">
+                                <h4  style="color:black;" >  {{Profesional.telefono}}  </h4>
+                                </div>
+                            
+                           <div class="col-sm-10">
+                                <h4 style="color:black;" >  {{Profesional.experiencia}} </h4>
+                            </div>
 
-                            <h4 style="color:#F6AB3F;">              
-                  <uib-rating ng-model="Profesional.calificacion" max="max" read-only="isReadonly" on-hover="hoveringOver(value)" on-leave="overStar = null" titles="['one','two','three']" aria-labelledby="default-rating"></uib-rating>
-                            </h4>
-                              <!--  <h3  style="color:black; ">   {{Profesional.correo}} </h3>-->
-                            </div>
-
-                      <button type="button"  style="background:#95C92C;; color:white;"  class="btn btn-white btn-lg " data-toggle="modal"  data-target="#modal-responsive"><i class="fa fa-edit faa-vertical animated"></i></button>
+                      <button type="button"  style="background:#95C92C; color:white;margin-left:15px;"  class="btn btn-white " data-toggle="modal"  data-target="#modal-responsive"><i class="fa fa-edit faa-vertical animated"></i></button>
                
                             </div>
                           </div>
                         </div>
-                        <div class="tab-pane fade" id="tab1_2">
-                          <p>  
-                                <h3 style="margin-left:15px;" >   {{Profesional.correo}} </h3>
-                            
-                            
-                                <h3 style="margin-left:15px;" >  {{Profesional.telefono}} </h3>
-                            
-                           
-                                <h3 style="margin-left:15px;" >  {{Profesional.experiencia}} </h3>
-                               </p>
-                        </div>
+      
                       </div>
                     </div>
                   </div>
                 </div>
-                <div id="map" style=" position: relative;float: left; width: 500px;height: 350px"></div>
+                <div id="map" style=" position: relative;float: left; width: 500px;height: 400px"></div>
           </div>
 
 
@@ -107,8 +100,8 @@
           <div class="modal-content">
             <div class="modal-header">
               <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="icons-office-52"></i></button>
-              <h4 class="modal-title">Datos Personales</h4>
-            </div>
+              <div style="background:#95C92C;"> <h4 style="color:white;" class="modal-title">DATOS PERSONALES</h4> </div>
+              </div>
 
 
 
@@ -149,11 +142,11 @@
                             <input type="text" class="form-control form-white" id="field-1" ng-model="Profesional.experiencia">
                             </div>
                             </div>
-                            <div class=" col-md-6">
 
-                           <div class="form-group">
-                          <p><strong>File selector</strong>
-                          </p>
+                            <div class=" col-md-6">
+                              <div class="form-group">
+                          <label for="field-1" class="control-label">Seleccionar Imagen</label>
+                          
                           <div class="fileinput fileinput-new input-group" data-provides="fileinput">
                             <div class="form-control" data-trigger="fileinput">
                               <i class="glyphicon glyphicon-file fileinput-exists"></i><span class="fileinput-filename"></span>
@@ -172,7 +165,7 @@
                         </div>
 
                         <div class="modal-footer text-center">
-              <button type="button" class="btn btn-primary btn-embossed bnt-square" ng-click="update()"><i class="fa fa-check"></i> Modificar</button>
+              <button  style="background:#95C92C;"  type="button" class="btn btn-primary btn-embossed bnt-square" ng-click="update()"><i class="fa fa-check"></i> Modificar</button>
             </div>
                     </div>
                 </div>

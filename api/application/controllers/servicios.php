@@ -34,10 +34,17 @@ class Servicios extends REST_Controller {
 		$datos = array(
 			"descripcion" => $this->post("descripcion"),
 			"estado" => "ACTIVO",
-			"idSector" => $this->post("idSector")
+			"idSector" => $this->post("idSector"),
 		);
-		$guardar= $this->model_servicios->save($datos);
-		if ($guardar) {
+		$idServicio= $this->model_servicios->save($datos);
+
+		$datosServicio = array(
+			"idProfesional" => $this->post("idProfesional"), 	
+			"idServicio" => $idServicio,
+			"porcentaje" =>  $this->post("porcentaje")			
+		);
+		$guardar = $this->model_servicios->saveProfesional($datosServicio);
+		if ($guardar) {			
 			$message = "Datos Guardados Correctamente";
 			$this->response($message, REST_Controller::HTTP_CREATED);
 		}else{

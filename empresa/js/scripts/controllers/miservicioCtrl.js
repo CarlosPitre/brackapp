@@ -58,7 +58,9 @@ app.controller('miservicioCtrl',  function($scope,servicioService,pluginsService
 	$scope.save = function  () {
 		var datos = {
 			descripcion : $scope.Servicio.descripcion,
-			idSector : $scope.Servicio.idSector
+			idSector : $scope.Servicio.idSector,
+			porcentaje :  $scope.Servicio.porcentaje,
+			idProfesional : "1"
 		};
 		var promiseGet = servicioService.post(datos); 
 		promiseGet.then(function (pl) {

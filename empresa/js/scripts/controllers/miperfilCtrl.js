@@ -31,6 +31,19 @@ var marker = new google.maps.Marker({
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
 	$scope.hoveringOver = function(value) {
 		$scope.overStar = value;
 		$scope.percent = 100 * (value / $scope.max);

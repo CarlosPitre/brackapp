@@ -12,9 +12,10 @@ class Model_servicios extends CI_Model {
 	{
 		if ($id == null) {
 			$query=$this->db
-				->select('s.*,t.descripcion as sector')
+				->select('s.*,t.descripcion as sector, ps.porcentaje')
 				->from('servicio s')
 				->join('sector t', ' s.idSector = t.id', 'inner')
+				->join('profesionalservicio ps', 'ps.idServicio = s.id', 'inner')
 				->get();
 		}
 		return $query->result();
@@ -23,6 +24,12 @@ class Model_servicios extends CI_Model {
 	public function save($datos = array())
 	{
 		$this->db->insert('servicio', $datos);
+		return $this->db->insert_id();
+	}
+
+	public function saveProfesional($datos = array())
+	{
+		$this->db->insert('profesionalservicio', $datos);
 		return true;
 	}
 

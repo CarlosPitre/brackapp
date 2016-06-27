@@ -40,9 +40,7 @@
                           <td><div class="t-center"> {{servi.porcentaje}} % </div></td>
                           <td>{{servi.estado}} </td>
                           <td>
-                             <button type="button" href="javascript:;"  ng-click="modificar(sector)" data-toggle="modal" data-target="#modal-responsive" style="background:#95C92C;" class="btn btn-sm btn-blue"><i class="fa fa-wrench"> Modificar</i></button>
-
-                              <button   type="button"  href="javascript:;" ng-click="delete(sector.id)" style="background:#95C92C;" class="btn btn-sm btn-blue"><i class="fa fa-close">Eliminar</i></button>
+                              <button   type="button"  href="javascript:;" ng-click="delete(servi)" style="background:#95C92C;" class="btn btn-sm btn-blue"><i class="fa fa-close">Eliminar</i></button>
                           </td>
                         </tr>
                       </tbody>
@@ -101,9 +99,13 @@
   </div>
 
 </div>
+
+
+
 <script src="../assets/global/plugins/modernizr/modernizr-2.6.2-respond-1.1.0.min.js"></script>
 <script src="../assets/global/plugins/datatables/jquery.dataTables.min.js"></script> <!-- Tables Filtering, Sorting & Editing -->
 <script src="../assets/global/js/pages/table_dynamic.js"></script>
+
 
 
 
@@ -111,5 +113,6 @@
     <script src="js/application.js"></script>
     <script src="js/plugins.js"></script> 
     <script src="js/quickview.js"></script>
+
 
     

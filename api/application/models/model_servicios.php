@@ -40,6 +40,14 @@ class Model_servicios extends CI_Model {
 		return true;
 	}
 
+   public function delete($idServicio,$idProfesional)
+   {
+   		$this->db->where('idServicio', $idServicio);
+   		$this->db->where('idProfesional', $idProfesional);
+   		$this->db->delete('profesionalservicio');
+   }
+
+
 	public function getProfesionales()
 	{
 		$query=$this->db

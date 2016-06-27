@@ -78,27 +78,34 @@ app.controller('miservicioCtrl',  function($scope,servicioService,pluginsService
 
 	$scope.update = function  () {
 		var datos = {
-			id : $scope.Sector.id,
-			descripcion : $scope.Sector.descripcion
+		descripcion : $scope.Servicio.descripcion,
+			idSector : $scope.Servicio.idSector,
+			porcentaje :  $scope.Servicio.porcentaje,
+			idProfesional : "1"
 		};
-		var promiseGet = sectorService.put(datos); 
+		var promiseGet = servicioService.put(datos); 
 		promiseGet.then(function (pl) {
             alert(pl.data);
-            loadSectores();
+            loadServicios();
         },
         function (errorPl) {
         	console.log('Error Al Cargar Datos', errorPl);
         });
 	}
 
-	$scope.modificar = function  (sector) {
-		$scope.Sector = sector;
+	$scope.modificar = function  (servicio) {
+		$scope.Servicio = servicio;
 		$scope.openButton = false;
 	}
 
-	$scope.delete = function  (id) {
-		alert("message");
-		var promiseGet = servicioService.delete(id); 
+	$scope.delete = function  (servicio) {
+		console.log(JSON.stringify(datos));
+		var datos = {
+			idServicio : servicio.id,
+			idProfesional : "1",
+		}
+		console.log(JSON.stringify(datos));
+		var promiseGet = servicioService.delete(datos); 
 		promiseGet.then(function (pl) {
             alert(pl.data);
             loadServicios();

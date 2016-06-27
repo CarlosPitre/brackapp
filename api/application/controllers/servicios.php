@@ -62,7 +62,14 @@ class Servicios extends REST_Controller {
 			"idSector"=>$this->put("idSector")
 		);
 		$guardar= $this->model_servicios->update($datos,$this->put("id"));
-		if ($guardar) {
+
+		$datosServicio = array(
+			"idProfesional" => $this->put("idProfesional"), 	
+			"idServicio" => $idServicio,
+			"porcentaje" =>  $this->put("porcentaje")			
+		);
+		$guardar= $this->model_servicios->update($datosServicio,$this->put("id"));
+         if ($guardar) {
 			$message = "Datos Guardados Correctamente";
 			$this->response($message, REST_Controller::HTTP_CREATED);
 		}else{
@@ -73,10 +80,9 @@ class Servicios extends REST_Controller {
 
 	public function servicios_delete($id)
 	{
-		$datos = array(
-			"estado" => "Inactivo"
-		);
-		$guardar= $this->model_servicios->update($datos,$id);
+		$idServicio = $this->delete("idServicio");
+		$idProfesional = $this->delete("idProfesional");
+		$guardar= $this->model_servicios->delete($idServicio,$idProfesional);
 		if ($guardar) {
 			$message = "Datos eliminado Correctamente";
 			$this->response($message, REST_Controller::HTTP_CREATED);

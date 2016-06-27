@@ -12,8 +12,8 @@ app.service('servicioService', ['$http', function($http){
 		return req;
 	}
 
-    this.delete = function  (id) {
-		var req = $http.delete(uri + '/app/servicios/' + id);
+    this.delete = function  (object) {
+		var req = $http.delete(uri + '/app/servicios', object);
 		return req;
 	}
 

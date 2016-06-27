@@ -2919,6 +2919,15 @@ input:-webkit-autofill {
   border: 1px solid #2F3133;
   color: #fff;
   outline: none; 
+
+}
+.boton-grande {
+  font-size: 12px !important;
+  height: 30px !important;
+  line-height: 1.5;
+  padding: 5px 10px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
 }
 .form-control.input-lg {
   font-size: 18px !important;

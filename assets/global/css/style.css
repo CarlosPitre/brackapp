@@ -6682,7 +6682,7 @@ body:not(.fixed-topbar) .main-content .page-content {
   display: none;
 }
 .account #lockscreen-block .account-wall {
-  margin-top: 240px;
+  margin-top: 200px;
   width: 1100px;
 }
 .account #lockscreen-block .user-image {

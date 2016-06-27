@@ -8,4 +8,9 @@ app.service('profesionalService', function($http){
 		var req = $http.get(uri + '/app/profesionales/' + idProfesional );
 		return req;
 	}
+
+	this.postJSONVisitados = function  (object) {
+		var req = $http.post(uri + '/app/servicio/profesionales/visitados', object);
+		return req;
+	}
 })

@@ -86,6 +86,110 @@ class Profesionales extends REST_Controller {
 		};
 	}
 
+	public function busquedaGeneralProfesionalesVisitados_post()
+	{
+
+		$tipo = $this->post("tipo");
+
+		switch ($tipo) {
+			case 'Sector':
+				$id = $this->post("idSector");
+				$profesionales = $this->model_profesional->getProfesionalesBySectorVisitados($id); 
+				break;
+			case 'Marca':
+				$id = $this->post("idMarca");
+				$profesionales = $this->model_profesional->getProfesionalesByMarcaVisitados($id);				
+				break;
+			case 'Servicio':
+				$id = $this->post("idServicio");
+				$profesionales = $this->model_profesional->getProfesionalesByServicioVisitados($id);
+				break;
+			case 'Empresa':
+				$id = $this->post("idProfesional");
+				$profesionales = $this->model_profesional->getProfesionalesByProfesionalVisitados($id);
+				break;
+			case 'Producto':
+				$id = $this->post("idProducto");
+				$profesionales = $this->model_profesional->getProfesionalesByProductoVisitados($id);
+				break;			
+			default:
+				# code...
+				break;
+		} 
+
+		for ($i=0; $i < count($profesionales); $i++) { 
+			$profesionales[$i]->status = FALSE;
+			$profesionales[$i]->button = "Ver Mas";
+			$profesionales[$i]->mapa = FALSE;
+		}
+
+		if ($profesionales) {			
+			$this->response([
+       			'status' => 1,
+        		'profesionales' => $profesionales
+            ], REST_Controller::HTTP_OK); 
+		}else{
+	        $this->response([
+       			'status' => 0,
+        		'message' => 'No hay Empleados Con Ese Servicios',
+        		'profesionales' => []
+            ], REST_Controller::HTTP_OK); 
+		};
+	}
+
+	public function getProfesionalesBySectorDistancia_post()
+	{
+		
+		$tipo = $this->post("tipo");
+		$lat = $this->post("latitud");
+		$lgn = $this->post("longitud");
+
+		switch ($tipo) {
+			case 'Sector':
+				$id = $this->post("idSector");
+				$profesionales = $this->model_profesional->getProfesionalesBySectorDistancia($id,$lat,$lgn); 
+				break;
+			case 'Marca':
+				$id = $this->post("idMarca");
+				$profesionales = $this->model_profesional->getProfesionalesByMarcaVisitados($id,$lat,$lgn);				
+				break;
+			case 'Servicio':
+				$id = $this->post("idServicio");
+				$profesionales = $this->model_profesional->getProfesionalesByServicioVisitados($id,$lat,$lgn);
+				break;
+			case 'Empresa':
+				$id = $this->post("idProfesional");
+				$profesionales = $this->model_profesional->getProfesionalesByProfesionalVisitados($id,$lat,$lgn);
+				break;
+			case 'Producto':
+				$id = $this->post("idProducto");
+				$profesionales = $this->model_profesional->getProfesionalesByProductoVisitados($id,$lat,$lgn);
+				break;			
+			default:
+				# code...
+				break;
+		} 
+
+		for ($i=0; $i < count($profesionales); $i++) { 
+			$profesionales[$i]->status = FALSE;
+			$profesionales[$i]->button = "Ver Mas";
+			$profesionales[$i]->mapa = FALSE;
+		}
+
+		if ($profesionales) {			
+			$this->response([
+       			'status' => 1,
+        		'profesionales' => $profesionales
+            ], REST_Controller::HTTP_OK); 
+		}else{
+	        $this->response([
+       			'status' => 0,
+        		'message' => 'No hay Empleados Con Ese Servicios',
+        		'profesionales' => []
+            ], REST_Controller::HTTP_OK); 
+		};
+	}
+
 
 
 		public function profesionales_put()

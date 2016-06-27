@@ -1,104 +1,141 @@
+
+
 <div class="page-content">
     
     <div class="row">
-      <div class="col-md-8">
-        <div class="append-icon">
-              <input type="text" name="firstname" id="finder" class="form-control form-white input-lg" placeholder="Search..." autofocus ng-model="filter">
-              <i class="icon-magnifier"></i>
-            </div>
+      <div class="col-md-1">
+        <button  type="button" class="btn btn-embossed btn-success boton-grande"  ng-click="Mapa()" >Ver Mapa</button>
       </div>
+      <div class="col-md-4">
+        <div class="append-icon">
+          <input type="text" name="firstname" id="finder" class="form-control form-white input-sm" placeholder="Search..." autofocus ng-model="filter">
+          <i class="icon-magnifier"></i>
+        </div>
+      </div>
+      <div class="col-md-4">
+          <div class="form-group">            
+            <select class="form-control form-white input-sm" ng-model= "filtro" ng-change="Filtro()" data-style="white" data-placeholder="Select a country..." >
+              <option value="1">Mejor Calificados</option>
+              <option value="2">Mejores Descuentos</option>
+              <option value="3">Mas Visitados</option>
+            </select>
+          </div>
+      </div>      
     </div>
 
-    <br>
-
-    <div ng-repeat="profesional in Profesionales | filter : filter">
-      <div class="row">
-        <div class="panel  col-md-12" >     
-          <div class="panel-header panel-controls">
-            <h3>Empresa: <strong>{{profesional.razonSocial}}</strong></h3>
-          </div>    
-          <div class="panel-content">
-            <div class="row">
-              <div class="col-md-2 ">                
-                <img src="../img/logoUbuntu.png" alt="" style="width:90px;height:90px;margin:5px;">        
-              </div>
-              <div class="col-md-4 line-separator">
+    <div ng-show="open">
+        <div  ng-repeat="profesional in Profesionales | filter : filter">
+          <div class="row">
+            <div class="panel  col-md-12" >       
+              <div class="panel-content">
                 <div class="row">
-                  <h4>
-                    Ciudad: <strong>{{profesional.municipio}}</strong>
-                  </h4>
-                </div>
-                <div class="row">
-                  <h4 style="color:#F6AB3F;">            
-                    <uib-rating ng-model="profesional.calificacion" max="max" read-only="isReadonly" on-hover="hoveringOver(value)" on-leave="overStar = null" titles="['one','two','three']" aria-labelledby="default-rating"></uib-rating>
-                  </h4>
-                  <p>Personas que lo han calificado: <strong>{{profesional.numeroPersonas}}</strong></p>                            
-                </div>
-              </div>
-              <div class="col-md-2 line-separator">
+                  <div class="col-md-3">                
+                    <img src="{{profesional.foto}}" alt="" style="width:170px;height:170px;">        
+                  </div>
+                  <div class="col-md-4 line-separator" style="height:170px;">
+                    <div class="row">
+                      <h2><strong>{{profesional.razonSocial}}</strong></h2>
+                      <p>
+                        <strong>{{profesional.municipio}}</strong>
+                      </p>
+                      <p style="color:#F6AB3F;">            
+                        <uib-rating ng-model="profesional.calificacion" max="max" read-only="isReadonly" on-hover="hoveringOver(value)" on-leave="overStar = null" titles="['one','two','three']" aria-labelledby="default-rating"></uib-rating>
+                      </p>
+                      <p>Personas que lo han calificado: <strong>{{profesional.numeroPersonas}}</strong></p>
+                    </div>
+                  </div>
+                  <div class="col-md-2 line-separator" style="height:170px;">
 
-                <div class="t-center">
-                    <p style="text-align:center">Porcentaje de Descuento</p>
+                    <div class="t-center">
+                        <p style="text-align:center">Porcentaje de Descuento</p>
 
-                    <h1>{{profesional.porcentaje}} %</h1>
-                   
-                </div>               
-              </div>
-              <div class="col-md-1">
-                 <div class="font-animation">
-                      <button class="btn btn-rounded btn-success" ng-click="Detalles(profesional)">
-                        <i class="fa fa-hand-o-right faa-horizontal animated"></i>
-                        &nbsp; {{profesional.button}}                 
-                      </button>                          
-                    </div> 
+                        <h1>{{profesional.porcentaje}} %</h1>
+                       
+                    </div>               
+                  </div>
+                  <div class="col-md-1" style="height:170px;">
+                    <div class="t-center">
+                      <div class="font-animation">
+                          <button class="btn btn-embossed btn-success" ng-click="Detalles(profesional)">
+                            <i class="fa fa-hand-o-right faa-horizontal animated"></i>
+                            &nbsp; {{profesional.button}}                 
+                          </button>                          
+                        </div> 
+                    </div>
+                     
+                  </div>
+                </div>          
               </div>
             </div>          
           </div>
-        </div>          
-      </div>
-      <div class="row">
-          <div class="panel panel-notif col-md-12" ng-show="profesional.status">
-            <div class="panel-header border-bottom panel-controls">
-              <h3>Detalles</h3>
-            </div>    
-            <div class="panel-content">
-              <div class="col-md-6">
-                <div class="row">
-                  <h3>Correo: <strong>{{Profesional.correo}}</strong></h3>
-                </div>
-                <div class="row">
-                  <h3>Teléfono: <strong>{{Profesional.telefono}}</strong></h3>
-                </div>
-                <div class="row">
-                  <h3>Profesión: <strong>{{Profesional.profesion}}</strong></h3>
-                </div>
-                <div class="row">
-                  <h3>Experiencia Laboral: <strong>{{Profesional.experiencia}}</strong></h3>
-                </div>
-                <div class="row"> 
-                  <h3>Ciudad: <strong>{{Profesional.municipio}}</strong></h3>
-                </div>
-                
-              </div>
-              <div class="col-md-6">
-                <div id="floating-panel">
-                    <b>Mode of Travel: </b>
-                    <select id="mode">
-                      <option value="DRIVING">Driving</option>
-                      <option value="WALKING">Walking</option>
-                      <option value="BICYCLING">Bicycling</option>
-                      <option value="TRANSIT">Transit</option>
-                    </select>
+          <div class="row">
+              <div class="panel panel-notif col-md-12" ng-show="profesional.status">
+                <div class="panel-header border-bottom panel-controls">
+                  <h3>Información General</h3>
                 </div>    
-                <div id="map{{profesional.id}}" style=" position: relative;float: left; width: 500px;height: 300px"></div>
+                <div class="panel-content">
+                  <div class="col-md-6">
+    
+                    <div class="row">
+                      <div class="col-md-3">
+                        <h4>Correo:</h4>
+                      </div>
+                      <div class="col-md-9">
+                        <h4><strong>{{Profesional.correo}}</strong></h4> 
+                      </div>              
+                    </div>
+                    <div class="row">
+                      <div class="col-md-3">
+                         <h4>Teléfono: </h4>
+                      </div>
+                      <div class="col-md-9">
+                       <h4><strong>{{Profesional.telefono}}</strong></h4> 
+                      </div>                      
+                    </div>
+                    <div class="row">
+                      <div class="col-md-3">
+                         <h4>Profesión: </h4>
+                      </div>
+                      <div class="col-md-9">
+                         <h4><strong>{{Profesional.profesion}}</strong></h4> 
+                      </div>                      
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                         <h4>Experiencia Laboral:</h4>
+                      </div>
+                      <div class="col-md-12">
+                         <h4> <strong>{{Profesional.experiencia}}</strong></h4>
+                      </div>                      
+                    </div>
+                    
+                  </div>
+                  <div class="col-md-6">
+                    <div id="floating-panel">
+                        <b>Mode of Travel: </b>
+                        <select id="mode">
+                          <option value="DRIVING">Driving</option>
+                          <option value="WALKING">Walking</option>
+                          <option value="BICYCLING">Bicycling</option>
+                          <option value="TRANSIT">Transit</option>
+                        </select>
+                    </div>    
+                    <div id="map{{profesional.id}}" style=" position: relative;float: left; width: 500px;height: 300px"></div>
+                  </div>
+                  
+                </div>
               </div>
-              
-            </div>
           </div>
       </div>
-  </div>
+    </div>
 
-
+    <div ng-hide="open">
+      <div class="panel  col-md-12">
+          <div class="panel-content">
+              <div id="map" style=" position: relative;float: left; width: 100%;height: 700px; margin-bottom: 20px;"></div>
+          </div>
+      </div>  
+    </div>
 
   <div class="modal fade" id="modalProfesional" aria-hidden="true" >
     <div class="modal-dialog ">

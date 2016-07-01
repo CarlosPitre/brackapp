@@ -21,4 +21,11 @@ class Model_marcas extends CI_Model {
 		return $query->result();
 	}
 
+
+	public function save($datos = array())
+	{
+		$this->db->insert('marca', $datos);
+		return $this->db->insert_id();
+	}
+
 }

@@ -46,21 +46,26 @@ class Productos extends REST_Controller {
 
    
 
-	public function servicios_post()
+	public function productos_post()
 	{
 		$datos = array(
 			"descripcion" => $this->post("descripcion"),
-			"estado" => "ACTIVO",
-			"idSector" => $this->post("idSector"),
+			"estado" => "ACTIVO"
 		);
-		$idServicio= $this->model_servicios->save($datos);
+		$guardar= $this->model_productos->save($datos);
 
-		$datosServicio = array(
+		$datosProductos = array(
 			"idProfesional" => $this->post("idProfesional"), 	
-			"idServicio" => $idServicio,
+			"idProducto" => $this->post( "$idProducto"),
+			"idMarca" => $this->post( "$idMarca"),
 			"porcentaje" =>  $this->post("porcentaje")			
 		);
-		$guardar = $this->model_servicios->saveProfesional($datosServicio);
+		$guardar = $this->model_servicios->saveProfesional($datosProductos);
+        $datosMarcas = array(
+			"descripcion" => $this->post("descripcion"),
+			"estado" => "ACTIVO"			
+		);
+		$guardar = $this->model_marcas->saveMarcas($datosMarcas);
 		if ($guardar) {			
 			$message = "Datos Guardados Correctamente";
 			$this->response($message, REST_Controller::HTTP_CREATED);
@@ -69,7 +74,6 @@ class Productos extends REST_Controller {
 			$this->response($message, REST_Controller::HTTP_BAD_REQUEST);
 		};
 	}
-
 
 
 	public function servicios_put()

@@ -1,8 +1,8 @@
 app.service('productoService', ['$http', function($http){
-	/*this.post = function  (object) {
-		var req = $http.post(uri + '/app/servicios', object);
+	this.post = function  (object) {
+		var req = $http.post(uri + '/app/productos', object);
 		return req;
-	}*/
+	}
 	this.getProductos = function  () {
 		var req = $http.get(uri + '/app/productos');
 		return req;

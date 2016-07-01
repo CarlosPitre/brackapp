@@ -52,22 +52,23 @@ app.controller('miproductoCtrl',  function($scope,productoService,pluginsService
 	
 
 
-	/*$scope.save = function  () {
+	$scope.save = function  () {
 		var datos = {
-			descripcion : $scope.Servicio.descripcion,
-			idSector : $scope.Servicio.idSector,
-			porcentaje :  $scope.Servicio.porcentaje,
+			descripcion : $scope.Productos.descripcion,
+			marca : $scope.Productos.marca,
+			porcentaje :  $scope.Productos.porcentaje,
 			idProfesional : "1"
 		};
-		var promiseGet = servicioService.post(datos); 
+		var promiseGet = productoService.post(datos); 
 		promiseGet.then(function (pl) {
             alert(pl.data);
-            loadServicios();
+            loadProductos();
+
         },
         function (errorPl) {
         	console.log('Error Al Cargar Datos', errorPl);
         });
-	}*/
+	}
 
 
 

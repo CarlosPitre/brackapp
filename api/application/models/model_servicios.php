@@ -45,6 +45,7 @@ class Model_servicios extends CI_Model {
    		$this->db->where('idServicio', $idServicio);
    		$this->db->where('idProfesional', $idProfesional);
    		$this->db->delete('profesionalservicio');
+   		return true;
    }
 
 

@@ -59,6 +59,7 @@ app.controller('miproductoCtrl',  function($scope,productoService,pluginsService
 			porcentaje :  $scope.Productos.porcentaje,
 			idProfesional : "1"
 		};
+		console.log(JSON.stringify(datos));
 		var promiseGet = productoService.post(datos); 
 		promiseGet.then(function (pl) {
             alert(pl.data);
@@ -96,22 +97,23 @@ app.controller('miproductoCtrl',  function($scope,productoService,pluginsService
 		$scope.openButton = false;
 	} */
 
-	 /*$scope.delete = function  (servicio) {
-		console.log(JSON.stringify(datos));
+	 $scope.delete = function  (producto) {
+	 	console.log(JSON.stringify(datos));
 		var datos = {
-			idServicio : servicio.id,
+			idProducto : producto.id,
+			idMarca : producto.idMarca,
 			idProfesional : "1",
 		}
 		
 
-		var promiseGet = servicioService.delete(datos); 
+		var promiseGet = productoService.delete(datos); 
 		promiseGet.then(function (pl) {
             alert(pl.data);
-            loadServicios();
+            loadProductos();
         },
         function (errorPl) {
         	console.log('Error Al Cargar Datos', errorPl);
         });
-	}*/
+	}
 
 })

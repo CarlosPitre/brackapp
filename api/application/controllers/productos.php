@@ -52,21 +52,22 @@ class Productos extends REST_Controller {
 			"descripcion" => $this->post("descripcion"),
 			"estado" => "ACTIVO"
 		);
-		$guardar= $this->model_productos->save($datos);
+		$idProducto= $this->model_productos->save($datos);
 
-		$datosProductos = array(
-			"idProfesional" => $this->post("idProfesional"), 	
-			"idProducto" => $this->post( "$idProducto"),
-			"idMarca" => $this->post( "$idMarca"),
-			"porcentaje" =>  $this->post("porcentaje")			
-		);
-		$guardar = $this->model_servicios->saveProfesional($datosProductos);
         $datosMarcas = array(
-			"descripcion" => $this->post("descripcion"),
+			"descripcion" => $this->post("marca"),
 			"estado" => "ACTIVO"			
 		);
-		$guardar = $this->model_marcas->saveMarcas($datosMarcas);
-		if ($guardar) {			
+		$idMarca = $this->model_marcas->saveMarcas($datosMarcas);
+
+          $datosProductos = array(
+			"idProfesional" => $this->post("idProfesional"), 	
+			"idProducto" => $idProducto,
+			"idMarca" => $idMarca,
+			"porcentaje" =>  $this->post("porcentaje")			
+		);
+		$guardar = $this->model_productos->saveProfesional($datosProductos);
+         if ($guardar) {			
 			$message = "Datos Guardados Correctamente";
 			$this->response($message, REST_Controller::HTTP_CREATED);
 		}else{
@@ -75,35 +76,13 @@ class Productos extends REST_Controller {
 		};
 	}
 
-
-	public function servicios_put()
-	{
-		$datos = array(
-			"descripcion" => $this->put("descripcion"),
-			"idSector"=>$this->put("idSector")
-		);
-		$guardar= $this->model_servicios->update($datos,$this->put("id"));
-
-		$datosServicio = array(
-			"idProfesional" => $this->put("idProfesional"), 	
-			"idServicio" => $idServicio,
-			"porcentaje" =>  $this->put("porcentaje")			
-		);
-		$guardar= $this->model_servicios->update($datosServicio,$this->put("id"));
-         if ($guardar) {
-			$message = "Datos Guardados Correctamente";
-			$this->response($message, REST_Controller::HTTP_CREATED);
-		}else{
-			$message = "Error";
-			$this->response($message, REST_Controller::HTTP_BAD_REQUEST);
-		};
-	}
 
 	public function delete_post()
 	{
-		$idServicio = $this->post("idServicio");
+		$idProducto = $this->post("idProducto");
+		$idMarca = $this->post("idMarca");
 		$idProfesional = $this->post("idProfesional");
-		$guardar= $this->model_servicios->delete($idServicio,$idProfesional);
+		$guardar= $this->model_productos->delete($idProducto,$idMarca,$idProfesional);
 		if ($guardar) {
 			$message = "Datos eliminado Correctamente";
 			$this->response($message, REST_Controller::HTTP_CREATED);

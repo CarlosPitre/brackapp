@@ -13,6 +13,11 @@ app.service('productoService', ['$http', function($http){
 		return req;
 	}
 
+	 this.delete = function  (object) {
+		var req = $http.post(uri + '/app/productos/delete', object);
+		return req;
+	}
+
 
 
 	/*
@@ -21,10 +26,7 @@ app.service('productoService', ['$http', function($http){
 		return req;
 	}*/
 
-    /* this.delete = function  (object) {
-		var req = $http.post(uri + '/app/servicios/delete', object);
-		return req;
-	} */
+     
 
 	/*this.getSectores = function  () {
 		var req = $http.get(uri + '/app/sectores');

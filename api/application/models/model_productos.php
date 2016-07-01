@@ -15,7 +15,7 @@ class Model_productos extends CI_Model {
 				->select('s.*, ps.*,m.descripcion as marca')
 				->from('producto s')
 				->join('profesionalproducto ps', 'ps.idProducto = s.id', 'inner')
-				->join('marca m', 'ps.idMarca = s.id', 'inner')
+				->join('marca m', 'ps.idMarca = m.id', 'inner')
 				->get();
 		}
 		return $query->result();
@@ -33,22 +33,16 @@ class Model_productos extends CI_Model {
 
 	public function saveProfesional($datos = array())
 	{
-		$this->db->insert('profesionalservicio', $datos);
+		$this->db->insert('profesionalproducto', $datos);
 		return true;
 	}
 
-	public function update($datos = array(), $id)
-	{
-		$this->db->where('id', $id);
-		$this->db->update('productos', $datos);
-		return true;
-	}
-
-   public function delete($idServicio,$idProfesional)
+   public function delete($idProducto,$idMarca,$idProfesional)
    {
-   		$this->db->where('idServicio', $idServicio);
+   		$this->db->where('idProducto', $idProducto);
+   		$this->db->where('idMarca', $idMarca);
    		$this->db->where('idProfesional', $idProfesional);
-   		$this->db->delete('profesionalservicio');
+   		$this->db->delete('profesionalproducto');
    		return true;
    }
 }

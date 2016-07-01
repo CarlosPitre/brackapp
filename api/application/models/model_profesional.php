@@ -30,7 +30,7 @@ class Model_profesional extends CI_Model {
 
 	public function getProfesionalesBySector($id)
 	{
-		$query = $this->db->select('p.*, m.nombre as municipio, ps.porcentaje, s.descripcion as servicio')
+		$query = $this->db->select('p.*, m.nombre as municipio, ps.porcentaje')
 							->from('profesional p')
 							->join('profesionalServicio ps', 'ps.idProfesional = p.id','inner')
 							->join('servicio s', 's.id = ps.idServicio', 'inner')
@@ -44,7 +44,7 @@ class Model_profesional extends CI_Model {
 
 	public function getProfesionalesByServicio($idServicio)
 	{
-		$query = $this->db->select('p.*, m.nombre as municipio, ps.porcentaje,s.descripcion as servicio')
+		$query = $this->db->select('p.*, m.nombre as municipio, ps.porcentaje')
 							->from('profesional p')
 							->join('profesionalServicio ps', 'ps.idProfesional = p.id','inner')
 							->join('servicio s', 's.id = ps.idServicio', 'inner')
@@ -57,10 +57,10 @@ class Model_profesional extends CI_Model {
 
 	public function getProfesionalesByMarca($id)
 	{
-		$query = $this->db->select('p.*, m.nombre as municipio, pp.porcentaje,p.descripcion as servicio')
+		$query = $this->db->select('p.*, m.nombre as municipio, pp.porcentaje')
 							->from('profesional p')
 							->join('profesionalProducto pp', 'pp.idProfesional = p.id','inner')
-							->join('producto p', 'p.id = ps.idProducto', 'inner')
+							->join('producto pr', 'pr.id = pp.idProducto', 'inner')
 							->join('municipio m', 'm.id = p.idMunicipio', 'inner')
 							->where('pp.idMarca', $id)
 							->order_by('p.calificacion', 'desc')
@@ -70,10 +70,10 @@ class Model_profesional extends CI_Model {
 
 	public function getProfesionalesByProducto($id)
 	{
-		$query = $this->db->select('p.*, m.nombre as municipio, pp.porcentaje,p.descripcion as servicio')
+		$query = $this->db->select('p.*, m.nombre as municipio, pp.porcentaje')
 							->from('profesional p')
 							->join('profesionalProducto pp', 'pp.idProfesional = p.id','inner')
-							->join('producto p', 'p.id = ps.idProducto', 'inner')
+							->join('producto p', 'pr.id = pp.idProducto', 'inner')
 							->join('municipio m', 'm.id = p.idMunicipio', 'inner')
 							->where('pp.idProducto', $id)
 							->order_by('p.calificacion', 'desc')
@@ -83,7 +83,7 @@ class Model_profesional extends CI_Model {
 
 	public function getProfesionalesBySectorVisitados($id)
 	{
-		$query = $this->db->select('p.*, m.nombre as municipio, ps.porcentaje, s.descripcion as servicio')
+		$query = $this->db->select('p.*, m.nombre as municipio, ps.porcentaje')
 							->from('profesional p')
 							->join('profesionalServicio ps', 'ps.idProfesional = p.id','inner')
 							->join('servicio s', 's.id = ps.idServicio', 'inner')
@@ -97,7 +97,7 @@ class Model_profesional extends CI_Model {
 
 	public function getProfesionalesByServicioVisitados($idServicio)
 	{
-		$query = $this->db->select('p.*, m.nombre as municipio, ps.porcentaje,s.descripcion as servicio')
+		$query = $this->db->select('p.*, m.nombre as municipio, ps.porcentaje')
 							->from('profesional p')
 							->join('profesionalServicio ps', 'ps.idProfesional = p.id','inner')
 							->join('servicio s', 's.id = ps.idServicio', 'inner')
@@ -110,10 +110,10 @@ class Model_profesional extends CI_Model {
 
 	public function getProfesionalesByMarcaVisitados($id)
 	{
-		$query = $this->db->select('p.*, m.nombre as municipio, pp.porcentaje,p.descripcion as servicio')
+		$query = $this->db->select('p.*, m.nombre as municipio, pp.porcentaje')
 							->from('profesional p')
 							->join('profesionalProducto pp', 'pp.idProfesional = p.id','inner')
-							->join('producto p', 'p.id = ps.idProducto', 'inner')
+							->join('producto pr', 'pr.id = pp.idProducto', 'inner')
 							->join('municipio m', 'm.id = p.idMunicipio', 'inner')
 							->where('pp.idMarca', $id)
 							->order_by('p.numeroPersonas', 'desc')
@@ -123,10 +123,10 @@ class Model_profesional extends CI_Model {
 
 	public function getProfesionalesByProductoVisitados($id)
 	{
-		$query = $this->db->select('p.*, m.nombre as municipio, pp.porcentaje,p.descripcion as servicio')
+		$query = $this->db->select('p.*, m.nombre as municipio, pp.porcentaje')
 							->from('profesional p')
 							->join('profesionalProducto pp', 'pp.idProfesional = p.id','inner')
-							->join('producto p', 'p.id = ps.idProducto', 'inner')
+							->join('producto pr', 'pr.id = pp.idProducto', 'inner')
 							->join('municipio m', 'm.id = p.idMunicipio', 'inner')
 							->where('pp.idProducto', $id)
 							->order_by('p.numeroPersonas', 'desc')
@@ -136,7 +136,7 @@ class Model_profesional extends CI_Model {
 
 	public function getProfesionalesBySectorDistancia($id,$lat,$lng)
 	{
-		$query = $this->db->select("(6371 * ACOS( SIN(RADIANS(p.latitud)) * SIN(RADIANS('$lat')) + COS(RADIANS(p.longitud - '$lng')) * COS(RADIANS(p.latitud)) * COS(RADIANS('$lat')))) AS distancia,p.*, m.nombre as municipio, ps.porcentaje, s.descripcion as servicio")
+		$query = $this->db->select("(6371 * ACOS( SIN(RADIANS(p.latitud)) * SIN(RADIANS('$lat')) + COS(RADIANS(p.longitud - '$lng')) * COS(RADIANS(p.latitud)) * COS(RADIANS('$lat')))) AS distancia,p.*, m.nombre as municipio, ps.porcentaje")
 							->from('profesional p')
 							->join('profesionalServicio ps', 'ps.idProfesional = p.id','inner')
 							->join('servicio s', 's.id = ps.idServicio', 'inner')
@@ -147,6 +147,26 @@ class Model_profesional extends CI_Model {
 							->order_by('distancia', 'asc')
 							->get();
 						
+		return $query->result();
+	}
+
+	public function getServicios($idProfesional)
+	{
+		$query = $this->db->select('s.*')
+							->from('servicio s')
+							->join('profesionalServicio ps', 'ps.idServicio = s.id','inner')
+							->where('ps.idProfesional', $idProfesional)
+							->get();
+		return $query->result();
+	}
+
+	public function getProductos($idProfesional)
+	{
+		$query = $this->db->select('p.*')
+							->from('producto p')
+							->join('profesionalProducto pp', 'pp.idProducto = p.id','inner')
+							->where('pp.idProfesional', $idProfesional)
+							->get();
 		return $query->result();
 	}
 

@@ -70,6 +70,10 @@ class Profesionales extends REST_Controller {
 			$profesionales[$i]->status = FALSE;
 			$profesionales[$i]->button = "Ver Mas";
 			$profesionales[$i]->mapa = FALSE;
+			$servicios = $this->model_profesional->getServicios($profesionales[$i]->id);
+			$profesionales[$i]->servicios = $servicios;
+			$productos = $this->model_profesional->getProductos($profesionales[$i]->id);
+			$profesionales[$i]->productos = $productos;
 		}
 
 		if ($profesionales) {			
@@ -121,6 +125,10 @@ class Profesionales extends REST_Controller {
 			$profesionales[$i]->status = FALSE;
 			$profesionales[$i]->button = "Ver Mas";
 			$profesionales[$i]->mapa = FALSE;
+			$servicios = $this->model_profesional->getServicios($profesionales[$i]->id);
+			$profesionales[$i]->servicios = $servicios;
+			$productos = $this->model_profesional->getProductos($profesionales[$i]->id);
+			$profesionales[$i]->productos = $productos;
 		}
 
 		if ($profesionales) {			
@@ -174,6 +182,10 @@ class Profesionales extends REST_Controller {
 			$profesionales[$i]->status = FALSE;
 			$profesionales[$i]->button = "Ver Mas";
 			$profesionales[$i]->mapa = FALSE;
+			$servicios = $this->model_profesional->getServicios($profesionales[$i]->id);
+			$profesionales[$i]->servicios = $servicios;
+			$productos = $this->model_profesional->getProductos($profesionales[$i]->id);
+			$profesionales[$i]->productos = $productos;
 		}
 
 		if ($profesionales) {			

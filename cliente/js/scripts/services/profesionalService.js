@@ -13,4 +13,9 @@ app.service('profesionalService', function($http){
 		var req = $http.post(uri + '/app/servicio/profesionales/visitados', object);
 		return req;
 	}
+
+	this.postJSONDistancia = function  (object) {
+		var req = $http.post(uri + '/app/servicio/profesionales/distancia', object);
+		return req;
+	}
 })

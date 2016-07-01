@@ -13,9 +13,17 @@ class Model_cliente extends CI_Model {
 		if ($id == null) {
 			$query=$this->db
 				->select("*")
-				->from("cliente")				
+				->from("cliente")
 				->get();
+			return $query->result();
+		}else{
+			$query = $this->db
+				->select("*")
+				->from("cliente")
+				->where("id",$id)
+				->get();
+			return $query->row();
 		}
-		return $query->result();
+
 	}
 }

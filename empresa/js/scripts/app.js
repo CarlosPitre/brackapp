@@ -19,7 +19,11 @@ var app;
                     controller : 'miservicioCtrl'
             	}				
 			)
-			
+			.when("/empresa/misProducto",{
+                    templateUrl: 'pages/misproductos.html',
+                    controller : 'miproductoCtrl'
+            	}				
+			)
 			.otherwise({
                 redirectTo:"/inicio"
             });

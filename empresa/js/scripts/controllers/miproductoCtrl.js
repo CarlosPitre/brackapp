@@ -1,26 +1,22 @@
-app.controller('miservicioCtrl',  function($scope,servicioService,pluginsService){
+app.controller('miproductoCtrl',  function($scope,productoService,pluginsService){
 	
 
-	$scope.Servicios = [];
+	$scope.Productos = [];
 
-	loadServicios();
-	$scope.Servicio = {};
+	loadProductos();
+	$scope.Producto = {};
 
 	$scope.openButton = true;
 
 
 
-	$scope.Sectores = [];
-
-	loadSectores();
-	$scope.Sectores = {};
 
 
 	
-	function loadServicios () {
-		var promiseGet = servicioService.getServicios(); 
+	function loadProductos () {
+		var promiseGet = productoService.getProductos(); 
         promiseGet.then(function (pl) {
-            $scope.Servicios = pl.data;
+            $scope.Productos = pl.data;
         },
         function (errorPl) {
         	console.log('Error Al Cargar Datos', errorPl);
@@ -30,32 +26,16 @@ app.controller('miservicioCtrl',  function($scope,servicioService,pluginsService
 
 
 	$scope.nuevo = function  () {
-
-		$scope.Servicio = {};
 		$scope.openButton = true;
 		$('#modal-responsive').modal('show');
 
 	}
 
 
-	function loadSectores () {
-		var promiseGet = servicioService.getSectores(); 
-        promiseGet.then(function (pl) {
-            $scope.Sectores = pl.data;
-        },
-        function (errorPl) {
-        	console.log('Error Al Cargar Datos', errorPl);
-        });
-	}
+	
 
 
-
-
-
-
-
-
-	$scope.save = function  () {
+	/*$scope.save = function  () {
 		var datos = {
 			descripcion : $scope.Servicio.descripcion,
 			idSector : $scope.Servicio.idSector,
@@ -70,13 +50,13 @@ app.controller('miservicioCtrl',  function($scope,servicioService,pluginsService
         function (errorPl) {
         	console.log('Error Al Cargar Datos', errorPl);
         });
-	}
+	}*/
 
 
 
 
 
-	$scope.update = function  () {
+/*	$scope.update = function  () {
 		var datos = {
 		descripcion : $scope.Servicio.descripcion,
 			idSector : $scope.Servicio.idSector,
@@ -91,14 +71,14 @@ app.controller('miservicioCtrl',  function($scope,servicioService,pluginsService
         function (errorPl) {
         	console.log('Error Al Cargar Datos', errorPl);
         });
-	}
+	}*/
 
-	$scope.modificar = function  (servicio) {
+	/*$scope.modificar = function  (servicio) {
 		$scope.Servicio = servicio;
 		$scope.openButton = false;
-	}
+	} */
 
-	$scope.delete = function  (servicio) {
+	 /*$scope.delete = function  (servicio) {
 		console.log(JSON.stringify(datos));
 		var datos = {
 			idServicio : servicio.id,
@@ -114,6 +94,6 @@ app.controller('miservicioCtrl',  function($scope,servicioService,pluginsService
         function (errorPl) {
         	console.log('Error Al Cargar Datos', errorPl);
         });
-	}
+	}*/
 
 })

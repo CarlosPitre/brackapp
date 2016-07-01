@@ -9,6 +9,12 @@ app.controller('miproductoCtrl',  function($scope,productoService,pluginsService
 	$scope.openButton = true;
 
 
+	$scope.Marcas = [];
+
+	loadMarcas();
+	$scope.Marca = {};
+
+
 
 
 
@@ -17,6 +23,17 @@ app.controller('miproductoCtrl',  function($scope,productoService,pluginsService
 		var promiseGet = productoService.getProductos(); 
         promiseGet.then(function (pl) {
             $scope.Productos = pl.data;
+        },
+        function (errorPl) {
+        	console.log('Error Al Cargar Datos', errorPl);
+        });
+	}
+
+
+	function loadMarcas () {
+		var promiseGet = productoService.getMarcas(); 
+        promiseGet.then(function (pl) {
+            $scope.Marcas = pl.data;
         },
         function (errorPl) {
         	console.log('Error Al Cargar Datos', errorPl);

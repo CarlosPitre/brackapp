@@ -12,13 +12,18 @@ class Model_productos extends CI_Model {
 	{
 		if ($id == null) {
 			$query=$this->db
-				->select('s.*, ps.porcentaje')
+				->select('s.*, ps.*,m.descripcion as marca')
 				->from('producto s')
 				->join('profesionalproducto ps', 'ps.idProducto = s.id', 'inner')
+				->join('marca m', 'ps.idMarca = s.id', 'inner')
 				->get();
 		}
 		return $query->result();
 	}
+
+
+
+  
 
 	public function save($datos = array())
 	{

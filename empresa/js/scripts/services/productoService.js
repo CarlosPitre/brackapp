@@ -7,6 +7,14 @@ app.service('productoService', ['$http', function($http){
 		var req = $http.get(uri + '/app/productos');
 		return req;
 	}
+
+	this.getMarcas = function  () {
+		var req = $http.get(uri + '/app/marcas');
+		return req;
+	}
+
+
+
 	/*
 	this.put = function  (object) {
 		var req = $http.put(uri + '/app/servicios', object);

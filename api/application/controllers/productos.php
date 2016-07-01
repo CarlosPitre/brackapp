@@ -9,6 +9,7 @@ class Productos extends REST_Controller {
 	{
 		parent::__construct();
 		$this->load->model('model_productos');
+		$this->load->model('model_marcas');
 	}
 
 	public function productos_get($id = null)
@@ -18,6 +19,22 @@ class Productos extends REST_Controller {
 		}
 		if ($Productos) { 
 			$this->response($Productos, REST_Controller::HTTP_OK);
+		}else{
+	        $this->response([
+       			'status' => FALSE,
+        		'message' => 'No users were found'
+            ], REST_Controller::HTTP_NOT_FOUND); 
+		};
+	}
+
+
+	public function marcas_get($id = null)
+	{
+		if ($id == null) {
+			$Marcas = $this->model_marcas->getMarcas();
+		}
+		if ($Marcas) { 
+			$this->response($Marcas, REST_Controller::HTTP_OK);
 		}else{
 	        $this->response([
        			'status' => FALSE,

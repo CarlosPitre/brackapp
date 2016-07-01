@@ -26,9 +26,9 @@
                         <tr style="color:white;">
                           <th>#</th>
                           <th>Descripción</th>
-                           <!--<th>Marca</th>-->
-                           <!--<th>Porcentaje Descuento</th>-->
-                          <!--<th >Estatus</th>-->
+                           <th>Marca</th>
+                           <th>Porcentaje Descuento</th>
+                          <th >Estatus</th>
                           <th>estado</th>
                           <th >Opciones</th>                       
                         </tr>
@@ -37,7 +37,9 @@
                         <tr ng-repeat="pro in Productos | filter:filter ">
                           <td>{{pro.id}}</td>
                           <td>{{pro.descripcion}} </td>
-                         <!-- <td><div class="t-center"> {{pro.porcentaje}} % </div></td>-->
+                          <td>{{pro.marca}}</td>
+                         <td><div class="t-center"> {{pro.porcentaje}} % </div></td>
+                          <td>{{pro.estatus}}</td>
                           <td>{{pro.estado}} </td>
                           <td>
                               <button   type="button"  href="javascript:;" ng-click="delete(servi)" style="background:#95C92C;" class="btn btn-sm btn-blue"><i class="fa fa-close"> &nbsp Eliminar</i></button>

@@ -34,3 +34,4 @@ $route['app/profesionales/(:num)'] = 'profesionales/profesionales/$1';
 $route['app/profesionales'] = 'profesionales/profesionales';
 $route['app/servicio/profesionales/visitados'] = 'profesionales/busquedaGeneralProfesionalesVisitados';
 $route['app/servicio/profesionales/distancia'] = 'profesionales/getProfesionalesBySectorDistancia';
+$route['app/solicitudes'] = 'solicitudes/solicitudes';

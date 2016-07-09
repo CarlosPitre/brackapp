@@ -2,26 +2,26 @@
       <div class="col-md-8 col-md-offset-1">
           <div class="account-wall">
               <div class="user-image">
-                 
+
               </div>
               <div class="col-md-8">
               	 <h2 style="color:#1f3649">Bienvenido a <strong>BRAKAPP</strong>!</h2>
                   <p style="color:#1f3649">Por favor escribe el servicio que buscas.</p>
-                  <div class="input-group"> 
-                   
-                     <angucomplete id="ex2" placeholder="Ejem: Plomeria, Mantenimiento de Computadores, etc..." pause="300"  localdata="Servicio" selectedobject="selectedServicio" searchfields="descripcion" titlefield="descripcion" descriptionfield="tipo" minlength="1" inputclass="form-control-buscar" matchclass="highlight" />
+                  <div class="input-group">
+
+                     <angucomplete ng-model="busca" id="ex2" placeholder="Ejem: Plomeria, Mantenimiento de Computadores, etc..." pause="300"  localdata="Servicio" selectedobject="selectedServicio" searchfields="descripcion" titlefield="descripcion" descriptionfield="tipo" minlength="1" inputclass="form-control-buscar" matchclass="highlight" />
 
                     <!--<input id="filtro" type="text" class="span4 form-control-buscar" placeholder="Ejem: Plomeria, Mantenimiento de Computadores, etc..." autocomplete="off" />-->
 
-                     <span class="input-group-btn"> 
-                        <a href="javascript:;" class="btn btn-success" style="color:white;" ng-click="Buscar(selectedServicio.originalObject)">Buscar</a>                      
+                     <span class="input-group-btn">
+                        <a href="javascript:;" class="btn btn-success" style="color:white;" ng-click="Buscar(selectedServicio.originalObject)">Buscar</a>
                       </span>
                   </div>
-              </div>             
+              </div>
           </div>
-          
+
       </div>
-      
+
   </div>
 
 <div class="container" id="lockscreen-block">
@@ -47,12 +47,10 @@
                   <div class="col-md-1">
                   <button class="btn btn-sm btn-icon btn-rounded btn-success btn-lg" ><i class="fa fa-apple"></i></button>
                   </div>
-                </div>            
-              </div>       
+                </div>
+              </div>
           </div>
-          
-      </div>
-      
-</div>
 
-  
+      </div>
+
+</div>

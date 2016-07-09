@@ -124,13 +124,47 @@ app.controller('profesionalCtrl', function($scope,profesionalService,$routeParam
 
 	$scope.Detalles = function  (profesional) {
 		$scope.Profesional = profesional;
-		if (localStorage.getItem("idCliente_br") != null) {
+		$scope.tab1 = "active";
+		$scope.showTab1 = true;
+		$('#modalProfesional').modal('show');
+		/*if (localStorage.getItem("idCliente_br") != null) {
 			getDetalles();
 		}else{
 			$('#modalProfesional').modal('show');
+		}*/
+
+
+	}
+
+	$scope.active = function (numero) {
+		switch (numero) {
+			case 1:
+				$scope.tab1 = "active";
+				$scope.showTab1 = true;
+				$scope.tab2 = "";
+				$scope.showTab2 = false;
+				$scope.tab3 = "";
+				$scope.showTab3 = false;
+				break;
+			case 2:
+				$scope.tab1 = "";
+				$scope.showTab1 = false;
+				$scope.tab2 = "active";
+				$scope.showTab2 = true;
+				$scope.tab3 = "";
+				$scope.showTab3 = false;
+				break;
+			case 3:
+				$scope.tab1 = "";
+				$scope.showTab1 = false;
+				$scope.tab2 = "";
+				$scope.showTab2 = false;
+				$scope.tab3 = "active";
+				$scope.showTab3 = true;
+				break;
+			default:
+
 		}
-
-
 	}
 
 	function getDetalles () {
@@ -321,13 +355,35 @@ app.controller('profesionalCtrl', function($scope,profesionalService,$routeParam
 			var promiseGet = clienteService.get(localStorage.getItem("idCliente_br"));
       promiseGet.then(function (pl) {
 				$scope.Cliente = pl.data;
-				console.log(JSON.stringify($scope.Cliente));
+				if ($scope.Profesional.servicios.length == 0) {
+					$scope.disabledServicio = true;
+				}
+				if ($scope.Profesional.productos.length == 0) {
+					$scope.disabledProducto = true;
+				}
 				$("#modalCliente").modal("show");
       },
       function (errorPl) {
       	console.log('Error Al Cargar Datos', errorPl);
       });
   	}
+
+		$scope.save = function () {
+			var data = {
+				 idCliente : localStorage.getItem("idCliente_br"),
+				 idProfesional : $scope.Profesional.id,
+				 idServicio : $scope.Peticion.idServicio,
+				 idProducto : $scope.Peticion.idProducto
+			}
+			var promiseGet = profesionalService.postSolicitud(data);
+			promiseGet.then(function (pl) {
+				alert(pl.data);
+				$("#modalCliente").modal("hide");
+      },
+      function (errorPl) {
+      	console.log('Error Al Cargar Datos', errorPl);
+      });
+		}
 
 
 

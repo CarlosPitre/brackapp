@@ -2,7 +2,7 @@
 
     <div class="row">
       <div class="col-md-1">
-        <button  type="button" class="btn btn-embossed btn-success boton-grande"  ng-click="Mapa()" >Ver Mapa</button>
+        <button type="button" class="btn btn-embossed btn-success boton-grande"  ng-click="Mapa()" >Ver Mapa</button>
       </div>
       <div class="col-md-4">
         <div class="append-icon">
@@ -21,132 +21,137 @@
           </div>
       </div>
     </div>
-
-    <div ng-show="open">
-        <div  ng-repeat="profesional in Profesionales | filter : filter">
-          <div class="row">
-            <div class="panel  col-md-12" >
-              <div class="panel-content">
+    <div class="row">
+        <div class="col-md-12">
+          <div ng-show="open">
+              <div  ng-repeat="profesional in Profesionales | filter : filter">
                 <div class="row">
-                  <div class="col-md-3">
-                    <img src="{{profesional.foto}}" alt="" style="width:170px;height:170px;">
-                  </div>
-                  <div class="col-md-4 line-separator" style="height:170px;">
-                    <div class="row">
-                      <h2><strong>{{profesional.razonSocial}}</strong></h2>
-                      <p>
-                        <strong>{{profesional.municipio}}</strong>
-                      </p>
-                      <p style="color:#F6AB3F;">
-                        <uib-rating ng-model="profesional.calificacion" max="max" read-only="isReadonly" on-hover="hoveringOver(value)" on-leave="overStar = null" titles="['one','two','three']" aria-labelledby="default-rating"></uib-rating>
-                      </p>
-                      <p>Personas que lo han calificado: <strong>{{profesional.numeroPersonas}}</strong></p>
-                    </div>
-                  </div>
-                  <div class="col-md-2 line-separator" style="height:170px;">
-
-                    <div class="t-center">
-                        <p style="text-align:center">Porcentaje de Descuento</p>
-
-                        <h1>{{profesional.porcentaje}} %</h1>
-
-                    </div>
-                  </div>
-                  <div class="col-md-1" style="height:170px;">
-                    <div class="t-center">
-                      <div class="font-animation">
-                          <button class="btn btn-embossed btn-success" ng-click="Detalles(profesional)">
-                            <i class="fa fa-hand-o-right faa-horizontal animated"></i>
-                            &nbsp; {{profesional.button}}
-                          </button>
+                  <div class="panel  col-md-12" >
+                    <div class="panel-content">
+                      <div class="row">
+                        <div class="col-md-3">
+                          <img src="{{profesional.foto}}" alt="" style="width:170px;height:170px;">
                         </div>
-                    </div>
-
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-              <div class="panel panel-notif col-md-12" ng-show="profesional.status">
-                <div class="panel-header border-bottom panel-controls">
-                  <h3>Información General</h3>
-                </div>
-                <div class="panel-content">
-                  <div class="col-md-6">
-
-                    <div class="row">
-                      <div class="col-md-3">
-                        <h4>Correo:</h4>
-                      </div>
-                      <div class="col-md-9">
-                        <h4><strong>{{Profesional.correo}}</strong></h4>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-md-3">
-                         <h4>Teléfono: </h4>
-                      </div>
-                      <div class="col-md-9">
-                       <h4><strong>{{Profesional.telefono}}</strong></h4>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-md-3">
-                         <h4>Profesión: </h4>
-                      </div>
-                      <div class="col-md-9">
-                         <h4><strong>{{Profesional.profesion}}</strong></h4>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-md-6">
-                         <h4>Experiencia Laboral:</h4>
-                      </div>
-                      <div class="col-md-12">
-                         <h4> <strong>{{Profesional.experiencia}}</strong></h4>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <center>
-                        <div class="col-md-6">
-                          <div class="font-animation">
-                            <button class="btn btn-embossed btn-success" ng-click="Solicitar(profesional)">
-                              <i class="fa fa-hand-o-right faa-horizontal animated"></i>
-                              &nbsp; Solicitar Domicilio
-                            </button>
+                        <div class="col-md-4 line-separator" style="height:170px;">
+                          <div class="row">
+                            <h2><strong>{{profesional.razonSocial}}</strong></h2>
+                            <p>
+                              <strong>{{profesional.municipio}}</strong>
+                            </p>
+                            <p style="color:#F6AB3F;">
+                              <uib-rating ng-model="profesional.calificacion" max="max" read-only="isReadonly" on-hover="hoveringOver(value)" on-leave="overStar = null" titles="['one','two','three']" aria-labelledby="default-rating"></uib-rating>
+                            </p>
+                            <p>Personas que lo han calificado: <strong>{{profesional.numeroPersonas}}</strong></p>
                           </div>
                         </div>
-                      </center>
-                    </div>
+                        <div class="col-md-2 line-separator" style="height:170px;">
 
-                  </div>
-                  <div class="col-md-6">
-                    <div id="floating-panel">
-                        <b>Mode of Travel: </b>
-                        <select id="mode">
-                          <option value="DRIVING">Driving</option>
-                          <option value="WALKING">Walking</option>
-                          <option value="BICYCLING">Bicycling</option>
-                          <option value="TRANSIT">Transit</option>
-                        </select>
-                    </div>
-                    <div id="map{{profesional.id}}" style=" position: relative;float: left; width: 500px;height: 300px"></div>
-                  </div>
+                          <div class="t-center">
+                              <p style="text-align:center">Porcentaje de Descuento</p>
 
+                              <h1>{{profesional.porcentaje}} %</h1>
+
+                          </div>
+                        </div>
+                        <div class="col-md-1" style="height:170px;">
+                          <div class="t-center">
+                            <div class="font-animation">
+                                <button class="btn btn-embossed btn-success" ng-click="Detalles(profesional)">
+                                  <i class="fa fa-hand-o-right faa-horizontal animated"></i>
+                                  &nbsp; {{profesional.button}}
+                                </button>
+                              </div>
+                          </div>
+
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-              </div>
+                <div class="row">
+                    <div class="panel panel-notif col-md-12" ng-show="profesional.status">
+                      <div class="panel-header border-bottom panel-controls">
+                        <h3>Información General</h3>
+                      </div>
+                      <div class="panel-content">
+                        <div class="col-md-6">
+
+                          <div class="row">
+                            <div class="col-md-3">
+                              <h4>Correo:</h4>
+                            </div>
+                            <div class="col-md-9">
+                              <h4><strong>{{Profesional.correo}}</strong></h4>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-md-3">
+                               <h4>Teléfono: </h4>
+                            </div>
+                            <div class="col-md-9">
+                             <h4><strong>{{Profesional.telefono}}</strong></h4>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-md-3">
+                               <h4>Profesión: </h4>
+                            </div>
+                            <div class="col-md-9">
+                               <h4><strong>{{Profesional.profesion}}</strong></h4>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-md-6">
+                               <h4>Experiencia Laboral:</h4>
+                            </div>
+                            <div class="col-md-12">
+                               <h4> <strong>{{Profesional.experiencia}}</strong></h4>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <center>
+                              <div class="col-md-6">
+                                <div class="font-animation">
+                                  <button class="btn btn-embossed btn-success" ng-click="Solicitar(profesional)">
+                                    <i class="fa fa-hand-o-right faa-horizontal animated"></i>
+                                    &nbsp; Solicitar Domicilio
+                                  </button>
+                                </div>
+                              </div>
+                            </center>
+                          </div>
+
+                        </div>
+                        <div class="col-md-6">
+                          <div id="floating-panel">
+                              <b>Mode of Travel: </b>
+                              <select id="mode">
+                                <option value="DRIVING">Driving</option>
+                                <option value="WALKING">Walking</option>
+                                <option value="BICYCLING">Bicycling</option>
+                                <option value="TRANSIT">Transit</option>
+                              </select>
+                          </div>
+                          <div id="map{{profesional.id}}" style=" position: relative;float: left; width: 500px;height: 300px"></div>
+                        </div>
+
+                      </div>
+                    </div>
+                </div>
+            </div>
           </div>
-      </div>
+
+          <div ng-hide="open">
+            <div class="panel  col-md-12">
+                <div class="panel-content">
+                    <div id="map" style=" position: relative;float: left; width: 100%;height: 700px; margin-bottom: 20px;"></div>
+                </div>
+            </div>
+          </div>
+        </div>
     </div>
 
-    <div ng-hide="open">
-      <div class="panel  col-md-12">
-          <div class="panel-content">
-              <div id="map" style=" position: relative;float: left; width: 100%;height: 700px; margin-bottom: 20px;"></div>
-          </div>
-      </div>
-    </div>
+
 
   <div class="modal fade" id="modalProfesional" aria-hidden="true" >
     <div class="modal-dialog ">
@@ -158,34 +163,68 @@
           </h1>
         </div>
         <div class="modal-body">
-          <br><br>
-          <div class="row">
-              <div class="col-md-2">
 
-              </div>
-              <div class="col-md-8">
-                  <i class="user-img icons-faces-users-03" style="color:black;"></i>
-                  <div class="append-icon">
-                    <input type="text" name="name" id="name" class="form-control form-white username" placeholder="Username" required ng-model= "user">
-                    <i class="icon-user"></i>
-                  </div>
-                  <div class="append-icon m-b-20">
-                    <input type="password" name="password" class="form-control form-white password" placeholder="Password" required ng-model= "pass">
-                    <i class="icon-lock"></i>
-                  </div>
+          <!--<ul class="nav nav-tabs nav-primary">
+            <li class="{{tab1}}"><a href="javascript:;" data-toggle="tab" ng-click = "activeDiv(1)"><i class="icon-home"></i> Home</a></li>
+            <li class="{{tab2}}"><a href="javascript:;" data-toggle="tab" ng-click = "activeDiv(2)"><i class="icon-user"></i> Profile</a></li>
+            <li class="{{tab3}}"><a href="javascript:;" data-toggle="tab" ng-click = "activeDiv(3)"><i class="icon-cloud-download"></i> Other Tab</a></li>
+          </ul>
+          <div ng-show = "showTab1">
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                    <i class="user-img icons-faces-users-03" style="color:black;"></i>
+                    <div class="append-icon">
+                      <input type="text" name="name" id="name" class="form-control form-white username" placeholder="Username" required ng-model= "user">
+                      <i class="icon-user"></i>
+                    </div>
+                    <div class="append-icon m-b-20">
+                      <input type="password" name="password" class="form-control form-white password" placeholder="Password" required ng-model= "pass">
+                      <i class="icon-lock"></i>
+                    </div>
 
-                  <div class="social-btn">
-                      <button type="submit" id="submit-form" class="btn btn-lg btn-danger btn-block ladda-button" data-style="expand-left" ng-click="login()">Sign In</button>
-                      <button type="button" id="facebookLogin" class="btn-fb btn btn-lg btn-block btn-primary"><i class="icons-socialmedia-08 pull-left" ></i>Connect with Facebook</button>
-                      <button type="button" class="btn btn-lg btn-block btn-blue"><i class="icon-social-twitter pull-left"></i>Login with Twitter</button>
-                  </div>
-                  <div class="clearfix">
-                      <p class="pull-left m-t-20"><a id="password" href="#">Olvidaste Contraseña?</a></p>
-                      <p class="pull-right m-t-20"><a href="user-signup-v1.html">Eres Nuevo? Registrarte</a></p>
-                  </div>
+                    <div class="social-btn">
+                        <button type="submit" id="submit-form" class="btn btn-lg btn-danger btn-block ladda-button" data-style="expand-left" ng-click="login()">Sign In</button>
+                        <button type="button" id="facebookLogin" class="btn-fb btn btn-lg btn-block btn-primary"><i class="icons-socialmedia-08 pull-left" ></i>Connect with Facebook</button>
+                        <button type="button" class="btn btn-lg btn-block btn-blue"><i class="icon-social-twitter pull-left"></i>Login with Twitter</button>
+                    </div>
+                </div>
+            </div>
+          </div>
+          <div ng-show = "showTab2">
+
+          </div>
+          <div ng-show = "showTab3">
+
+          </div>-->
+          <ul class="nav nav-tabs nav-primary">
+            <li class="active"><a href="#tab2_1" data-toggle="tab"><i class="icon-home"></i> Iniciar Sesión</a></li>
+            <li class=""><a href="#tab2_2" data-toggle="tab"><i class="icon-user"></i> Registrarse</a></li>
+            <li><a href="#tab2_3" data-toggle="tab"><i class="icon-cloud-download"></i> Olvido Contraseña?</a></li>
+          </ul>
+          <div class="tab-content">
+            <div class="tab-pane fade active in" id="tab2_1">
+              <div class="append-icon">
+                <input type="text" name="name" id="name" class="form-control form-white username" placeholder="Username" required ng-model= "user">
+                <i class="icon-user"></i>
               </div>
+              <div class="append-icon m-b-20">
+                <input type="password" name="password" class="form-control form-white password" placeholder="Password" required ng-model= "pass">
+                <i class="icon-lock"></i>
+              </div>
+              <button type="button" id="submit-form" class="btn btn-lg btn-danger btn-block "  ng-click="login()">Sign In</button>
+              <button type="button" id="facebookLogin" class="btn-fb btn btn-lg btn-block btn-primary"><i class="icons-socialmedia-08 pull-left" ></i>Connect with Facebook</button>
+              <button type="button" class="btn btn-lg btn-block btn-blue"><i class="icon-social-twitter pull-left"></i>Login with Twitter</button>
+            </div>
+            <div class="tab-pane fade " id="tab2_2">
+
+
+            </div>
+            <div class="tab-pane fade" id="tab2_3">
+              <p>Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify pitchfork tattooed craft beer, iphone skateboard locavore carles etsy salvia banksy hoodie helvetica. DIY synth PBR banksy irony. Leggings gentrify squid 8-bit cred pitchfork. Williamsburg banh mi whatever gluten-free, carles pitchfork biodiesel fixie etsy retro mlkshk vice blog. Scenester cred you probably haven't heard of them, vinyl craft beer blog stumptown. Pitchfork sustainable tofu synth chambray yr.</p>
+            </div>
           </div>
         </div>
+
         <div class="modal-footer text-center">
 
         </div>
@@ -240,21 +279,27 @@
                       <div class="col-md-6">
                         <div class="form-group">
                           <label>Seleccione un Servicio</label>
-                          <select  class="form-control form-white" data-search="true" data-style="white"  ng-model = "Peticion.idServicio" >
+                          <select  class="form-control form-white" data-search="true" data-style="white"  ng-model = "Peticion.idServicio" ng-disabled = "disabledServicio" >
                             <option ng-repeat="servicio in Profesional.servicios"  value="{{servicio.id}}">{{servicio.descripcion}}</option>
                           </select>
                         </div>
                       </div>
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label>Seleccione un Producto</label>
+                          <select  class="form-control form-white" data-search="true" data-style="white"  ng-model = "Peticion.idProducto" ng-disabled = "disabledProducto" >
+                            <option ng-repeat="servicio in Profesional.productos"  value="{{servicio.id}}">{{servicio.descripcion}}</option>
+                          </select>
+                        </div>
+                      </div>
                   </div>
-                  <div class="social-btn">
-                      <button type="submit" id="submit-form" class="btn btn-lg btn-danger btn-block ladda-button" data-style="expand-left" ng-click="login()">Sign In</button>
-                      <button type="button" id="facebookLogin" class="btn-fb btn btn-lg btn-block btn-primary"><i class="icons-socialmedia-08 pull-left" ></i>Connect with Facebook</button>
-                      <button type="button" class="btn btn-lg btn-block btn-blue"><i class="icon-social-twitter pull-left"></i>Login with Twitter</button>
+
+                  <div class="row">
+                    <div class="col-md-6">
+                      <a href="javascript:;" class="btn btn-embossed btn-success" style="color:white" ng-click = "save()" >Hacer Solicitud</a>
+                    </div>
                   </div>
-                  <div class="clearfix">
-                      <p class="pull-left m-t-20"><a id="password" href="#">Olvidaste Contraseña?</a></p>
-                      <p class="pull-right m-t-20"><a href="user-signup-v1.html">Eres Nuevo? Registrarte</a></p>
-                  </div>
+
               </div>
           </div>
         </div>
@@ -267,3 +312,31 @@
 
 
 </div>
+
+<a href="#" class="scrollup"><i class="fa fa-angle-up"></i></a>
+<script src="../assets/global/plugins/jquery/jquery-1.11.1.min.js"></script>
+<script src="../assets/global/plugins/jquery/jquery-migrate-1.2.1.min.js"></script>
+<script src="../assets/global/plugins/jquery-ui/jquery-ui-1.11.2.min.js"></script>
+<script src="../assets/global/plugins/gsap/main-gsap.min.js"></script>
+<script src="../assets/global/plugins/bootstrap/js/bootstrap.min.js"></script>
+<script src="../assets/global/plugins/jquery-cookies/jquery.cookies.min.js"></script> <!-- Jquery Cookies, for theme -->
+<script src="../assets/global/plugins/jquery-block-ui/jquery.blockUI.min.js"></script> <!-- simulate synchronous behavior when using AJAX -->
+<script src="../assets/global/plugins/bootbox/bootbox.min.js"></script> <!-- Modal with Validation -->
+<script src="../assets/global/plugins/mcustom-scrollbar/jquery.mCustomScrollbar.concat.min.js"></script> <!-- Custom Scrollbar sidebar -->
+<script src="../assets/global/plugins/bootstrap-dropdown/bootstrap-hover-dropdown.min.js"></script> <!-- Show Dropdown on Mouseover -->
+<script src="../assets/global/plugins/charts-sparkline/sparkline.min.js"></script> <!-- Charts Sparkline -->
+
+<script src="../assets/global/plugins/select2/select2.min.js"></script> <!-- Select Inputs -->
+<script src="../assets/global/plugins/icheck/icheck.min.js"></script> <!-- Checkbox & Radio Inputs -->
+<script src="../assets/global/plugins/backstretch/backstretch.min.js"></script> <!-- Background Image -->
+<script src="../assets/global/plugins/bootstrap-progressbar/bootstrap-progressbar.min.js"></script> <!-- Animated Progress Bar -->
+<script src="../assets/global/plugins/charts-chartjs/Chart.min.js"></script>
+
+ <!-- Theme Builder -->
+<script src="../assets/global/js/sidebar_hover.js"></script> <!-- Sidebar on Hover -->
+<script src="../assets/global/js/application.js"></script> <!-- Main Application Script -->
+<script src="../assets/global/js/plugins.js"></script> <!-- Main Plugin Initialization Script -->
+<script src="../assets/global/js/widgets/notes.js"></script> <!-- Notes Widget -->
+<script src="../assets/global/js/quickview.js"></script> <!-- Chat Script -->
+<script src="../assets/global/js/pages/search.js"></script> <!-- Search Script -->
+<script src="../assets/admin/layout3/js/layout.js"></script>

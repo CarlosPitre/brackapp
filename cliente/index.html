@@ -25,61 +25,42 @@
 
     <body class="account sidebar-light fixed-topbar theme-sltl bg-light-dark color-default separate-inputs" >
 
-        <div class="sidebar" >
-                <div class="logopanel" style="background:#95C92C;">
-                    <h1>
-                        <a href="#/"></a>
-                    </h1>
-                </div>
-                <div class="sidebar-inner">
-                    <ul class="nav nav-sidebar">
-                        <li ng-class="{ active  : isActive('/')}"><a href="#/"><i class="icon-home"></i><span>Inicio</span></a></li>
-                        <li ng-class="{ active  : isActive('/')}"><a href="#/"><i class="icon-home"></i><span>Inicio</span></a></li>
-                        <li ng-class="{ active  : isActive('/')}"><a href="#/"><i class="icon-home"></i><span>Inicio</span></a></li>
-                        <li ng-class="{ active  : isActive('/')}"><a href="#/"><i class="icon-home"></i><span>Inicio</span></a></li>
 
-                        <li ng-class="{ active  : isActive('/')}"><a href="#/"><i class="icon-home"></i><span>Inicio</span></a></li>
-                        <li ng-class="{ active  : isActive('/')}"><a href="#/"><i class="icon-home"></i><span>Inicio</span></a></li>
-                        <li ng-class="{ active  : isActive('/')}"><a href="#/"><i class="icon-home"></i><span>Inicio</span></a></li>
-                        <li ng-class="{ active  : isActive('/')}"><a href="#/"><i class="icon-home"></i><span>Inicio</span></a></li>
-                        <li ng-class="{ active  : isActive('/')}"><a href="#/"><i class="icon-home"></i><span>Inicio</span></a></li>
-                    </ul>
-                </div>
-            </div>
             <!-- END SIDEBAR -->
             <div class="main-content">
                 <!-- BEGIN TOPBAR -->
                 <div class="topbar" style="background:#95C92C;">
-                    <div class="header-left">
-                        <div class="topnav">
-                            <a class="menutoggle" href="#" data-toggle="sidebar-collapsed"><span class="menu__handle"><span>Menu</span></span></a>
-                        </div>
+                  <div class="header-left">
+                    <div class="topnav">
+                      <a class="menutoggle" href="#" data-toggle="sidebar-collapsed"><span class="menu__handle"><span>Menu</span></span></a>
                     </div>
-                    <div class="header-right">
-                        <ul class="header-menu nav navbar-nav">
-                          <!-- BEGIN USER DROPDOWN -->
-                            <li class="dropdown" id="user-header">
-                                <a href="#" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-                                <img src="../assets/global/images/avatars/user1.png" alt="user image">
-                                <span class="username">Hi, John Doe</span>
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li>
-                                        <a data-target="#"><i class="icon-user"></i><span>Mi Perfil</span></a>
-                                    </li>
+                  </div>
+                <div class="header-right">
+                  <ul class="header-menu nav navbar-nav">
+                  <!-- BEGIN USER DROPDOWN -->
+                    <li class="dropdown" id="user-header">
+                      <a href="#" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                        <img src="../assets/global/images/avatars/user1.png" alt="user image">
+                        <span class="username">Hi, John Doe</span>
+                      </a>
+                      <ul class="dropdown-menu">
+                        <li>
+                          <a data-target="#"><i class="icon-user"></i><span>Mi Perfil</span></a>
+                        </li>
 
-                                    <li>
-                                        <a data-target="#"><i class="icon-logout"></i><span>Cerrar Sesión</span></a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <!-- END USER DROPDOWN -->
-                        </ul>
-                    </div>
-                    <!-- header-right -->
+                        <li>
+                          <a data-target="#"><i class="icon-logout"></i><span>Cerrar Sesión</span></a>
+                        </li>
+                      </ul>
+                    </li>
+                  <!-- END USER DROPDOWN -->
+                  </ul>
+                </div>
+                <!-- header-right -->
+                </div>
+                <div  ng-view></div>
             </div>
-            <div  ng-view></div>
-      </div>
+
 
       <div class="loader-overlay loaded">
           <div class="loader-inner">

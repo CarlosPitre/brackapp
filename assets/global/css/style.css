@@ -56,7 +56,7 @@
 .map_container {
     position: relative;
     float: left;
-    width: 100%; 
+    width: 100%;
     height: 50%
 }
 @font-face {
@@ -3136,7 +3136,7 @@ body:not(.sidebar-collapsed) .sidebar .sidebar-inner .nav-sidebar > li.nav-paren
     margin-right: 0 !important;
   }
   .sidebar-top .main-content .page-content {
-    top: 116px;
+    top: 6px;
   }
   .sidebar-top:not(.fixed-topbar) .main-content {
     margin-top: 116px;

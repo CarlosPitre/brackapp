@@ -5,10 +5,10 @@ class Model_profesional extends CI_Model {
 
 	public function __construct()
 	{
-		parent::__construct();	
+		parent::__construct();
 	}
 
-	
+
 
 	public function getprofesional($id)
 	{
@@ -146,7 +146,7 @@ class Model_profesional extends CI_Model {
 							->having('distancia < 1')
 							->order_by('distancia', 'asc')
 							->get();
-						
+
 		return $query->result();
 	}
 

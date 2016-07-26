@@ -10,12 +10,14 @@ class Model_servicios extends CI_Model {
 
 	public function getServicios($id = null)
 	{
-		if ($id == null) {
+		if ($id != null) {
 			$query=$this->db
 				->select('s.*,t.descripcion as sector, ps.porcentaje')
 				->from('servicio s')
-				->join('sector t', ' s.idSector = t.id', 'inner')
+				->join('sectorServicio ss', 's.id = ss.idServicio', 'inner')
+				->join('sector t', ' ss.idSector = t.id', 'inner')
 				->join('profesionalservicio ps', 'ps.idServicio = s.id', 'inner')
+				->where('ps.idProfesional', $id)
 				->get();
 		}
 		return $query->result();

@@ -3,8 +3,9 @@ app.service('servicioService', ['$http', function($http){
 		var req = $http.post(uri + '/app/servicios', object);
 		return req;
 	}
-	this.getServicios = function  () {
-		var req = $http.get(uri + '/app/servicios');
+	this.getServicios = function  (id) {
+		console.log(id);
+		var req = $http.get(uri + '/app/servicios/' + id );
 		return req;
 	}
 	this.put = function  (object) {

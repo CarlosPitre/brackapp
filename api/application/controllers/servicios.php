@@ -15,6 +15,8 @@ class Servicios extends REST_Controller {
 	{
 		if ($id == null) {
 			$servicios = $this->model_servicios->getServicios();
+		}else{
+			$servicios = $this->model_servicios->getServicios($id);
 		}
 		if ($servicios) { 
 			$this->response($servicios, REST_Controller::HTTP_OK);

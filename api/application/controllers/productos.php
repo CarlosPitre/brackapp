@@ -17,6 +17,9 @@ class Productos extends REST_Controller {
 		if ($id == null) {
 			$Productos = $this->model_productos->getProductos();
 		}
+		else{
+			$Productos = $this->model_productos->getProductos($id);
+		}
 		if ($Productos) { 
 			$this->response($Productos, REST_Controller::HTTP_OK);
 		}else{

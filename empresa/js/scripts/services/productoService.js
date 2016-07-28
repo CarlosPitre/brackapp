@@ -3,8 +3,8 @@ app.service('productoService', ['$http', function($http){
 		var req = $http.post(uri + '/app/productos', object);
 		return req;
 	}
-	this.getProductos = function  () {
-		var req = $http.get(uri + '/app/productos');
+	this.getProductos = function  (id) {
+		var req = $http.get(uri + '/app/productos/' + id );
 		return req;
 	}
 
@@ -17,22 +17,6 @@ app.service('productoService', ['$http', function($http){
 		var req = $http.post(uri + '/app/productos/delete', object);
 		return req;
 	}
-
-
-
-	/*
-	this.put = function  (object) {
-		var req = $http.put(uri + '/app/servicios', object);
-		return req;
-	}*/
-
-     
-
-	/*this.getSectores = function  () {
-		var req = $http.get(uri + '/app/sectores');
-		return req;
-	} */
-
 
 
 }])

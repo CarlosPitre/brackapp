@@ -2,6 +2,7 @@ app.controller('miproductoCtrl',  function($scope,productoService,pluginsService
 	
 
 	$scope.Productos = [];
+    $scope.idProfesional = 1;
 
 	loadProductos();
 	$scope.Producto = {};
@@ -20,7 +21,7 @@ app.controller('miproductoCtrl',  function($scope,productoService,pluginsService
 
 	
 	function loadProductos () {
-		var promiseGet = productoService.getProductos(); 
+		var promiseGet = productoService.getProductos($scope.idProfesional); 
         promiseGet.then(function (pl) {
             $scope.Productos = pl.data;
         },

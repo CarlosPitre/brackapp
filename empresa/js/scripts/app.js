@@ -24,6 +24,11 @@ var app;
                     controller : 'miproductoCtrl'
             	}				
 			)
+            .when("/empresa/misSolicitudes",{
+                    templateUrl: 'pages/solicitudes.html',
+                    controller : 'solicitudesCtrl'
+                }               
+            )
 			.otherwise({
                 redirectTo:"/inicio"
             });

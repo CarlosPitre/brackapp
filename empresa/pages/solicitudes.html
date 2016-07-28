@@ -7,8 +7,43 @@
             <i class="icon-magnifier"></i>
           </div>
     </div>
-    <div class="col-md-2" >
-      <button style="  background:#95C92C;"  type="button" class="btn btn-white btn" ng-click="nuevo()"><i style="color:white;"  class="fa fa-plus"></i></button>
-    </div>    
-  </div>
-  <br>
+      <br>
+      <br>
+      <br>
+<div class="row">
+            <div class="col-lg-12 portlets">
+              <div class="panel">
+                <div  class="panel-header panel-controls">
+                  
+                </div>
+                <div class="panel-content">
+                  <div class="filter-left">
+                    <table  class="table table-bordered ">
+                      <thead>
+                        <tr style="color:white;">
+                          <th>#</th>
+                          <th>Fecha</th>
+                           <th>Cliente</th>
+                           <th>Servicio</th>
+                          <th >Producto</th>
+                          <th >Respuesta</th>                       
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr ng-repeat="sol in Solicitudes | filter:filter ">
+                          <td>{{sol.id}}</td>
+                          <td>{{sol.fecha}} </td>
+                          <td>{{sol.cliente}}</td>
+                          <td>{{sol.servicio}}</td>
+                          <td>{{sol.producto}} </td>
+                          <td>
+                              <button   type="button"  href="javascript:;" ng-click="delete(pro)" style="background:#95C92C;" class="btn btn-sm btn-blue"><i class="fa fa-close"> &nbsp Eliminar</i></button>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>

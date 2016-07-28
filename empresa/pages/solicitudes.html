@@ -26,7 +26,8 @@
                            <th>Cliente</th>
                            <th>Servicio</th>
                           <th >Producto</th>
-                          <th >Respuesta</th>                       
+                          <th >Respuesta</th>
+                          <th >Opciones</th>                       
                         </tr>
                       </thead>
                       <tbody>
@@ -36,7 +37,11 @@
                           <td>{{sol.cliente}}</td>
                           <td>{{sol.servicio}}</td>
                           <td>{{sol.producto}} </td>
+                          <td>                   </td>
                           <td>
+                              <button   type="button"  href="javascript:;" ng-click="delete(pro)" style="background:#95C92C;" class="btn btn-sm btn-blue"><i class="fa fa-close"> &nbsp Enviar</i></button>
+                      
+                          
                               <button   type="button"  href="javascript:;" ng-click="delete(pro)" style="background:#95C92C;" class="btn btn-sm btn-blue"><i class="fa fa-close"> &nbsp Eliminar</i></button>
                           </td>
                         </tr>

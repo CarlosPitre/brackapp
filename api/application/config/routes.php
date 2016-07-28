@@ -36,3 +36,5 @@ $route['app/servicio/profesionales/visitados'] = 'profesionales/busquedaGeneralP
 $route['app/servicio/profesionales/distancia'] = 'profesionales/getProfesionalesBySectorDistancia';
 $route['app/solicitudes'] = 'solicitudes/solicitudes';
 $route['app/solicitudes/(:num)'] = 'solicitudes/solicitudes/$1';
+$route['app/respuestas'] = 'solicitudes/respuestas';
+$route['app/respuestas/(:num)'] = 'solicitudes/respuestas/$1';

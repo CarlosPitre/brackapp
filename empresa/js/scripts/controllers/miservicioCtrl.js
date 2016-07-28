@@ -10,8 +10,9 @@ app.controller('miservicioCtrl',  function($scope,servicioService,pluginsService
 	$scope.openButton = true;
 
 	
-
+    
 	$scope.Sectores = [];
+	loadSectores();
 	$scope.Sectores = {};
 
 
@@ -37,7 +38,7 @@ app.controller('miservicioCtrl',  function($scope,servicioService,pluginsService
 	}
 
 
-	/*function loadSectores () {
+	function loadSectores () {
 		var promiseGet = servicioService.getSectores(); 
         promiseGet.then(function (pl) {
             $scope.Sectores = pl.data;
@@ -45,7 +46,7 @@ app.controller('miservicioCtrl',  function($scope,servicioService,pluginsService
         function (errorPl) {
         	console.log('Error Al Cargar Datos', errorPl);
         });
-	}*/
+	}
 
 
 

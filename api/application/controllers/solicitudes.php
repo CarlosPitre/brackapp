@@ -9,6 +9,7 @@ class Solicitudes extends REST_Controller{
   {
     parent::__construct();
     $this->load->model('model_solicitudes');
+    $this->load->model('model_respuestas');
   }
 
 
@@ -29,6 +30,23 @@ class Solicitudes extends REST_Controller{
             ], REST_Controller::HTTP_NOT_FOUND); 
     };
   }
+
+
+  public function respuestas_get($id = null)
+  {
+    if ($id == null) {
+      $Respuestas = $this->model_respuestas->getRespuestas();
+    }
+    if ($Respuestas) { 
+      $this->response($Respuestas, REST_Controller::HTTP_OK);
+    }else{
+          $this->response([
+            'status' => FALSE,
+            'message' => 'No users were found'
+            ], REST_Controller::HTTP_NOT_FOUND); 
+    };
+  }
+
 
 
 

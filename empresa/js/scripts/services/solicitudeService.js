@@ -5,4 +5,10 @@ app.service('solicitudeService', ['$http', function($http){
 		return req;
 	}
 
+
+	this.getRespuesta = function  () {
+		var req = $http.get(uri + '/app/respuesta');
+		return req;
+	}
+
 }])

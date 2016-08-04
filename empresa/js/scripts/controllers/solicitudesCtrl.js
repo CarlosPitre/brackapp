@@ -7,6 +7,11 @@ app.controller('solicitudesCtrl',  function($scope,solicitudeService,pluginsServ
 	loadSolicitudes();
 	$scope.Solicitud = {};
 
+ 
+	$scope.Respuestas = [];
+
+	loadRespuestas();
+	$scope.Respuesta = {};
 	
 	
 
@@ -23,6 +28,18 @@ app.controller('solicitudesCtrl',  function($scope,solicitudeService,pluginsServ
         	console.log('Error Al Cargar Datos', errorPl);
         });
 	}
+
+
+	function loadRespuestas () {
+		var promiseGet = solicitudeService.getRespuestas(); 
+        promiseGet.then(function (pl) {
+            $scope.Respuestas = pl.data;
+        },
+        function (errorPl) {
+        	console.log('Error Al Cargar Datos', errorPl);
+        });
+	}
+
 
 
 /*	function loadMarcas () {

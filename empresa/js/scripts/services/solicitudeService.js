@@ -6,8 +6,8 @@ app.service('solicitudeService', ['$http', function($http){
 	}
 
 
-	this.getRespuesta = function  () {
-		var req = $http.get(uri + '/app/respuesta');
+	this.getRespuestas = function  () {
+		var req = $http.get(uri + '/app/respuestas');
 		return req;
 	}
 

@@ -22,14 +22,14 @@ class Profesionales extends REST_Controller {
 	        $this->response([
        			'status' => FALSE,
         		'message' => 'No users were found'
-            ], REST_Controller::HTTP_NOT_FOUND); 
+            ], REST_Controller::HTTP_NOT_FOUND);
 		};
 	}
 
 	/*
 
 		Busqueda en todas las tablas de marca, sectores, servicios, profesionales y productos
-		Recibo por json los parametros de busqueda, obtengo el campo tipo que es el que me va a 
+		Recibo por json los parametros de busqueda, obtengo el campo tipo que es el que me va a
 		ayudar a saber en que tabla debo buscar por medio de un switch, retorno el profesional final.
 
 	*/
@@ -43,11 +43,11 @@ class Profesionales extends REST_Controller {
 		switch ($tipo) {
 			case 'Sector':
 				$id = $this->post("idSector");
-				$profesionales = $this->model_profesional->getProfesionalesBySector($id); 
+				$profesionales = $this->model_profesional->getProfesionalesBySector($id);
 				break;
 			case 'Marca':
 				$id = $this->post("idMarca");
-				$profesionales = $this->model_profesional->getProfesionalesByMarca($id);				
+				$profesionales = $this->model_profesional->getProfesionalesByMarca($id);
 				break;
 			case 'Servicio':
 				$id = $this->post("idServicio");
@@ -60,13 +60,16 @@ class Profesionales extends REST_Controller {
 			case 'Producto':
 				$id = $this->post("idProducto");
 				$profesionales = $this->model_profesional->getProfesionalesByProducto($id);
-				break;			
+				for ($i=0; $i < count($profesionales); $i++) {
+					$profesionales[$i]->imagenesProductos = $this->model_profesional->getImagenes($profesionales[$i]->idProfesionalProducto);
+				}
+				break;
 			default:
 				# code...
 				break;
-		} 
+		}
 
-		for ($i=0; $i < count($profesionales); $i++) { 
+		for ($i=0; $i < count($profesionales); $i++) {
 			$profesionales[$i]->status = FALSE;
 			$profesionales[$i]->button = "Ver Mas";
 			$profesionales[$i]->mapa = FALSE;
@@ -76,17 +79,17 @@ class Profesionales extends REST_Controller {
 			$profesionales[$i]->productos = $productos;
 		}
 
-		if ($profesionales) {			
+		if ($profesionales) {
 			$this->response([
        			'status' => 1,
         		'profesionales' => $profesionales
-            ], REST_Controller::HTTP_OK); 
+            ], REST_Controller::HTTP_OK);
 		}else{
 	        $this->response([
        			'status' => 0,
         		'message' => 'No hay Empleados Con Ese Servicios',
         		'profesionales' => []
-            ], REST_Controller::HTTP_OK); 
+            ], REST_Controller::HTTP_OK);
 		};
 	}
 
@@ -98,11 +101,11 @@ class Profesionales extends REST_Controller {
 		switch ($tipo) {
 			case 'Sector':
 				$id = $this->post("idSector");
-				$profesionales = $this->model_profesional->getProfesionalesBySectorVisitados($id); 
+				$profesionales = $this->model_profesional->getProfesionalesBySectorVisitados($id);
 				break;
 			case 'Marca':
 				$id = $this->post("idMarca");
-				$profesionales = $this->model_profesional->getProfesionalesByMarcaVisitados($id);				
+				$profesionales = $this->model_profesional->getProfesionalesByMarcaVisitados($id);
 				break;
 			case 'Servicio':
 				$id = $this->post("idServicio");
@@ -115,13 +118,13 @@ class Profesionales extends REST_Controller {
 			case 'Producto':
 				$id = $this->post("idProducto");
 				$profesionales = $this->model_profesional->getProfesionalesByProductoVisitados($id);
-				break;			
+				break;
 			default:
 				# code...
 				break;
-		} 
+		}
 
-		for ($i=0; $i < count($profesionales); $i++) { 
+		for ($i=0; $i < count($profesionales); $i++) {
 			$profesionales[$i]->status = FALSE;
 			$profesionales[$i]->button = "Ver Mas";
 			$profesionales[$i]->mapa = FALSE;
@@ -131,23 +134,23 @@ class Profesionales extends REST_Controller {
 			$profesionales[$i]->productos = $productos;
 		}
 
-		if ($profesionales) {			
+		if ($profesionales) {
 			$this->response([
        			'status' => 1,
         		'profesionales' => $profesionales
-            ], REST_Controller::HTTP_OK); 
+            ], REST_Controller::HTTP_OK);
 		}else{
 	        $this->response([
        			'status' => 0,
         		'message' => 'No hay Empleados Con Ese Servicios',
         		'profesionales' => []
-            ], REST_Controller::HTTP_OK); 
+            ], REST_Controller::HTTP_OK);
 		};
 	}
 
 	public function getProfesionalesBySectorDistancia_post()
 	{
-		
+
 		$tipo = $this->post("tipo");
 		$lat = $this->post("latitud");
 		$lgn = $this->post("longitud");
@@ -155,11 +158,11 @@ class Profesionales extends REST_Controller {
 		switch ($tipo) {
 			case 'Sector':
 				$id = $this->post("idSector");
-				$profesionales = $this->model_profesional->getProfesionalesBySectorDistancia($id,$lat,$lgn); 
+				$profesionales = $this->model_profesional->getProfesionalesBySectorDistancia($id,$lat,$lgn);
 				break;
 			case 'Marca':
 				$id = $this->post("idMarca");
-				$profesionales = $this->model_profesional->getProfesionalesByMarcaVisitados($id,$lat,$lgn);				
+				$profesionales = $this->model_profesional->getProfesionalesByMarcaVisitados($id,$lat,$lgn);
 				break;
 			case 'Servicio':
 				$id = $this->post("idServicio");
@@ -172,13 +175,13 @@ class Profesionales extends REST_Controller {
 			case 'Producto':
 				$id = $this->post("idProducto");
 				$profesionales = $this->model_profesional->getProfesionalesByProductoVisitados($id,$lat,$lgn);
-				break;			
+				break;
 			default:
 				# code...
 				break;
-		} 
+		}
 
-		for ($i=0; $i < count($profesionales); $i++) { 
+		for ($i=0; $i < count($profesionales); $i++) {
 			$profesionales[$i]->status = FALSE;
 			$profesionales[$i]->button = "Ver Mas";
 			$profesionales[$i]->mapa = FALSE;
@@ -188,17 +191,17 @@ class Profesionales extends REST_Controller {
 			$profesionales[$i]->productos = $productos;
 		}
 
-		if ($profesionales) {			
+		if ($profesionales) {
 			$this->response([
        			'status' => 1,
         		'profesionales' => $profesionales
-            ], REST_Controller::HTTP_OK); 
+            ], REST_Controller::HTTP_OK);
 		}else{
 	        $this->response([
        			'status' => 0,
         		'message' => 'No hay Empleados Con Ese Servicios',
         		'profesionales' => []
-            ], REST_Controller::HTTP_OK); 
+            ], REST_Controller::HTTP_OK);
 		};
 	}
 

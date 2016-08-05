@@ -70,10 +70,10 @@ class Model_profesional extends CI_Model {
 
 	public function getProfesionalesByProducto($id)
 	{
-		$query = $this->db->select('p.*, m.nombre as municipio, pp.porcentaje')
+		$query = $this->db->select('p.*, m.nombre as municipio, pp.porcentaje, pp.id as idProfesionalProducto')
 							->from('profesional p')
 							->join('profesionalProducto pp', 'pp.idProfesional = p.id','inner')
-							->join('producto p', 'pr.id = pp.idProducto', 'inner')
+							->join('producto pr', 'pr.id = pp.idProducto', 'inner')
 							->join('municipio m', 'm.id = p.idMunicipio', 'inner')
 							->where('pp.idProducto', $id)
 							->order_by('p.calificacion', 'desc')
@@ -167,6 +167,15 @@ class Model_profesional extends CI_Model {
 							->join('profesionalProducto pp', 'pp.idProducto = p.id','inner')
 							->where('pp.idProfesional', $idProfesional)
 							->get();
+		return $query->result();
+	}
+
+	public function getImagenes($idProfesionalProducto)
+	{
+		$query = $this->db->select('imagen')
+											->from('imagenesProfesionalProducto')
+											->where('idProfesionalProducto',$idProfesionalProducto)
+											->get();
 		return $query->result();
 	}
 

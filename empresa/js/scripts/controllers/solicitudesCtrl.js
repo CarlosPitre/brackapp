@@ -40,57 +40,34 @@ app.controller('solicitudesCtrl',  function($scope,solicitudeService,pluginsServ
         });
 	}
 
-
-
-/*	function loadMarcas () {
-		var promiseGet = productoService.getMarcas(); 
-        promiseGet.then(function (pl) {
-            $scope.Marcas = pl.data;
-        },
-        function (errorPl) {
-        	console.log('Error Al Cargar Datos', errorPl);
-        });
-	}*/
-
-
-
-	/*$scope.save = function  () {
-		var datos = {
-			descripcion : $scope.Productos.descripcion,
-			marca : $scope.Productos.marca,
-			porcentaje :  $scope.Productos.porcentaje,
-			idProfesional : "1"
-		};
-		console.log(JSON.stringify(datos));
-		var promiseGet = productoService.post(datos); 
-		promiseGet.then(function (pl) {
-            alert(pl.data);
-            loadProductos();
-
-        },
-        function (errorPl) {
-        	console.log('Error Al Cargar Datos', errorPl);
-        });
-	}*/
-
-
-	 /*$scope.delete = function  (producto) {
-	 	console.log(JSON.stringify(datos));
-		var datos = {
-			idProducto : producto.id,
-			idMarca : producto.idMarca,
-			idProfesional : "1",
-		}
+    
+    $scope.update = function  (respuesta) {
 		
-
-		var promiseGet = productoService.delete(datos); 
+		var datos = {
+			id : respuesta.id,
+			idRespuesta : $scope.Solicitudes.idRespuesta
+		};
+		var promiseGet = solicitudeService.put(datos); 
 		promiseGet.then(function (pl) {
             alert(pl.data);
-            loadProductos();
         },
         function (errorPl) {
         	console.log('Error Al Cargar Datos', errorPl);
         });
-	}*/
+	}
+
+
+	 $scope.delete = function  (solicitud) {
+		var datos = {
+			id : solicitud.id
+		};
+		var promiseGet = solicitudeService.delete(datos); 
+		promiseGet.then(function (pl) {
+            alert(pl.data);
+        },
+        function (errorPl) {
+        	console.log('Error Al Cargar Datos', errorPl);
+        });
+	}
 
 })

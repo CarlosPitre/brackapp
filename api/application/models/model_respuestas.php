@@ -18,6 +18,12 @@ class Model_respuestas extends CI_Model {
 		}
 		return $query->result();
 	}
+
+	public function saveRespuestas($datos = array())
+	{
+		$this->db->insert('respuestas', $datos);
+		return $this->db->insert_id();
+	}
 }
 
 /* End of file model_respuestas.php */

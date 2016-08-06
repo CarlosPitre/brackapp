@@ -49,6 +49,35 @@ class Solicitudes extends REST_Controller{
 
 
 
+  public function solicitudes_put()
+  {
+    $datos = array(
+     "idRespuesta" => $this->put("idRespuesta")
+    );
+    $guardar= $this->model_solicitudes->update($datos,$this->put("id"));
+    if ($guardar) {
+      $message = "Datos Guardados Correctamente";
+      $this->response($message, REST_Controller::HTTP_CREATED);
+    }else{
+      $message = "Error";
+      $this->response($message, REST_Controller::HTTP_BAD_REQUEST);
+    };
+  }
+
+public function delete_post()
+  {
+    $id= $this->post("id");
+    $guardar= $this->model_solicitudes->delete($id);
+    if ($guardar) {
+      $message = "Datos eliminado Correctamente";
+      $this->response($message, REST_Controller::HTTP_CREATED);
+    }else{
+      $message = "Error";
+      $this->response($message, REST_Controller::HTTP_BAD_REQUEST);
+    };
+  }
+
+
 
   public function solicitudes_post()
   {

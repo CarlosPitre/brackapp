@@ -30,4 +30,18 @@ class Model_solicitudes extends CI_Model{
     return true;
   }
 
+  public function update($datos = array(), $id)
+	{
+		$this->db->where('id', $id);
+		$this->db->update('solicitud', $datos);
+		return true;
+	}
+
+
+ public function delete($id)
+   {
+   		$this->db->where('id', $id);
+   		$this->db->delete('solicitud');
+   		return true;
+   }
 }

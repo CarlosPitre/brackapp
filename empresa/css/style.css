@@ -81,8 +81,13 @@
 /*styles for logopannel*/
 .topbar,.logopanel
 {
-    background: #333 !important;
+    background: #676767 !important;
     border-bottom: 4px solid #fb135c !important;
+}
+.table-bordered thead th {
+    background: #676767 !important;
+    font-weight:normal !important;
+    font-size: 0.8em !important;
 }
 
 /*styles for menu*/
@@ -98,7 +103,7 @@
     border-bottom: thin solid #fb619c !important;
 
 }
-
+.buttonsp,
 .left-menu li > a:hover
 {
     color:#FFF;
@@ -108,17 +113,27 @@
 
 
 /*styles for perfil*/
-.main-content .page-content .panel, .panel-header .panel-header
+.main-content .page-content .panel, .panel-header .panel-header, .modal-content
 {
     border-radius:10px 10px 0px 0px !important;
 }
-.main-content .page-content .panel .panel-header
+.main-content .page-content .panel .panel-header, .modal-header
 {
     border-radius:10px 10px 0px 0px !important;
     background: #fb135c !important ;
 }
+.modal-header
+{
+    padding: 10px !important;
+    color:#FFF;
+    font-weight: bold;
+}
+.close
+{
+    color: #FFF !important;
+}
 
-.panel-footer{
+.panel-footer, .modal-footer{
     background: #fb135c !important ;
 }
 .panel-footer > span

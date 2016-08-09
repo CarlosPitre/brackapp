@@ -9,7 +9,7 @@
     </div>
     <div class="col-md-2" >
 
-      <button style="background:#95C92C;"  type="button" class="btn btn-white btn" ng-click="nuevo()"><i style="color:white;"  class="fa fa-plus"></i></button>
+      <button   type="button" class="btn btn-white btn buttonsp" ng-click="nuevo()"><i style="color:white;"  class="fa fa-plus"></i></button>
     </div>
   </div>
   <br>
@@ -41,7 +41,7 @@
                           <td><div class="t-center"> {{servi.porcentaje}} % </div></td>
                           <td>{{servi.estado}} </td>
                           <td>
-                              <button   type="button"  href="javascript:;" ng-click="delete(servi)" style="background:#95C92C;" class="btn btn-sm btn-blue"><i class="fa fa-close"> &nbsp Eliminar</i></button>
+                              <button   type="button"  href="javascript:;" ng-click="delete(servi)"  class="btn btn-sm btn-blue buttonsp"><i class="fa fa-close"> &nbsp Eliminar</i></button>
                           </td>
                         </tr>
                       </tbody>
@@ -57,7 +57,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="icons-office-52"></i></button>
-          <div style="background:#95C92C;"> <h4 style="color:white;" class="modal-title">GESTIÓN DE SERVICIÓS</h4> </div>
+          <div > <h4 style="color:white;" class="modal-title">GESTIÓN DE SERVICIÓS</h4> </div>
         </div>
         <div class="modal-body">
 
@@ -86,13 +86,20 @@
                         </div>
                     </div>
             </div>
-            <div class="modal-footer text-center">
-          <button style="background:#95C92C;" type="button" class="btn btn-primary btn-embossed bnt-square" ng-click="save()" ng-show="openButton"><i class="fa fa-check"></i> Guardar</button>
-           <button style="background:#95C92C;" type="button" class="btn btn-primary btn-embossed bnt-square"  ng-show="openButton" data-dismiss="modal"><i class="fa fa-close" ></i> Close</button>
-          <button style="background:#95C92C;" type="button" class="btn btn-primary btn-embossed bnt-square" ng-click="update()" ng-hide="openButton"><i class="fa fa-check"></i> Modificar</button>
-        </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <button  type="button" class="btn btn-primary btn-embossed bnt-square buttonsp" ng-click="save()" ng-show="openButton"><i class="fa fa-check"></i> Guardar</button>
+                    <button  type="button" class="btn btn-primary btn-embossed bnt-square buttonsp"  ng-show="openButton" data-dismiss="modal"><i class="fa fa-close" ></i> Close</button>
+                    <button  type="button" class="btn btn-primary btn-embossed bnt-square buttonsp" ng-click="update()" ng-hide="openButton"><i class="fa fa-check"></i> Modificar</button>
+                </div>
+            </div>
+
 
            </div>
+
+          <div class="modal-footer text-center">
+
+          </div>
         </div>
 
       </div>

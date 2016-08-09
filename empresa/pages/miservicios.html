@@ -1,17 +1,33 @@
 <div class="">
 
-  <div class="row">
-    <div class="col-md-8">
-      <div class="append-icon">
-            <input type="text" name="firstname" id="finder" class="form-control form-white input-sm" placeholder="Search..." autofocus ng-model="filter">
-            <i class="icon-magnifier"></i>
-          </div>
+    <div class="row">
+        <div class="col-md-12">
+            <h2 class="tittle-page"><span>Servicios</span></h2>
+        </div>
     </div>
-    <div class="col-md-2" >
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="ctnm">
+                <div class="append-icon">
 
-      <button   type="button" class="btn btn-white btn buttonsp" ng-click="nuevo()"><i style="color:white;"  class="fa fa-plus"></i></button>
+                    <input type="text" name="firstname" id="finder" class="form-control form-white input-sm col-md-8" placeholder="Buscar..." autofocus ng-model="filter">
+                    <i class="icon-magnifier icnsearch" ></i>
+                    <button  type="button" class="btn btn-sm btn-blue buttonsp btnnew"  style="padding: 7px !important;" ng-click="nuevo()"> Nuevo</button>
+                </div>
+            </div>
+            <div class="ctnm">
+
+            </div>
+
+
+        </div>
+        <div class="col-xs-2">
+
+        </div>
+        <div class="col-md-2" >
+
+        </div>
     </div>
-  </div>
   <br>
 
    <div class="row">
@@ -89,7 +105,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <button  type="button" class="btn btn-primary btn-embossed bnt-square buttonsp" ng-click="save()" ng-show="openButton"><i class="fa fa-check"></i> Guardar</button>
-                    <button  type="button" class="btn btn-primary btn-embossed bnt-square buttonsp"  ng-show="openButton" data-dismiss="modal"><i class="fa fa-close" ></i> Close</button>
+                    <button  type="button" class="btn btn-primary btn-embossed bnt-square buttonsp"  ng-show="openButton" data-dismiss="modal"><i class="fa fa-close" ></i> Cerrar</button>
                     <button  type="button" class="btn btn-primary btn-embossed bnt-square buttonsp" ng-click="update()" ng-hide="openButton"><i class="fa fa-check"></i> Modificar</button>
                 </div>
             </div>

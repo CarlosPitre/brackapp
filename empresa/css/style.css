@@ -103,6 +103,8 @@
     border-bottom: thin solid #fb619c !important;
 
 }
+
+
 .buttonsp,
 .left-menu li > a:hover
 {
@@ -135,6 +137,7 @@
 
 .panel-footer, .modal-footer{
     background: #fb135c !important ;
+    padding: 7px !important;
 }
 .panel-footer > span
 {
@@ -213,4 +216,35 @@
 .tab-content{
     border-color: #fb135c !important;
     border-bottom: thin solid #fb135c;
+}
+
+.tittle-page
+{
+    margin-top:0 !important;
+    padding-top: 0 !important;
+    font-weight: bold;
+}
+
+.header
+{
+    padding: 0 !important;
+}
+
+.icnsearch
+{
+    position: absolute !important;
+    right: 40px !important;
+}
+
+.icnsearchs
+{
+    right: 0px !important;
+}
+.btnnew
+{
+    position: absolute;
+    right: -10px !important;
+
+    border-radius:0px 3px 3px 0px !important;
+
 }

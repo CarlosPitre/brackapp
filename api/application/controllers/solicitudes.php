@@ -21,13 +21,13 @@ class Solicitudes extends REST_Controller{
     }else{
       $Solicitudes = $this->model_solicitudes->getSolicitudes($id);
     }
-    if ($Solicitudes) { 
+    if ($Solicitudes) {
       $this->response($Solicitudes, REST_Controller::HTTP_OK);
     }else{
           $this->response([
             'status' => FALSE,
             'message' => 'No users were found'
-            ], REST_Controller::HTTP_NOT_FOUND); 
+            ], REST_Controller::HTTP_NOT_FOUND);
     };
   }
 
@@ -37,13 +37,13 @@ class Solicitudes extends REST_Controller{
     if ($id == null) {
       $Respuestas = $this->model_respuestas->getRespuestas();
     }
-    if ($Respuestas) { 
+    if ($Respuestas) {
       $this->response($Respuestas, REST_Controller::HTTP_OK);
     }else{
           $this->response([
             'status' => FALSE,
             'message' => 'No users were found'
-            ], REST_Controller::HTTP_NOT_FOUND); 
+            ], REST_Controller::HTTP_NOT_FOUND);
     };
   }
 
@@ -81,11 +81,20 @@ public function delete_post()
 
   public function solicitudes_post()
   {
+    $idProducto = $this->post("idProducto");
+    $idServicio = $this->post("idServicio");
+
+    if ($idProducto == null) {
+      $idProducto = 1 ;
+    }
+    if ($idServicio == null) {
+      $idServicio = 1;
+    }
     $datos = array(
       "idCliente" => $this->post("idCliente"),
       "idProfesional" => $this->post("idProfesional"),
-      "idProducto" => $this->post("idProducto"),
-      "idServicio" => $this->post("idServicio")
+      "idProducto" => $idProducto,
+      "idServicio" => $idServicio
     );
     $guardar= $this->model_solicitudes->save($datos);
 		if ($guardar) {

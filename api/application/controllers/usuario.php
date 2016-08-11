@@ -13,7 +13,7 @@ class Usuario extends REST_Controller {
 
 	public function usuario_get($id = null)
 	{
-		
+
 	}
 
 	public function login_post()
@@ -28,12 +28,12 @@ class Usuario extends REST_Controller {
 				'usuario' => $usuario,
        			'status' => 1,
         		'message' => 'Bienvenido'
-            ], REST_Controller::HTTP_OK); 
+            ], REST_Controller::HTTP_OK);
 		}else{
 			$this->response([
-       			'status' => FALSE,
+       			'status' => 0,
         		'message' => 'Usuario o Contraseña Incorrecto'
-            ], REST_Controller::HTTP_NOT_FOUND); 
+					], REST_Controller::HTTP_OK);
 		}
 	}
 

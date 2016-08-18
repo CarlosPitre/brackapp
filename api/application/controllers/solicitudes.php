@@ -31,6 +31,19 @@ class Solicitudes extends REST_Controller{
     };
   }
 
+  public function solicitudesCliente_get($id)
+  {
+    $Solicitudes = $this->model_solicitudes->getSolicitudesCliente($id);
+    if ($Solicitudes) {
+      $this->response($Solicitudes, REST_Controller::HTTP_OK);
+    }else{
+          $this->response([
+            'status' => FALSE,
+            'message' => 'No Tienes Solicitudes'
+          ], REST_Controller::HTTP_OK);
+    };
+  }
+
 
   public function respuestas_get($id = null)
   {

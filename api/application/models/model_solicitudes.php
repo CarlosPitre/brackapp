@@ -24,6 +24,19 @@ class Model_solicitudes extends CI_Model{
 		return $query->result();
 	}
 
+  public function getSolicitudesCliente($id)
+  {
+    $query=$this->db
+      ->select('ss.*,s.descripcion as servicio,t.descripcion as producto,p.razonSocial as profesional, p.foto')
+      ->from('servicio s')
+      ->join('solicitud ss', 's.id = ss.idServicio', 'inner')
+      ->join('producto t', ' t.id = ss.idProducto', 'inner')
+      ->join('profesional p', 'p.id = ss.idProfesional', 'inner')
+      ->where('ss.idCliente', $id)
+      ->get();
+    return $query->result();
+  }
+
   public function save($datos = array())
   {
     $this->db->insert('solicitud', $datos);

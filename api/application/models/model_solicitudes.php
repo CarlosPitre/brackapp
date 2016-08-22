@@ -27,11 +27,12 @@ class Model_solicitudes extends CI_Model{
   public function getSolicitudesCliente($id)
   {
     $query=$this->db
-      ->select('ss.*,s.descripcion as servicio,t.descripcion as producto,p.razonSocial as profesional, p.foto')
+      ->select('ss.*,s.descripcion as servicio,t.descripcion as producto,p.razonSocial as profesional, p.foto, r.nombre as respuesta')
       ->from('servicio s')
       ->join('solicitud ss', 's.id = ss.idServicio', 'inner')
       ->join('producto t', ' t.id = ss.idProducto', 'inner')
       ->join('profesional p', 'p.id = ss.idProfesional', 'inner')
+      ->join('respuestas r', 'ss.idRespuesta = r.id')
       ->where('ss.idCliente', $id)
       ->get();
     return $query->result();

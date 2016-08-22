@@ -29,6 +29,11 @@ var app;
                     controller : 'solicitudesCtrl'
                 }               
             )
+             .when("/empresa/login",{
+                    templateUrl: 'pages/login.html',
+                    controller : 'loginCtrl'
+                }               
+            )
 			.otherwise({
                 redirectTo:"/inicio"
             });

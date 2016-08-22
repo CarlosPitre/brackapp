@@ -4,7 +4,7 @@ app.controller('miperfilCtrl', function($scope,miperfilService,$routeParams,plug
 
 	$scope.Profesionales = [];
 	$scope.Profesional = {};
-	$scope.idProfesional = "1" //localstorage.getItem("idPro")
+   
 
 
 	loadDatos();
@@ -25,25 +25,10 @@ var marker = new google.maps.Marker({
     map: map,
     draggable:true,
     title:"Drag me!"
-});
+ });
+ }
 
-	}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+	
 	$scope.hoveringOver = function(value) {
 		$scope.overStar = value;
 		$scope.percent = 100 * (value / $scope.max);
@@ -51,6 +36,7 @@ var marker = new google.maps.Marker({
 
 
 	function loadDatos () {
+		$scope.idProfesional =  localStorage.getItem("idProfesional_br");
 		var promiseGet = miperfilService.getDatos($scope.idProfesional); 
         promiseGet.then(function (pl) {
             $scope.Profesional = pl.data;

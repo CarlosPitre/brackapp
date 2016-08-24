@@ -11,7 +11,7 @@ $scope.Profesional= {};
                  };
                  var promiseGet = loginService.login(data);
          promiseGet.then(function (pl) {
-                alert(JSON.stringify(pl.data))
+                
                  var status = pl.data.status;
                  if (status == 1) {
 

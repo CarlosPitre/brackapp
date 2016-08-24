@@ -2,7 +2,7 @@ app.controller('solicitudesCtrl',  function($scope,solicitudeService,pluginsServ
 	
 
 	$scope.Solicitudes = [];
-    $scope.idProfesional = 1;
+    
 
 	loadSolicitudes();
 	$scope.Solicitud = {};
@@ -20,6 +20,7 @@ app.controller('solicitudesCtrl',  function($scope,solicitudeService,pluginsServ
 
 	
 	function loadSolicitudes () {
+		$scope.idProfesional =  localStorage.getItem("idProfesional_br");
 		var promiseGet = solicitudeService.getSolicitudes($scope.idProfesional); 
         promiseGet.then(function (pl) {
             $scope.Solicitudes = pl.data;

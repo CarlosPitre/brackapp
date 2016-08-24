@@ -2,7 +2,7 @@ app.controller('miproductoCtrl',  function($scope,productoService,pluginsService
 
 
 	$scope.Productos = [];
-    $scope.idProfesional = 1;
+    
 
 	loadProductos();
 	$scope.Producto = {};
@@ -21,6 +21,7 @@ app.controller('miproductoCtrl',  function($scope,productoService,pluginsService
 
 
 	function loadProductos () {
+		$scope.idProfesional =  localStorage.getItem("idProfesional_br");
 		var promiseGet = productoService.getProductos($scope.idProfesional);
         promiseGet.then(function (pl) {
             $scope.Productos = pl.data;
@@ -58,9 +59,9 @@ app.controller('miproductoCtrl',  function($scope,productoService,pluginsService
 			descripcion : $scope.Productos.descripcion,
 			marca : $scope.Productos.marca,
 			porcentaje :  $scope.Productos.porcentaje,
-			idProfesional : "1"
+			idProfesional : $scope.idProfesional
 		};
-		console.log(JSON.stringify(datos));
+		
 		var promiseGet = productoService.post(datos);
 		promiseGet.then(function (pl) {
             alert(pl.data.message);

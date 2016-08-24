@@ -16,11 +16,12 @@ app.controller('solicitudesCtrl',  function($scope,solicitudeService,pluginsServ
 	
 
 
+var myVar = setInterval(function(){ loadSolicitudes() }, 10000);
 
 
-	
 	function loadSolicitudes () {
-		$scope.idProfesional =  localStorage.getItem("idProfesional_br");
+
+	    $scope.idProfesional =  localStorage.getItem("idProfesional_br");
 		var promiseGet = solicitudeService.getSolicitudes($scope.idProfesional); 
         promiseGet.then(function (pl) {
             $scope.Solicitudes = pl.data;

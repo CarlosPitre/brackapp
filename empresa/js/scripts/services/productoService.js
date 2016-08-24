@@ -18,5 +18,11 @@ app.service('productoService', ['$http', function($http){
 		return req;
 	}
 
+	this.postImagen = function (formData,tipo,ext) {
+	   var req = $http.post('../api/upload.php?n='+tipo+"&e="+ext, formData,{transformRequest: angular.identity,
+	       headers: {'Content-Type': undefined}});
+	   	console.log(req)
+	   return req;
+   };
 
 }])

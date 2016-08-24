@@ -1,5 +1,5 @@
 app.controller('miproductoCtrl',  function($scope,productoService,pluginsService){
-	
+
 
 	$scope.Productos = [];
     $scope.idProfesional = 1;
@@ -19,9 +19,9 @@ app.controller('miproductoCtrl',  function($scope,productoService,pluginsService
 
 
 
-	
+
 	function loadProductos () {
-		var promiseGet = productoService.getProductos($scope.idProfesional); 
+		var promiseGet = productoService.getProductos($scope.idProfesional);
         promiseGet.then(function (pl) {
             $scope.Productos = pl.data;
         },
@@ -32,7 +32,7 @@ app.controller('miproductoCtrl',  function($scope,productoService,pluginsService
 
 
 	function loadMarcas () {
-		var promiseGet = productoService.getMarcas(); 
+		var promiseGet = productoService.getMarcas();
         promiseGet.then(function (pl) {
             $scope.Marcas = pl.data;
         },
@@ -50,7 +50,7 @@ app.controller('miproductoCtrl',  function($scope,productoService,pluginsService
 	}
 
 
-	
+
 
 
 	$scope.save = function  () {
@@ -61,20 +61,53 @@ app.controller('miproductoCtrl',  function($scope,productoService,pluginsService
 			idProfesional : "1"
 		};
 		console.log(JSON.stringify(datos));
-		var promiseGet = productoService.post(datos); 
+		var promiseGet = productoService.post(datos);
 		promiseGet.then(function (pl) {
-            alert(pl.data);
+            alert(pl.data.message);
             loadProductos();
-
+						$scope.guardarfoto($scope.idProfesional,pl.data.idProducto)
         },
         function (errorPl) {
         	console.log('Error Al Cargar Datos', errorPl);
         });
+			//$scope.guardarfoto($scope.idProfesional,2)
 	}
 
+	$scope.guardarfoto = function(idProfesional,idProducto){
+		var fileInput = document.getElementById("file");
+		if (fileInput.multiple == true) {
 
+		    for (var i = 0, len = fileInput.files.length; i < len; i++) {
+					var file = fileInput.files.item(i);
+					console.log(file.name);
+					var formData = new FormData();
+			    var fileName = file.name;
+			    fileExtension = fileName.substring(fileName.lastIndexOf('.') + 1);
+			    NomImg1 = "prof-"+idProfesional+"-prod-"+idProducto+"-"+i;
+			    formData.append('imagen',file);
+			  	var promisePost = productoService.postImagen(formData,NomImg1,fileExtension);
+			    promisePost.then(function (d) {
+						console.log(d.data);
+			    }, function (err) {
+			        console.log(err)
+			        if(err.status == 401){
+			            alert(err.data.msg);
+			            console.log(err.data.exception);
+			        }else{
+			            alert("Error Al procesar Solicitud");
+			        }
 
+			        console.log(err);
+			    });
+		    }
 
+		// only one file available
+		} else {
+		    var file = fileInput.files.item(0);
+		}
+
+    /**/
+	}
 
 /*	$scope.update = function  () {
 		var datos = {
@@ -83,7 +116,7 @@ app.controller('miproductoCtrl',  function($scope,productoService,pluginsService
 			porcentaje :  $scope.Servicio.porcentaje,
 			idProfesional : "1"
 		};
-		var promiseGet = servicioService.put(datos); 
+		var promiseGet = servicioService.put(datos);
 		promiseGet.then(function (pl) {
             alert(pl.data);
             loadServicios();
@@ -105,9 +138,9 @@ app.controller('miproductoCtrl',  function($scope,productoService,pluginsService
 			idMarca : producto.idMarca,
 			idProfesional : "1",
 		}
-		
 
-		var promiseGet = productoService.delete(datos); 
+
+		var promiseGet = productoService.delete(datos);
 		promiseGet.then(function (pl) {
             alert(pl.data);
             loadProductos();

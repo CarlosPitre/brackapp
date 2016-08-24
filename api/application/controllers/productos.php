@@ -20,13 +20,13 @@ class Productos extends REST_Controller {
 		else{
 			$Productos = $this->model_productos->getProductos($id);
 		}
-		if ($Productos) { 
+		if ($Productos) {
 			$this->response($Productos, REST_Controller::HTTP_OK);
 		}else{
 	        $this->response([
        			'status' => FALSE,
         		'message' => 'No users were found'
-            ], REST_Controller::HTTP_NOT_FOUND); 
+            ], REST_Controller::HTTP_NOT_FOUND);
 		};
 	}
 
@@ -36,18 +36,18 @@ class Productos extends REST_Controller {
 		if ($id == null) {
 			$Marcas = $this->model_marcas->getMarcas();
 		}
-		if ($Marcas) { 
+		if ($Marcas) {
 			$this->response($Marcas, REST_Controller::HTTP_OK);
 		}else{
 	        $this->response([
        			'status' => FALSE,
         		'message' => 'No users were found'
-            ], REST_Controller::HTTP_NOT_FOUND); 
+            ], REST_Controller::HTTP_NOT_FOUND);
 		};
 	}
 
 
-   
+
 
 	public function productos_post()
 	{
@@ -59,20 +59,23 @@ class Productos extends REST_Controller {
 
         $datosMarcas = array(
 			"descripcion" => $this->post("marca"),
-			"estado" => "ACTIVO"			
+			"estado" => "ACTIVO"
 		);
 		$idMarca = $this->model_marcas->saveMarcas($datosMarcas);
 
           $datosProductos = array(
-			"idProfesional" => $this->post("idProfesional"), 	
+			"idProfesional" => $this->post("idProfesional"),
 			"idProducto" => $idProducto,
 			"idMarca" => $idMarca,
-			"porcentaje" =>  $this->post("porcentaje")			
+			"porcentaje" =>  $this->post("porcentaje")
 		);
 		$guardar = $this->model_productos->saveProfesional($datosProductos);
-         if ($guardar) {			
-			$message = "Datos Guardados Correctamente";
-			$this->response($message, REST_Controller::HTTP_CREATED);
+         if ($guardar) {
+					 $this->response([
+		 				'status' => TRUE,
+		 				'message' => 'Datos Guardados Correctamente',
+						'idProducto' => $idProducto
+					], REST_Controller::HTTP_OK);
 		}else{
 			$message = "Error";
 			$this->response($message, REST_Controller::HTTP_BAD_REQUEST);

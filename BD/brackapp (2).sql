@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.4.14
+-- version 4.5.1
 -- http://www.phpmyadmin.net
 --
--- Servidor: localhost
--- Tiempo de generación: 14-06-2016 a las 18:34:54
--- Versión del servidor: 5.6.26
--- Versión de PHP: 5.6.12
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 25-08-2016 a las 18:19:28
+-- Versión del servidor: 10.1.13-MariaDB
+-- Versión de PHP: 7.0.5
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -26,7 +26,7 @@ SET time_zone = "+00:00";
 -- Estructura de tabla para la tabla `cliente`
 --
 
-CREATE TABLE IF NOT EXISTS `cliente` (
+CREATE TABLE `cliente` (
   `id` int(11) NOT NULL,
   `nombres` varchar(60) COLLATE utf8_spanish_ci NOT NULL,
   `apellidos` varchar(60) COLLATE utf8_spanish_ci NOT NULL,
@@ -34,7 +34,7 @@ CREATE TABLE IF NOT EXISTS `cliente` (
   `telefono` varchar(15) COLLATE utf8_spanish_ci NOT NULL,
   `direccion` varchar(60) COLLATE utf8_spanish_ci NOT NULL,
   `estado` enum('Activo','Inactivo') COLLATE utf8_spanish_ci NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `cliente`
@@ -49,10 +49,10 @@ INSERT INTO `cliente` (`id`, `nombres`, `apellidos`, `correo`, `telefono`, `dire
 -- Estructura de tabla para la tabla `departamento`
 --
 
-CREATE TABLE IF NOT EXISTS `departamento` (
-  `id` smallint(5) unsigned NOT NULL,
+CREATE TABLE `departamento` (
+  `id` smallint(5) UNSIGNED NOT NULL,
   `nombre` varchar(60) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `departamento`
@@ -95,14 +95,62 @@ INSERT INTO `departamento` (`id`, `nombre`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `imagenesprofesionalproducto`
+--
+
+CREATE TABLE `imagenesprofesionalproducto` (
+  `id` int(11) NOT NULL,
+  `imagen` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
+  `idProfesionalProducto` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `marca`
 --
 
-CREATE TABLE IF NOT EXISTS `marca` (
+CREATE TABLE `marca` (
   `id` int(11) NOT NULL,
   `descripcion` varchar(60) COLLATE utf8_spanish_ci NOT NULL,
   `estado` enum('Activo','Inactivo') COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `marca`
+--
+
+INSERT INTO `marca` (`id`, `descripcion`, `estado`) VALUES
+(1, 'michelin', 'Activo'),
+(2, 'LG', 'Activo'),
+(3, 'nike', 'Activo'),
+(4, 'nike', 'Activo'),
+(5, 'Nike', 'Activo'),
+(6, 'Acer', 'Activo'),
+(7, 'acer', 'Activo'),
+(8, 'diesel', 'Activo'),
+(9, 'diesel', 'Activo'),
+(10, 'sony', 'Activo'),
+(11, 'acer', 'Activo'),
+(12, 'iphone 42', 'Activo'),
+(13, 'iphone 5', 'Activo'),
+(14, 'iphone 4s', 'Activo'),
+(15, 'iphone 4s', 'Activo'),
+(16, 'iphone 5', 'Activo'),
+(17, 'sony Xperia Z8', 'Activo'),
+(18, 'Sony Xperia Z8', 'Activo'),
+(19, 'iphone 5', 'Activo'),
+(20, 'nokia', 'Activo'),
+(21, 'mac', 'Activo'),
+(22, 'moto g', 'Activo'),
+(23, 'moto g', 'Activo'),
+(24, 'iphone 4s', 'Activo'),
+(25, 'iphone 4', 'Activo'),
+(26, '10', 'Activo'),
+(27, 'iphone 5', 'Activo'),
+(28, 'sony xperia', 'Activo'),
+(29, 'Xperia z19', 'Activo'),
+(30, 'iphone 8s', 'Activo');
 
 -- --------------------------------------------------------
 
@@ -110,11 +158,11 @@ CREATE TABLE IF NOT EXISTS `marca` (
 -- Estructura de tabla para la tabla `menu`
 --
 
-CREATE TABLE IF NOT EXISTS `menu` (
+CREATE TABLE `menu` (
   `id` int(11) NOT NULL,
   `descripcion` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
   `url` varchar(50) COLLATE utf8_spanish_ci NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `menu`
@@ -122,39 +170,42 @@ CREATE TABLE IF NOT EXISTS `menu` (
 
 INSERT INTO `menu` (`id`, `descripcion`, `url`) VALUES
 (1, 'Sectores', '/admin/sectores'),
-(2, 'Servicios', '/admin/servicios'),
 (3, 'Clientes', '/admin/clientes'),
 (4, 'Empresas', '/admin/empresas'),
 (5, 'Reportes', '/admin/reportes'),
 (6, 'Cerrar Sesión', '/cerrarSesion'),
-(7, 'Mis Servicios', '/empresa/misServicios'),
-(8, 'Mis Solicitudes', '/empresa/misSolicitudes'),
+(7, 'Servicios', '/empresa/misServicios'),
+(8, 'Solicitudes', '/empresa/misSolicitudes'),
 (9, 'Mi Perfil', '/empresa/miPerfil'),
 (10, 'Mi Perfil', '/cliente/miPerfil'),
-(11, 'Mis Solicitudes', '/cliente/misSolicitudes');
+(11, 'Mis Solicitudes', '/cliente/misSolicitudes'),
+(12, 'Productos', '/empresa/misProducto');
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `menuPerfil`
+-- Estructura de tabla para la tabla `menuperfil`
 --
 
-CREATE TABLE IF NOT EXISTS `menuPerfil` (
+CREATE TABLE `menuperfil` (
   `id` int(11) NOT NULL,
   `idMenu` int(11) NOT NULL,
   `idPerfil` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
--- Volcado de datos para la tabla `menuPerfil`
+-- Volcado de datos para la tabla `menuperfil`
 --
 
-INSERT INTO `menuPerfil` (`id`, `idMenu`, `idPerfil`) VALUES
+INSERT INTO `menuperfil` (`id`, `idMenu`, `idPerfil`) VALUES
 (1, 1, 1),
-(2, 2, 1),
 (3, 3, 1),
 (4, 4, 1),
-(5, 5, 1);
+(5, 5, 1),
+(6, 9, 3),
+(7, 8, 3),
+(8, 7, 3),
+(9, 12, 3);
 
 -- --------------------------------------------------------
 
@@ -162,11 +213,11 @@ INSERT INTO `menuPerfil` (`id`, `idMenu`, `idPerfil`) VALUES
 -- Estructura de tabla para la tabla `municipio`
 --
 
-CREATE TABLE IF NOT EXISTS `municipio` (
-  `id` smallint(5) unsigned NOT NULL,
+CREATE TABLE `municipio` (
+  `id` smallint(5) UNSIGNED NOT NULL,
   `nombre` varchar(60) NOT NULL,
-  `idDepartamento` smallint(5) unsigned NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=1113 DEFAULT CHARSET=utf8;
+  `idDepartamento` smallint(5) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `municipio`
@@ -1292,10 +1343,10 @@ INSERT INTO `municipio` (`id`, `nombre`, `idDepartamento`) VALUES
 -- Estructura de tabla para la tabla `perfil`
 --
 
-CREATE TABLE IF NOT EXISTS `perfil` (
+CREATE TABLE `perfil` (
   `id` int(11) NOT NULL,
   `descripcion` varchar(30) COLLATE utf8_spanish_ci NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `perfil`
@@ -1313,11 +1364,48 @@ INSERT INTO `perfil` (`id`, `descripcion`) VALUES
 -- Estructura de tabla para la tabla `producto`
 --
 
-CREATE TABLE IF NOT EXISTS `producto` (
+CREATE TABLE `producto` (
   `id` int(11) NOT NULL,
   `descripcion` varchar(60) COLLATE utf8_spanish_ci NOT NULL,
   `estado` enum('Activo','Inactivo') COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `producto`
+--
+
+INSERT INTO `producto` (`id`, `descripcion`, `estado`) VALUES
+(1, 'Sin Producto', 'Inactivo'),
+(2, 'Estufa LG', 'Activo'),
+(3, 'zapatos', 'Activo'),
+(4, 'zapatos', 'Activo'),
+(5, 'Televisor Led 40"', 'Activo'),
+(6, 'zapatos', 'Activo'),
+(7, 'Computador', 'Activo'),
+(8, 'computador', 'Activo'),
+(9, 'sueter', 'Activo'),
+(10, 'sueter', 'Activo'),
+(11, 'celular', 'Activo'),
+(12, 'computador', 'Activo'),
+(13, 'celular', 'Activo'),
+(14, 'celular', 'Activo'),
+(15, 'celular', 'Activo'),
+(16, 'celular', 'Activo'),
+(17, 'celular', 'Activo'),
+(18, 'celular', 'Activo'),
+(19, 'celular', 'Activo'),
+(20, 'celular', 'Activo'),
+(21, 'celular', 'Activo'),
+(22, 'portatil', 'Activo'),
+(23, 'celular', 'Activo'),
+(24, 'celular', 'Activo'),
+(25, 'celular', 'Activo'),
+(26, 'celular', 'Activo'),
+(27, 'iphone 5', 'Activo'),
+(28, 'celular', 'Activo'),
+(29, 'celular', 'Activo'),
+(30, 'sony', 'Activo'),
+(31, 'celular', 'Activo');
 
 -- --------------------------------------------------------
 
@@ -1325,7 +1413,7 @@ CREATE TABLE IF NOT EXISTS `producto` (
 -- Estructura de tabla para la tabla `profesional`
 --
 
-CREATE TABLE IF NOT EXISTS `profesional` (
+CREATE TABLE `profesional` (
   `id` int(11) NOT NULL,
   `razonSocial` varchar(60) COLLATE utf8_spanish_ci NOT NULL,
   `identificacion` varchar(15) COLLATE utf8_spanish_ci NOT NULL,
@@ -1341,23 +1429,23 @@ CREATE TABLE IF NOT EXISTS `profesional` (
   `idMunicipio` int(11) NOT NULL,
   `estado` enum('Activo','Inactivo') COLLATE utf8_spanish_ci NOT NULL,
   `numeroPersonas` int(11) NOT NULL DEFAULT '0'
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `profesional`
 --
 
 INSERT INTO `profesional` (`id`, `razonSocial`, `identificacion`, `latitud`, `longitud`, `foto`, `correo`, `telefono`, `profesion`, `pago`, `experiencia`, `calificacion`, `idMunicipio`, `estado`, `numeroPersonas`) VALUES
-(1, 'Carlos Pitre', '1065654572', '10.4820084', '-73.2750313', 'null', 'carlosjpitre@gmail.com', '3004706152', 'Ingeniero de Sistemas', 'Activo', 'Desarrollador Brackapp', 3.4, 2, 'Activo', 0),
-(2, 'Brakapp', '123456789', '0', '0', 'null', 'brakapp@gmail.com', '89086543', 'Empresa', 'Activo', 'De Todo', 3, 19, 'Activo', 0);
+(1, 'Luis Serge', '1065654572', '10.4820084', '-73.2750313', '../img/negro.jpg', 'editpt@gmail.com', '3004706152', 'Ingeniero de Sistemas', 'Activo', 'Desarrollador Brackapp', 2, 2, 'Activo', 2),
+(2, 'Brakapp', '123456789', '10.485067', '-73.2593197', '../img/arsenal.jpeg', 'brakapp@gmail.com', '89086543', 'Empresa', 'Activo', 'De Todo', 4.5, 19, 'Activo', 5);
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `profesionalesProductos`
+-- Estructura de tabla para la tabla `profesionalproducto`
 --
 
-CREATE TABLE IF NOT EXISTS `profesionalesProductos` (
+CREATE TABLE `profesionalproducto` (
   `id` int(11) NOT NULL,
   `idProfesional` int(11) NOT NULL,
   `idProducto` int(11) NOT NULL,
@@ -1367,42 +1455,59 @@ CREATE TABLE IF NOT EXISTS `profesionalesProductos` (
   `estado` enum('Activo','Inactivo') COLLATE utf8_spanish_ci NOT NULL DEFAULT 'Activo'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
--- --------------------------------------------------------
-
 --
--- Estructura de tabla para la tabla `profesionalProducto`
+-- Volcado de datos para la tabla `profesionalproducto`
 --
 
-CREATE TABLE IF NOT EXISTS `profesionalProducto` (
-  `id` int(11) NOT NULL,
-  `idProfesional` int(11) NOT NULL,
-  `idProducto` int(11) NOT NULL,
-  `idMarca` int(11) NOT NULL,
-  `porcentaje` int(11) NOT NULL,
-  `estatus` enum('Disponible','Agotado') COLLATE utf8_spanish_ci NOT NULL DEFAULT 'Disponible',
-  `estado` enum('Activo','Inactivo') COLLATE utf8_spanish_ci NOT NULL DEFAULT 'Activo'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+INSERT INTO `profesionalproducto` (`id`, `idProfesional`, `idProducto`, `idMarca`, `porcentaje`, `estatus`, `estado`) VALUES
+(24, 1, 26, 25, 7, 'Disponible', 'Activo'),
+(25, 1, 28, 27, 10, 'Disponible', 'Activo'),
+(26, 2, 29, 28, 6, 'Disponible', 'Activo'),
+(27, 2, 30, 29, 21, 'Disponible', 'Activo'),
+(28, 2, 31, 30, 0, 'Disponible', 'Activo');
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `profesionalServicio`
+-- Estructura de tabla para la tabla `profesionalservicio`
 --
 
-CREATE TABLE IF NOT EXISTS `profesionalServicio` (
+CREATE TABLE `profesionalservicio` (
   `id` int(11) NOT NULL,
   `idProfesional` int(11) NOT NULL,
   `idServicio` int(11) NOT NULL,
   `porcentaje` float NOT NULL DEFAULT '0'
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
--- Volcado de datos para la tabla `profesionalServicio`
+-- Volcado de datos para la tabla `profesionalservicio`
 --
 
-INSERT INTO `profesionalServicio` (`id`, `idProfesional`, `idServicio`, `porcentaje`) VALUES
-(1, 1, 1, 60),
-(2, 2, 1, 0);
+INSERT INTO `profesionalservicio` (`id`, `idProfesional`, `idServicio`, `porcentaje`) VALUES
+(22, 1, 22, 9),
+(23, 1, 23, 10),
+(25, 2, 25, 9),
+(28, 2, 28, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `respuestas`
+--
+
+CREATE TABLE `respuestas` (
+  `id` int(11) NOT NULL,
+  `nombre` varchar(60) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `respuestas`
+--
+
+INSERT INTO `respuestas` (`id`, `nombre`) VALUES
+(1, 'ocupado'),
+(2, 'voy en 15 '),
+(3, 'llamame');
 
 -- --------------------------------------------------------
 
@@ -1410,11 +1515,11 @@ INSERT INTO `profesionalServicio` (`id`, `idProfesional`, `idServicio`, `porcent
 -- Estructura de tabla para la tabla `sector`
 --
 
-CREATE TABLE IF NOT EXISTS `sector` (
+CREATE TABLE `sector` (
   `id` int(11) NOT NULL,
   `descripcion` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
   `estado` enum('Activo','Inactivo') COLLATE utf8_spanish_ci NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `sector`
@@ -1423,19 +1528,28 @@ CREATE TABLE IF NOT EXISTS `sector` (
 INSERT INTO `sector` (`id`, `descripcion`, `estado`) VALUES
 (1, 'Sistemas', 'Activo'),
 (2, 'Electricidad', 'Activo'),
-(3, 'Plomeria', 'Activo');
+(3, 'Plomeria', 'Activo'),
+(4, 'Salud', 'Activo');
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `sectorServicio`
+-- Estructura de tabla para la tabla `sectorservicio`
 --
 
-CREATE TABLE IF NOT EXISTS `sectorServicio` (
+CREATE TABLE `sectorservicio` (
   `id` int(11) NOT NULL,
   `idSector` int(11) NOT NULL,
   `idServicio` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `sectorservicio`
+--
+
+INSERT INTO `sectorservicio` (`id`, `idSector`, `idServicio`) VALUES
+(1, 1, 1),
+(2, 1, 2);
 
 -- --------------------------------------------------------
 
@@ -1443,20 +1557,36 @@ CREATE TABLE IF NOT EXISTS `sectorServicio` (
 -- Estructura de tabla para la tabla `servicio`
 --
 
-CREATE TABLE IF NOT EXISTS `servicio` (
+CREATE TABLE `servicio` (
   `id` int(11) NOT NULL,
   `descripcion` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
   `estado` enum('Activo','Inactivo') COLLATE utf8_spanish_ci NOT NULL,
-  `idTipo` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+  `idSector` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `servicio`
 --
 
-INSERT INTO `servicio` (`id`, `descripcion`, `estado`, `idTipo`) VALUES
-(1, 'Mantenimiento de Computadores', 'Activo', 1),
-(2, 'Pulidora', 'Activo', 2);
+INSERT INTO `servicio` (`id`, `descripcion`, `estado`, `idSector`) VALUES
+(1, 'Mantenimiento de Computadores', 'Activo', 0),
+(2, 'Pulidora', 'Activo', 0),
+(3, 'analista', 'Activo', 1),
+(4, 'asesor', 'Activo', 2),
+(15, 'Reparacion De Computadores', 'Activo', 1),
+(16, 'soldador', 'Activo', 2),
+(17, 'analista', 'Activo', 1),
+(18, 'analista', 'Activo', 1),
+(19, 'soldador', 'Activo', 2),
+(20, 'soldador', 'Activo', 2),
+(21, 'soldador', 'Activo', 2),
+(22, 'analista', 'Activo', 1),
+(23, 'soldador', 'Activo', 2),
+(24, 'soldador', 'Activo', 2),
+(25, 'analista', 'Activo', 1),
+(26, 'soldador', 'Activo', 2),
+(27, 'mantenimiento de computadores', 'Activo', 1),
+(28, 'soldador', 'Activo', 2);
 
 -- --------------------------------------------------------
 
@@ -1464,29 +1594,39 @@ INSERT INTO `servicio` (`id`, `descripcion`, `estado`, `idTipo`) VALUES
 -- Estructura de tabla para la tabla `solicitud`
 --
 
-CREATE TABLE IF NOT EXISTS `solicitud` (
+CREATE TABLE `solicitud` (
   `id` int(11) NOT NULL,
   `fecha` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `idCliente` int(11) NOT NULL,
-  `idProfesional` int(11) NOT NULL
+  `idProfesional` int(11) NOT NULL,
+  `idProducto` int(11) DEFAULT NULL,
+  `idServicio` int(11) DEFAULT NULL,
+  `idRespuesta` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `solicitud`
+--
+
+INSERT INTO `solicitud` (`id`, `fecha`, `idCliente`, `idProfesional`, `idProducto`, `idServicio`, `idRespuesta`) VALUES
+(1, '2016-08-08 16:21:35', 1, 1, 1, 1, 2);
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `tiposServicios`
+-- Estructura de tabla para la tabla `tiposservicios`
 --
 
-CREATE TABLE IF NOT EXISTS `tiposServicios` (
+CREATE TABLE `tiposservicios` (
   `id` int(11) NOT NULL,
   `tipo` enum('Servicio','Producto') COLLATE utf8_spanish_ci NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
--- Volcado de datos para la tabla `tiposServicios`
+-- Volcado de datos para la tabla `tiposservicios`
 --
 
-INSERT INTO `tiposServicios` (`id`, `tipo`) VALUES
+INSERT INTO `tiposservicios` (`id`, `tipo`) VALUES
 (1, 'Servicio'),
 (2, 'Producto');
 
@@ -1496,20 +1636,23 @@ INSERT INTO `tiposServicios` (`id`, `tipo`) VALUES
 -- Estructura de tabla para la tabla `usuario`
 --
 
-CREATE TABLE IF NOT EXISTS `usuario` (
+CREATE TABLE `usuario` (
   `id` int(11) NOT NULL,
   `usuario` varchar(60) COLLATE utf8_spanish_ci NOT NULL,
   `password` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
   `idPerfil` int(11) NOT NULL,
-  `idCliente` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+  `idCliente` int(11) NOT NULL,
+  `idProfesional` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `usuario`
 --
 
-INSERT INTO `usuario` (`id`, `usuario`, `password`, `idPerfil`, `idCliente`) VALUES
-(1, 'user', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 2, 1);
+INSERT INTO `usuario` (`id`, `usuario`, `password`, `idPerfil`, `idCliente`, `idProfesional`) VALUES
+(1, 'user', '12dea96fec20593566ab75692c9949596833adc9', 2, 1, 0),
+(2, 'brackapp', '8cb2237d0679ca88db6464eac60da96345513964', 3, 0, 1),
+(3, 'root', '8cb2237d0679ca88db6464eac60da96345513964', 3, 0, 2);
 
 --
 -- Índices para tablas volcadas
@@ -1529,6 +1672,12 @@ ALTER TABLE `departamento`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indices de la tabla `imagenesprofesionalproducto`
+--
+ALTER TABLE `imagenesprofesionalproducto`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indices de la tabla `marca`
 --
 ALTER TABLE `marca`
@@ -1541,9 +1690,9 @@ ALTER TABLE `menu`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `menuPerfil`
+-- Indices de la tabla `menuperfil`
 --
-ALTER TABLE `menuPerfil`
+ALTER TABLE `menuperfil`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -1572,21 +1721,21 @@ ALTER TABLE `profesional`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `profesionalesProductos`
+-- Indices de la tabla `profesionalproducto`
 --
-ALTER TABLE `profesionalesProductos`
+ALTER TABLE `profesionalproducto`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `profesionalProducto`
+-- Indices de la tabla `profesionalservicio`
 --
-ALTER TABLE `profesionalProducto`
+ALTER TABLE `profesionalservicio`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `profesionalServicio`
+-- Indices de la tabla `respuestas`
 --
-ALTER TABLE `profesionalServicio`
+ALTER TABLE `respuestas`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -1596,9 +1745,9 @@ ALTER TABLE `sector`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `sectorServicio`
+-- Indices de la tabla `sectorservicio`
 --
-ALTER TABLE `sectorServicio`
+ALTER TABLE `sectorservicio`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -1614,9 +1763,9 @@ ALTER TABLE `solicitud`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `tiposServicios`
+-- Indices de la tabla `tiposservicios`
 --
-ALTER TABLE `tiposServicios`
+ALTER TABLE `tiposservicios`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -1633,92 +1782,97 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `cliente`
 --
 ALTER TABLE `cliente`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT de la tabla `departamento`
 --
 ALTER TABLE `departamento`
-  MODIFY `id` smallint(5) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=33;
+  MODIFY `id` smallint(5) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+--
+-- AUTO_INCREMENT de la tabla `imagenesprofesionalproducto`
+--
+ALTER TABLE `imagenesprofesionalproducto`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT de la tabla `marca`
 --
 ALTER TABLE `marca`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 --
 -- AUTO_INCREMENT de la tabla `menu`
 --
 ALTER TABLE `menu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 --
--- AUTO_INCREMENT de la tabla `menuPerfil`
+-- AUTO_INCREMENT de la tabla `menuperfil`
 --
-ALTER TABLE `menuPerfil`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
+ALTER TABLE `menuperfil`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT de la tabla `municipio`
 --
 ALTER TABLE `municipio`
-  MODIFY `id` smallint(5) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=1113;
+  MODIFY `id` smallint(5) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1113;
 --
 -- AUTO_INCREMENT de la tabla `perfil`
 --
 ALTER TABLE `perfil`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT de la tabla `producto`
 --
 ALTER TABLE `producto`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 --
 -- AUTO_INCREMENT de la tabla `profesional`
 --
 ALTER TABLE `profesional`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
--- AUTO_INCREMENT de la tabla `profesionalesProductos`
+-- AUTO_INCREMENT de la tabla `profesionalproducto`
 --
-ALTER TABLE `profesionalesProductos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `profesionalproducto`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 --
--- AUTO_INCREMENT de la tabla `profesionalProducto`
+-- AUTO_INCREMENT de la tabla `profesionalservicio`
 --
-ALTER TABLE `profesionalProducto`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `profesionalservicio`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 --
--- AUTO_INCREMENT de la tabla `profesionalServicio`
+-- AUTO_INCREMENT de la tabla `respuestas`
 --
-ALTER TABLE `profesionalServicio`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+ALTER TABLE `respuestas`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT de la tabla `sector`
 --
 ALTER TABLE `sector`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
--- AUTO_INCREMENT de la tabla `sectorServicio`
+-- AUTO_INCREMENT de la tabla `sectorservicio`
 --
-ALTER TABLE `sectorServicio`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `sectorservicio`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT de la tabla `servicio`
 --
 ALTER TABLE `servicio`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 --
 -- AUTO_INCREMENT de la tabla `solicitud`
 --
 ALTER TABLE `solicitud`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
--- AUTO_INCREMENT de la tabla `tiposServicios`
+-- AUTO_INCREMENT de la tabla `tiposservicios`
 --
-ALTER TABLE `tiposServicios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+ALTER TABLE `tiposservicios`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

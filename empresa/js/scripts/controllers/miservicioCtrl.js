@@ -77,24 +77,6 @@ app.controller('miservicioCtrl',  function($scope,servicioService,pluginsService
 
 
 
-
-	/*$scope.update = function  () {
-		var datos = {
-		descripcion : $scope.Servicio.descripcion,
-			idSector : $scope.Servicio.idSector,
-			porcentaje :  $scope.Servicio.porcentaje,
-			idProfesional : "1"
-		};
-		var promiseGet = servicioService.put(datos); 
-		promiseGet.then(function (pl) {
-            alert(pl.data);
-            loadServicios();
-        },
-        function (errorPl) {
-        	console.log('Error Al Cargar Datos', errorPl);
-        });
-	}*/
-
 	$scope.modificar = function  (servicio) {
 		$scope.Servicio = servicio;
 		$scope.openButton = false;

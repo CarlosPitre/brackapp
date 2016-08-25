@@ -110,34 +110,13 @@ app.controller('miproductoCtrl',  function($scope,productoService,pluginsService
     /**/
 	}
 
-/*	$scope.update = function  () {
-		var datos = {
-		descripcion : $scope.Servicio.descripcion,
-			idSector : $scope.Servicio.idSector,
-			porcentaje :  $scope.Servicio.porcentaje,
-			idProfesional : "1"
-		};
-		var promiseGet = servicioService.put(datos);
-		promiseGet.then(function (pl) {
-            alert(pl.data);
-            loadServicios();
-        },
-        function (errorPl) {
-        	console.log('Error Al Cargar Datos', errorPl);
-        });
-	}*/
 
-	/*$scope.modificar = function  (servicio) {
-		$scope.Servicio = servicio;
-		$scope.openButton = false;
-	} */
 
 	 $scope.delete = function  (producto) {
-	 	console.log(JSON.stringify(datos));
 		var datos = {
 			idProducto : producto.id,
 			idMarca : producto.idMarca,
-			idProfesional : producto.idProfesional,
+			idProfesional : $scope.idProfesional,
 		}
 
 

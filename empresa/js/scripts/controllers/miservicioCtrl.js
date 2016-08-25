@@ -3,6 +3,7 @@ app.controller('miservicioCtrl',  function($scope,servicioService,pluginsService
 
 	$scope.Servicios = [];
 	
+	
 
 	loadServicios();
 	$scope.Servicio = {};
@@ -61,7 +62,7 @@ app.controller('miservicioCtrl',  function($scope,servicioService,pluginsService
 			descripcion : $scope.Servicio.descripcion,
 			idSector : $scope.Servicio.idSector,
 			porcentaje :  $scope.Servicio.porcentaje,
-			idProfesional : "1"
+			idProfesional : $scope.idProfesional
 		};
 		var promiseGet = servicioService.post(datos); 
 		promiseGet.then(function (pl) {
@@ -103,7 +104,7 @@ app.controller('miservicioCtrl',  function($scope,servicioService,pluginsService
 		console.log(JSON.stringify(datos));
 		var datos = {
 			idServicio : servicio.id,
-			idProfesional : "1",
+			idProfesional : servicio.idProfesional,
 		}
 		
 

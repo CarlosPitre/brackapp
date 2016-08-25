@@ -137,7 +137,7 @@ app.controller('miproductoCtrl',  function($scope,productoService,pluginsService
 		var datos = {
 			idProducto : producto.id,
 			idMarca : producto.idMarca,
-			idProfesional : "1",
+			idProfesional : producto.idProfesional,
 		}
 
 

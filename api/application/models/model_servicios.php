@@ -14,7 +14,7 @@ class Model_servicios extends CI_Model {
 			$query=$this->db
 				->select('s.*,t.descripcion as sector, ps.porcentaje')
 				->from('servicio s')
-				
+
 				->join('sector t', ' s.idSector = t.id', 'inner')
 				->join('profesionalservicio ps', 'ps.idServicio = s.id', 'inner')
 				->where('ps.idProfesional', $id)
@@ -42,10 +42,9 @@ class Model_servicios extends CI_Model {
 		return true;
 	}
 
-   public function delete($idServicio,$idProfesional)
+   public function delete($idServicio)
    {
-   		$this->db->where('idServicio', $idServicio);
-   		$this->db->where('idProfesional', $idProfesional);
+   		$this->db->where('id', $idServicio);   		
    		$this->db->delete('profesionalservicio');
    		return true;
    }
@@ -56,8 +55,8 @@ class Model_servicios extends CI_Model {
 		$query=$this->db
 				->select('id, razonSocial')
 				->from('profesional')
-				->where('estado', 'Activo')			
-				->where('pago', 'Activo')	
+				->where('estado', 'Activo')
+				->where('pago', 'Activo')
 				->get();
 		return $query->result();
 	}
@@ -67,7 +66,7 @@ class Model_servicios extends CI_Model {
 		$query=$this->db
 				->select('id, descripcion')
 				->from('sector')
-				->where('estado', 'Activo')						
+				->where('estado', 'Activo')
 				->get();
 		return $query->result();
 	}
@@ -77,7 +76,7 @@ class Model_servicios extends CI_Model {
 		$query=$this->db
 				->select('id, descripcion')
 				->from('marca')
-				->where('estado', 'Activo')						
+				->where('estado', 'Activo')
 				->get();
 		return $query->result();
 	}
@@ -87,7 +86,7 @@ class Model_servicios extends CI_Model {
 		$query=$this->db
 				->select('id, descripcion')
 				->from('servicio')
-				->where('estado', 'Activo')						
+				->where('estado', 'Activo')
 				->get();
 		return $query->result();
 	}
@@ -97,7 +96,7 @@ class Model_servicios extends CI_Model {
 		$query=$this->db
 				->select('id, descripcion')
 				->from('producto')
-				->where('estado', 'Activo')						
+				->where('estado', 'Activo')
 				->get();
 		return $query->result();
 	}

@@ -18,18 +18,21 @@ class Servicios extends REST_Controller {
 		}else{
 			$servicios = $this->model_servicios->getServicios($id);
 		}
-		if ($servicios) { 
-			$this->response($servicios, REST_Controller::HTTP_OK);
+		if ($servicios) {
+			$this->response([
+				"servicios" => $servicios,
+				"status" => TRUE
+				], REST_Controller::HTTP_OK);
 		}else{
 	        $this->response([
        			'status' => FALSE,
         		'message' => 'No users were found'
-            ], REST_Controller::HTTP_NOT_FOUND); 
+            ], REST_Controller::HTTP_OK);
 		};
 	}
 
 
-   
+
 
 	public function servicios_post()
 	{
@@ -41,12 +44,12 @@ class Servicios extends REST_Controller {
 		$idServicio= $this->model_servicios->save($datos);
 
 		$datosServicio = array(
-			"idProfesional" => $this->post("idProfesional"), 	
+			"idProfesional" => $this->post("idProfesional"),
 			"idServicio" => $idServicio,
-			"porcentaje" =>  $this->post("porcentaje")			
+			"porcentaje" =>  $this->post("porcentaje")
 		);
 		$guardar = $this->model_servicios->saveProfesional($datosServicio);
-		if ($guardar) {			
+		if ($guardar) {
 			$message = "Datos Guardados Correctamente";
 			$this->response($message, REST_Controller::HTTP_CREATED);
 		}else{
@@ -66,9 +69,9 @@ class Servicios extends REST_Controller {
 		$guardar= $this->model_servicios->update($datos,$this->put("id"));
 
 		$datosServicio = array(
-			"idProfesional" => $this->put("idProfesional"), 	
+			"idProfesional" => $this->put("idProfesional"),
 			"idServicio" => $idServicio,
-			"porcentaje" =>  $this->put("porcentaje")			
+			"porcentaje" =>  $this->put("porcentaje")
 		);
 		$guardar= $this->model_servicios->update($datosServicio,$this->put("id"));
          if ($guardar) {
@@ -83,8 +86,7 @@ class Servicios extends REST_Controller {
 	public function delete_post()
 	{
 		$idServicio = $this->post("idServicio");
-		$idProfesional = $this->post("idProfesional");
-		$guardar= $this->model_servicios->delete($idServicio,$idProfesional);
+		$guardar= $this->model_servicios->delete($idServicio);
 		if ($guardar) {
 			$message = "Datos eliminado Correctamente";
 			$this->response($message, REST_Controller::HTTP_CREATED);
@@ -104,7 +106,7 @@ class Servicios extends REST_Controller {
 		$productos = $this->model_servicios->getProducto();
 
 		$index = 0;
-		for ($i=0; $i < count($sectores); $i++) { 
+		for ($i=0; $i < count($sectores); $i++) {
 			$json[] = array(
 				"id" => $index,
 				"idSector" => $sectores[$i]->id,
@@ -114,7 +116,7 @@ class Servicios extends REST_Controller {
 			$index = $index + 1;
 		}
 
-		for ($i=0; $i < count($marcas); $i++) { 
+		for ($i=0; $i < count($marcas); $i++) {
 			$json[] = array(
 				"id" => $index,
 				"idMarca" => $marcas[$i]->id,
@@ -124,7 +126,7 @@ class Servicios extends REST_Controller {
 			$index = $index + 1;
 		}
 
-		for ($i=0; $i < count($servicios); $i++) { 
+		for ($i=0; $i < count($servicios); $i++) {
 			$json[] = array(
 				"id" => $index,
 				"idServicio" => $servicios[$i]->id,
@@ -134,7 +136,7 @@ class Servicios extends REST_Controller {
 			$index = $index + 1;
 		}
 
-		for ($i=0; $i < count($profesionales); $i++) { 
+		for ($i=0; $i < count($profesionales); $i++) {
 			$json[] = array(
 				"id" => $index,
 				"idProfesional" => $profesionales[$i]->id,
@@ -144,7 +146,7 @@ class Servicios extends REST_Controller {
 			$index = $index + 1;
 		}
 
-		for ($i=0; $i < count($productos); $i++) { 
+		for ($i=0; $i < count($productos); $i++) {
 			$json[] = array(
 				"id" => $index,
 				"idProducto" => $productos[$i]->id,
@@ -153,7 +155,7 @@ class Servicios extends REST_Controller {
 			);
 			$index = $index + 1;
 		}
-		
+
 		$this->response($json, REST_Controller::HTTP_CREATED);
 	}
 

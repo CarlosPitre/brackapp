@@ -86,7 +86,7 @@ app.controller('miservicioCtrl',  function($scope,servicioService,pluginsService
 		console.log(JSON.stringify(datos));
 		var datos = {
 			idServicio : servicio.id,
-			idProfesional : servicio.idProfesional,
+			idProfesional : $scope.idProfesional,
 		}
 		
 

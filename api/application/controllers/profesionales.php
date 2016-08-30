@@ -26,6 +26,24 @@ class Profesionales extends REST_Controller {
 		};
 	}
 
+
+	public function empresas_get($id = null)
+	{
+		if ($id == null) {
+			$profesional = $this->model_profesional->getEmpresas();
+		}else{
+			$profesional = $this->model_profesional->getEmpresas($id);
+		}
+		if ($profesional) {
+			$this->response($profesional, REST_Controller::HTTP_OK);
+		}else{
+	        $this->response([
+       			'status' => FALSE,
+        		'message' => 'No users were found'
+            ], REST_Controller::HTTP_NOT_FOUND);
+		};
+	}
+
 	/*
 
 		Busqueda en todas las tablas de marca, sectores, servicios, profesionales y productos

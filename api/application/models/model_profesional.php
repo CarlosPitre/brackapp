@@ -21,6 +21,29 @@ class Model_profesional extends CI_Model {
 		return $query->row();
 	}
 
+	 public function getProfesionales($id = null)
+	{
+		if ($id == null) {
+			$query=$this->db
+				->select("*")
+				->from("profesional")
+				->get();
+			return $query->result();
+		}else{
+			$query = $this->db
+				->select("*")
+				->from("profesional")
+				->where("id",$id)
+				->get();
+			return $query->row();
+		}
+    }
+
+  
+
+
+
+
 	public function update($datos = array(), $id)
 	{
 		$this->db->where('id', $id);

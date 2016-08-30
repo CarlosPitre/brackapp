@@ -19,6 +19,11 @@ var app;
                     controller : 'clienteCtrl'
             	}				
 			)
+            .when("/admin/empresas",{
+                    templateUrl: 'pages/empresa.html',
+                    controller : 'clienteCtrl'
+                }               
+            )
             .otherwise({
                 redirectTo:"/inicio"
             });

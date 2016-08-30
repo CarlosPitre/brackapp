@@ -9,6 +9,11 @@ var app;
                     controller : 'loginCtrl'
             	}				
 			)
+			.when("/inicio",{
+                    templateUrl: '/registrar.html',
+                    controller : 'loginCtrl'
+            	}				
+			)
 			.otherwise({
                 redirectTo:"/inicio"
             });

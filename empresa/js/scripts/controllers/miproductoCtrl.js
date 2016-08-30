@@ -2,7 +2,7 @@ app.controller('miproductoCtrl',  function($scope,productoService,pluginsService
 
 
 	$scope.Productos = [];
-    
+
 
 	loadProductos();
 	$scope.Producto = {};
@@ -21,10 +21,16 @@ app.controller('miproductoCtrl',  function($scope,productoService,pluginsService
 
 
 	function loadProductos () {
+
 		$scope.idProfesional =  localStorage.getItem("idProfesional_br");
 		var promiseGet = productoService.getProductos($scope.idProfesional);
         promiseGet.then(function (pl) {
-            $scope.Productos = pl.data;
+					if (pl.data.status != false) {
+						$scope.Productos = pl.data.productos;
+					}else {
+						$scope.Productos = [];
+					}
+
         },
         function (errorPl) {
         	console.log('Error Al Cargar Datos', errorPl);
@@ -61,7 +67,7 @@ app.controller('miproductoCtrl',  function($scope,productoService,pluginsService
 			porcentaje :  $scope.Productos.porcentaje,
 			idProfesional : $scope.idProfesional
 		};
-		
+
 		var promiseGet = productoService.post(datos);
 		promiseGet.then(function (pl) {
             alert(pl.data.message);
@@ -115,19 +121,17 @@ app.controller('miproductoCtrl',  function($scope,productoService,pluginsService
 	 $scope.delete = function  (producto) {
 		var datos = {
 			idProducto : producto.id,
-			idMarca : producto.idMarca,
-			idProfesional : $scope.idProfesional,
 		}
-
-
+		console.log(JSON.stringify(datos));
 		var promiseGet = productoService.delete(datos);
 		promiseGet.then(function (pl) {
-            alert(pl.data);
-            loadProductos();
-        },
-        function (errorPl) {
-        	console.log('Error Al Cargar Datos', errorPl);
-        });
+        alert(pl.data);
+        loadProductos();
+    },
+    function (errorPl) {
+    	console.log('Error Al Cargar Datos', errorPl);
+    });
+
 	}
 
 })

@@ -24,7 +24,7 @@ class Model_productos extends CI_Model {
 
 
 
-  
+
 
 	public function save($datos = array())
 	{
@@ -38,13 +38,10 @@ class Model_productos extends CI_Model {
 		return true;
 	}
 
-   public function delete($idProducto,$idMarca,$idProfesional)
+   public function delete($idProducto)
    {
-   		$this->db->where('idProducto', $idProducto);
-   		$this->db->where('idMarca', $idMarca);
-   		$this->db->where('idProfesional', $idProfesional);
+   		$this->db->where('id', $idProducto);
    		$this->db->delete('profesionalproducto');
    		return true;
    }
 }
-

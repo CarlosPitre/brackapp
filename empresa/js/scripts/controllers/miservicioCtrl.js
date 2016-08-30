@@ -1,28 +1,33 @@
 app.controller('miservicioCtrl',  function($scope,servicioService,pluginsService){
-	
+
 
 	$scope.Servicios = [];
-	
-	
+
+
 
 	loadServicios();
 	$scope.Servicio = {};
 
 	$scope.openButton = true;
 
-	
-    
+
+
 	$scope.Sectores = [];
 	loadSectores();
 	$scope.Sectores = {};
 
 
-	
+
 	function loadServicios () {
 		$scope.idProfesional =  localStorage.getItem("idProfesional_br");
-		var promiseGet = servicioService.getServicios($scope.idProfesional); 
+		var promiseGet = servicioService.getServicios($scope.idProfesional);
         promiseGet.then(function (pl) {
-            $scope.Servicios = pl.data;
+					if (pl.data.status != false) {
+						$scope.Servicios = pl.data.servicios;
+					}else {
+						$scope.Servicios = [];
+					}
+
         },
         function (errorPl) {
         	console.log('Error Al Cargar Datos', errorPl);
@@ -41,7 +46,7 @@ app.controller('miservicioCtrl',  function($scope,servicioService,pluginsService
 
 
 	function loadSectores () {
-		var promiseGet = servicioService.getSectores(); 
+		var promiseGet = servicioService.getSectores();
         promiseGet.then(function (pl) {
             $scope.Sectores = pl.data;
         },
@@ -50,13 +55,6 @@ app.controller('miservicioCtrl',  function($scope,servicioService,pluginsService
         });
 	}
 
-
-
-
-
-
-
-
 	$scope.save = function  () {
 		var datos = {
 			descripcion : $scope.Servicio.descripcion,
@@ -64,7 +62,7 @@ app.controller('miservicioCtrl',  function($scope,servicioService,pluginsService
 			porcentaje :  $scope.Servicio.porcentaje,
 			idProfesional : $scope.idProfesional
 		};
-		var promiseGet = servicioService.post(datos); 
+		var promiseGet = servicioService.post(datos);
 		promiseGet.then(function (pl) {
             alert(pl.data);
             loadServicios();
@@ -83,14 +81,15 @@ app.controller('miservicioCtrl',  function($scope,servicioService,pluginsService
 	}
 
 	$scope.delete = function  (servicio) {
-		console.log(JSON.stringify(datos));
 		var datos = {
+<<<<<<< HEAD
 			idServicio : servicio.id,
 			idProfesional : $scope.idProfesional,
+=======
+			idServicio : servicio.id
+>>>>>>> origin/master
 		}
-		
-
-		var promiseGet = servicioService.delete(datos); 
+		var promiseGet = servicioService.delete(datos);
 		promiseGet.then(function (pl) {
             alert(pl.data);
             loadServicios();

@@ -21,12 +21,15 @@ class Productos extends REST_Controller {
 			$Productos = $this->model_productos->getProductos($id);
 		}
 		if ($Productos) {
-			$this->response($Productos, REST_Controller::HTTP_OK);
+			$this->response([
+				"productos" => $Productos,
+				'status' => TRUE
+			], REST_Controller::HTTP_OK);
 		}else{
 	        $this->response([
        			'status' => FALSE,
         		'message' => 'No users were found'
-            ], REST_Controller::HTTP_NOT_FOUND);
+					], REST_Controller::HTTP_OK);
 		};
 	}
 
@@ -86,9 +89,7 @@ class Productos extends REST_Controller {
 	public function delete_post()
 	{
 		$idProducto = $this->post("idProducto");
-		$idMarca = $this->post("idMarca");
-		$idProfesional = $this->post("idProfesional");
-		$guardar= $this->model_productos->delete($idProducto,$idMarca,$idProfesional);
+		$guardar= $this->model_productos->delete($idProducto);
 		if ($guardar) {
 			$message = "Datos eliminado Correctamente";
 			$this->response($message, REST_Controller::HTTP_CREATED);

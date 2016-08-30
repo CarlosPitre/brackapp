@@ -40,8 +40,9 @@ $route['app/cliente/(:num)/solicitudes'] = 'solicitudes/solicitudesCliente/$1';
 $route['app/solicitudes/delete']  = 'solicitudes/delete';
 $route['app/respuestas'] = 'solicitudes/respuestas';
 $route['app/respuestas/(:num)'] = 'solicitudes/respuestas/$1';
-$route['app/departamento']  = 'departamento/departamento';
+$route['app/departamentos']  = 'departamento/departamento';
 $route['app/departamento/(:num)']  = 'departamento/departamento/$1';
-
+$route['app/municipios']  = 'municipio/municipio';
+$route['app/municipio/(:num)']  = 'municipio/municipio/$1';
 
 

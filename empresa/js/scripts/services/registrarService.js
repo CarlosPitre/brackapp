@@ -9,4 +9,9 @@ app.service('registrarService', ['$http', function($http){
 		return req;
 	}
 
+		this.getMunicipio = function  () {
+		var req = $http.get(uri + '/app/municipios');
+		return req;
+	}
+
 }])

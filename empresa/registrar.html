@@ -33,15 +33,15 @@
 
                       <div class="form-group">
                       <label> Departamento</label>
-                          <select  class="form-control form-white" data-style="green" data-placeholder="Departamento ..." ng-model = "Departamento.idDepartamento" >
+                          <select  class="form-control form-white" data-style="green" data-placeholder="Departamento ..." ng-model = "Profesional.idDepartamento" ng-change="buscarMunicipio()" >
                             <option ng-repeat=" dep in Departamentos"  value="{{dep.id}}">{{dep.nombre}}</option>
                            </select>
                         </div>
  
                         <div class="form-group">
                         <label> Municipio</label>
-                          <select  class="form-control form-white" data-style="green" data-placeholder="Departamento ..." ng-model = "Servicio.idSector" >
-                            <option ng-repeat=" tipo in Sectores"  value="{{tipo.id}}">{{tipo.descripcion}}</option>
+                          <select  class="form-control form-white" data-style="green" data-placeholder="Municipio ..." ng-model = "Profesional.idMunicipio" >
+                            <option ng-repeat=" mup in Municipios"  value="{{mup.id}}">{{mup.nombre}}</option>
                            </select>
                            </div>
 

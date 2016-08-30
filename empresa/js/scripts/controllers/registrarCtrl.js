@@ -10,8 +10,22 @@ app.controller('registrarCtrl',  function($scope,registrarService){
 
 	loadDepartamentos();
 	$scope.Departamento = {};
+     
+    $scope.Municipios = [];
+    $scope.Municipio = {};
 
+ 
+    $scope.buscarMunicipio = function  () {
+    
+    var promiseGet = registrarService.getMunicipio($scope.Profesional.idDepartamento );
+        promiseGet.then(function (pl) {
+            $scope.Municipios = pl.data;
+        },
+        function (errorPl) {
+        	console.log('Error De Servidor Cv', errorPl);
+        });	 
 
+    }
 
 
 

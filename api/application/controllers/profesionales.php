@@ -15,6 +15,8 @@ class Profesionales extends REST_Controller {
 	{
 		if ($id != null) {
 			$profesional = $this->model_profesional->getprofesional($id);
+		}else {
+			$profesional = $this->model_profesional->getprofesional();
 		}
 		if ($profesional) {
 			$this->response($profesional, REST_Controller::HTTP_OK);
@@ -27,7 +29,7 @@ class Profesionales extends REST_Controller {
 	}
 
 
-	
+
 	public function profesionales_post()
 	{
 		$datos = array(
@@ -37,7 +39,7 @@ class Profesionales extends REST_Controller {
 			"telefono" => $this->post("telefono"),
 			"idMunicipio" => $this->post("idMunicipio"),
 			"estado" => "INACTIVO",
-			
+
 		);
 		$guardar= $this->model_profesional->save($datos);
 

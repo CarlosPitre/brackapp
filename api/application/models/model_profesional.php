@@ -10,15 +10,25 @@ class Model_profesional extends CI_Model {
 
 
 
-	public function getprofesional($id)
+	public function getprofesional($id = null)
 	{
-		$query=$this->db
-					->select('p.*, m.nombre as municipio')
-					->from("profesional p")
-					->join('municipio m', 'm.id = p.idMunicipio', 'inner')
-					->where("p.id",$id)
-					->get();
-		return $query->row();
+		if ($id != null) {
+			$query=$this->db
+						->select('p.*, m.nombre as municipio')
+						->from("profesional p")
+						->join('municipio m', 'm.id = p.idMunicipio', 'inner')
+						->where("p.id",$id)
+						->get();
+			return $query->row();
+		}else {
+			$query=$this->db
+						->select('p.*, m.nombre as municipio')
+						->from("profesional p")
+						->join('municipio m', 'm.id = p.idMunicipio', 'inner')
+						->get();
+			return $query->result();
+		}
+
 	}
 
 	 public function getProfesionales($id = null)

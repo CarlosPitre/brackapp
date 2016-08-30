@@ -25,21 +25,5 @@ class Model_cliente extends CI_Model {
 			return $query->row();
 		}
     }
-    public function getProfesionales($id = null)
-	{
-		if ($id == null) {
-			$query=$this->db
-				->select("*")
-				->from("profesional")
-				->get();
-			return $query->result();
-		}else{
-			$query = $this->db
-				->select("*")
-				->from("profesional")
-				->where("id",$id)
-				->get();
-			return $query->row();
-		}
+    
     }
-}

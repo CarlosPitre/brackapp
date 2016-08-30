@@ -1,8 +1,30 @@
-app.controller('registrarCtrl',  function($scope,registrarService,pluginsService){
+app.controller('registrarCtrl',  function($scope,registrarService){
 
 
 	$scope.Profesionales = [];
 	$scope.Profesional = {};
+
+
+
+	$scope.Departamentos = [];
+
+	loadDepartamentos();
+	$scope.Departamento = {};
+
+
+
+
+
+	function loadDepartamentos () {
+		var promiseGet = registrarService.getDepartamentos();
+        promiseGet.then(function (pl) {
+            $scope.Departamentos = pl.data;
+        },
+        function (errorPl) {
+        	console.log('Error De Servidor Cv', errorPl);
+        });
+	}
+
 
 	$scope.save = function  () {
 		var datos = {

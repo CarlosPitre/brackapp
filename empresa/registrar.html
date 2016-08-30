@@ -16,7 +16,7 @@
         <div class="container" id="login-block">
            
             <div class="account-form">
-                <form class="form-signin" role="form" ng-controller="loginCtrl">
+                <form class="form-signin" role="form" ng-controller="registrarCtrl">
                     <h3><strong>Bienvenido</strong> A Brackapp</h3>
                     <div class="append-icon">
                         <input type="text" name="name" id="name" class="form-control form-white username" placeholder="Razon Social" required ng-model="razonSocial">
@@ -31,17 +31,30 @@
                         <i class="icon-envelope"></i>
                     </div>
 
-                    <angucomplete ng-model="busca" id="ex2" placeholder="Ejem: Valledupar, Codazzi, etc..." pause="300"  localdata="Servicio" selectedobject="selectedServicio" searchfields="descripcion" titlefield="descripcion" descriptionfield="tipo" minlength="1" inputclass="form-control-buscar" matchclass="highlight" />
+                      <div class="form-group">
+                      <label> Departamento</label>
+                          <select  class="form-control form-white" data-style="green" data-placeholder="Departamento ..." ng-model = "Departamento.idDepartamento" >
+                            <option ng-repeat=" dep in Departamentos"  value="{{dep.id}}">{{dep.nombre}}</option>
+                           </select>
+                        </div>
+ 
+                        <div class="form-group">
+                        <label> Municipio</label>
+                          <select  class="form-control form-white" data-style="green" data-placeholder="Departamento ..." ng-model = "Servicio.idSector" >
+                            <option ng-repeat=" tipo in Sectores"  value="{{tipo.id}}">{{tipo.descripcion}}</option>
+                           </select>
+                           </div>
 
-                    
                     <div class="append-icon">
                         <input type="text" name="name" id="name" class="form-control form-white username" placeholder="Username" required ng-model="usuario">
                         <i class="icon-user"></i>
                     </div>
+
                      <div class="append-icon m-b-20">
                         <input type="password" name="password" class="form-control form-white password" placeholder="Password" required ng-model="pass">
                         <i class="icon-lock"></i>
                     </div>
+
                     <button style="background-color:#FB135C;" class="btn btn btn-dark btn-rounded ladda-button" data-style="expand-left" ng-click="login()">Registrarse</button>
                     <button style="background-color:#FB135C;" class="btn btn btn-dark btn-rounded ladda-button" data-style="expand-left" ng-click="login()">Cancelar</button>
                     <div class="form-footer">

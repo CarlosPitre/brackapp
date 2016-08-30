@@ -3,4 +3,10 @@ app.service('registrarService', ['$http', function($http){
 		var req = $http.post(uri + '/app/profesionales', object);
 		return req;
 	}
+
+		this.getDepartamentos = function  () {
+		var req = $http.get(uri + '/app/departamentos');
+		return req;
+	}
+
 }])

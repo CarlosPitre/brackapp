@@ -82,12 +82,9 @@ app.controller('miservicioCtrl',  function($scope,servicioService,pluginsService
 
 	$scope.delete = function  (servicio) {
 		var datos = {
-<<<<<<< HEAD
 			idServicio : servicio.id,
 			idProfesional : $scope.idProfesional,
-=======
 			idServicio : servicio.id
->>>>>>> origin/master
 		}
 		var promiseGet = servicioService.delete(datos);
 		promiseGet.then(function (pl) {

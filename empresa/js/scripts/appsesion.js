@@ -11,7 +11,7 @@ var app;
 			)
 			.when("/inicio",{
                     templateUrl: '/registrar.html',
-                    controller : 'loginCtrl'
+                    controller : 'registrarCtrl'
             	}				
 			)
 			.otherwise({

@@ -19,23 +19,23 @@
                 <form class="form-signin" role="form" ng-controller="loginCtrl">
                     <h3><strong>Bienvenido</strong> A Brackapp</h3>
                     <div class="append-icon">
-                        <input type="text" name="name" id="name" class="form-control form-white username" placeholder="Razon Social" required ng-model="user">
+                        <input type="text" name="name" id="name" class="form-control form-white username" placeholder="Razon Social" required ng-model="razonSocial">
                         <i class="icon-pie-chart"></i>
                     </div>
                     <div class="append-icon">
-                        <input type="text" name="name" id="name" class="form-control form-white username" placeholder="Nit" required ng-model="user">
+                        <input type="text" name="name" id="name" class="form-control form-white username" placeholder="Nit" required ng-model="identificacion">
                         <i class="icon-key"></i>
                     </div>
                     <div class="append-icon">
-                        <input type="text" name="name" id="name" class="form-control form-white username" placeholder="Correo" required ng-model="user">
+                        <input type="text" name="name" id="name" class="form-control form-white username" placeholder="Correo" required ng-model="correo">
                         <i class="icon-envelope"></i>
                     </div>
+
+                    <angucomplete ng-model="busca" id="ex2" placeholder="Ejem: Valledupar, Codazzi, etc..." pause="300"  localdata="Servicio" selectedobject="selectedServicio" searchfields="descripcion" titlefield="descripcion" descriptionfield="tipo" minlength="1" inputclass="form-control-buscar" matchclass="highlight" />
+
+                    
                     <div class="append-icon">
-                        <input type="text" name="name" id="name" class="form-control form-white username" placeholder="Municipio" required ng-model="user">
-                        <i class="icon-globe"></i>
-                    </div>
-                    <div class="append-icon">
-                        <input type="text" name="name" id="name" class="form-control form-white username" placeholder="Username" required ng-model="user">
+                        <input type="text" name="name" id="name" class="form-control form-white username" placeholder="Username" required ng-model="usuario">
                         <i class="icon-user"></i>
                     </div>
                      <div class="append-icon m-b-20">
@@ -52,7 +52,6 @@
                 </form>
             </div>
         </div>
-        <!-- END LOCKSCREEN BOX -->
         <script src="../assets/global/plugins/bootstrap-loading/lada.min.js"></script>
         <script src="../assets/global/js/pages/login-v2.js"></script>
      
@@ -75,8 +74,8 @@
    
 
     <script src='js/scripts/appsesion.js'></script>
-    <script src='js/scripts/controllers/loginCtrl.js'></script>
-    <script src='js/scripts/services/loginService.js'></script>
+    <script src='js/scripts/controllers/registrarCtrl.js'></script>
+    <script src='js/scripts/services/registrarService.js'></script>
 
 
 

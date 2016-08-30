@@ -27,20 +27,33 @@ class Profesionales extends REST_Controller {
 	}
 
 
-	public function empresas_get($id = null)
+	
+	public function profesionales_post()
 	{
-		if ($id == null) {
-			$profesional = $this->model_profesional->getEmpresas();
+		$datos = array(
+			"razonSocial" => $this->post("razonSocial"),
+			"identificacion" => $this->post("identificacion"),
+			"correo" => $this->post("correo"),
+			"telefono" => $this->post("telefono"),
+			"idMunicipio" => $this->post("idMunicipio"),
+			"estado" => "INACTIVO",
+			
+		);
+		$guardar= $this->model_profesional->save($datos);
+
+		$datosUsuario = array(
+			"usuario" => $usuario,
+			"password" => $password,
+			"idPerfil" => "3",
+			"idProfesional" =>  $this->post("idProfesional")
+		);
+		$guardar = $this->model_profesional->saveUsuario($datosServicio);
+		if ($guardar) {
+			$message = "Datos Guardados Correctamente";
+			$this->response($message, REST_Controller::HTTP_CREATED);
 		}else{
-			$profesional = $this->model_profesional->getEmpresas($id);
-		}
-		if ($profesional) {
-			$this->response($profesional, REST_Controller::HTTP_OK);
-		}else{
-	        $this->response([
-       			'status' => FALSE,
-        		'message' => 'No users were found'
-            ], REST_Controller::HTTP_NOT_FOUND);
+			$message = "Error";
+			$this->response($message, REST_Controller::HTTP_BAD_REQUEST);
 		};
 	}
 

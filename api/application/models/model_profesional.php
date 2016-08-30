@@ -38,10 +38,17 @@ class Model_profesional extends CI_Model {
 			return $query->row();
 		}
     }
+    public function save($datos = array())
+	{
+		$this->db->insert('profesional', $datos);
+		return $this->db->insert_id();
+	}
 
-  
-
-
+	public function saveUsuario($datos = array())
+	{
+		$this->db->insert('saveUsuario', $datos);
+		return true;
+	}
 
 
 	public function update($datos = array(), $id)

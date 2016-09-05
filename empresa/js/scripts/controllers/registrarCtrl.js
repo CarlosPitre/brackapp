@@ -42,7 +42,7 @@ app.controller('registrarCtrl',  function($scope,registrarService){
 
 	$scope.save = function  () {
 		var datos = {
-			descripcion : $scope.Productos.descripcion,
+			razonSocial : $scope.Productos.descripcion,
 			marca : $scope.Productos.marca,
 			porcentaje :  $scope.Productos.porcentaje,
 			idProfesional : $scope.idProfesional

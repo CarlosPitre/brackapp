@@ -13,10 +13,11 @@ class Model_municipio extends CI_Model {
 	public function getMunicipio($id = null)
 	{
 
-         if ($id == null) {
+         if ($id != null) {
 			$query=$this->db
-				->select('*')
-				->from('municipio')
+				->select('m.*')
+				->from('municipio m')
+				->where('m.idDepartamento', $id)
 				->get();
 		}
 		return $query->result();

@@ -41,13 +41,13 @@ class Profesionales extends REST_Controller {
 			"estado" => "INACTIVO",
  
 		);
-		$guardar= $this->model_profesional->save($datos);
+		$idProfesional = $this->model_profesional->save($datos);
 
 		$datosUsuario = array(
 			"usuario" =>$this->post("usuario"),
-			"password" =>$this->post("password"),
+			"password" =>sha1($this->post("password")),
 			"idPerfil" => "3",
-			"idProfesional" =>  $this->post("idProfesional")
+			"idProfesional" => $idProfesional
 		);
 		$guardar = $this->model_profesional->saveUsuario($datosUsuario);
 		if ($guardar) {

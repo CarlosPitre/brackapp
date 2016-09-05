@@ -42,20 +42,21 @@ app.controller('registrarCtrl',  function($scope,registrarService){
 
 	$scope.save = function  () {
 		var datos = {
-			razonSocial : $scope.Productos.descripcion,
-			marca : $scope.Productos.marca,
-			porcentaje :  $scope.Productos.porcentaje,
-			idProfesional : $scope.idProfesional
+			razonSocial : $scope.Profesional.razonSocial,
+			identificacion : $scope.Profesional.identificacion,
+			correo :  $scope.Profesional.correo,
+			telefono :  $scope.Profesional.telefono,
+			idMunicipio : $scope.Profesional.idMunicipio,
+			usuario : $scope.usuario,
+			password : $scope.password
 		};
 
-		var promiseGet = productoService.post(datos);
+		var promiseGet = registrarService.post(datos);
 		promiseGet.then(function (pl) {
             alert(pl.data.message);
-            loadProductos();
-						$scope.guardarfoto($scope.idProfesional,pl.data.idProducto)
         },
         function (errorPl) {
-        	console.log('Error Al Cargar Datos', errorPl);
+        	console.log('Error Al Cargar Datos ', errorPl);
         });
 	}
 

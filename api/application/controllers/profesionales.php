@@ -39,17 +39,17 @@ class Profesionales extends REST_Controller {
 			"telefono" => $this->post("telefono"),
 			"idMunicipio" => $this->post("idMunicipio"),
 			"estado" => "INACTIVO",
-
+ 
 		);
 		$guardar= $this->model_profesional->save($datos);
 
 		$datosUsuario = array(
-			"usuario" => $usuario,
-			"password" => $password,
+			"usuario" =>$this->post("usuario"),
+			"password" =>$this->post("password"),
 			"idPerfil" => "3",
 			"idProfesional" =>  $this->post("idProfesional")
 		);
-		$guardar = $this->model_profesional->saveUsuario($datosServicio);
+		$guardar = $this->model_profesional->saveUsuario($datosUsuario);
 		if ($guardar) {
 			$message = "Datos Guardados Correctamente";
 			$this->response($message, REST_Controller::HTTP_CREATED);

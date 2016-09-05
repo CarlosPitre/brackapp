@@ -56,7 +56,7 @@ class Model_profesional extends CI_Model {
 
 	public function saveUsuario($datos = array())
 	{
-		$this->db->insert('saveUsuario', $datos);
+		$this->db->insert('Usuario', $datos);
 		return true;
 	}
 

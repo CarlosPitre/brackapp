@@ -19,16 +19,20 @@
                 <form class="form-signin" role="form" ng-controller="registrarCtrl">
                     <h3><strong>Bienvenido</strong> A Brakapp</h3>
                     <div class="append-icon">
-                        <input type="text" name="name" id="name" class="form-control form-white username" placeholder="Razon Social" required ng-model="razonSocial">
+                        <input type="text" name="name" id="name" class="form-control form-white username" placeholder="Razon Social" required ng-model="Profesional.razonSocial">
                         <i class="icon-pie-chart"></i>
                     </div>
                     <div class="append-icon">
-                        <input type="text" name="name" id="name" class="form-control form-white username" placeholder="Nit" required ng-model="identificacion">
+                        <input type="text" name="name" id="name" class="form-control form-white username" placeholder="Nit" required ng-model="Profesional.identificacion">
                         <i class="icon-key"></i>
                     </div>
                     <div class="append-icon">
-                        <input type="text" name="name" id="name" class="form-control form-white username" placeholder="Correo" required ng-model="correo">
+                        <input type="text" name="name" id="name" class="form-control form-white username" placeholder="Correo" required ng-model="Profesional.correo">
                         <i class="icon-envelope"></i>
+                    </div>
+                    <div class="append-icon">
+                        <input type="text" name="name" id="name" class="form-control form-white username" placeholder="Telefono" required ng-model="Profesional.telefono">
+                        <i class="fa fa-phone"></i>
                     </div>
 
                       <div class="form-group">
@@ -51,12 +55,12 @@
                     </div>
 
                      <div class="append-icon m-b-20">
-                        <input type="password" name="password" class="form-control form-white password" placeholder="Password" required ng-model="pass">
+                        <input type="password" name="password" class="form-control form-white password" placeholder="Password" required ng-model="password">
                         <i class="icon-lock"></i>
                     </div>
 
-                    <button style="background-color:#FB135C;" class="btn btn btn-dark btn-rounded ladda-button" data-style="expand-left" ng-click="login()">Registrarse</button>
-                    <button style="background-color:#FB135C;" class="btn btn btn-dark btn-rounded ladda-button" data-style="expand-left" ng-click="login()">Cancelar</button>
+                    <button style="background-color:#FB135C;" class="btn btn btn-dark btn-rounded ladda-button" data-style="expand-left" ng-click="save()">Registrarse</button>
+                    <button style="background-color:#FB135C;" class="btn btn btn-dark btn-rounded ladda-button" data-style="expand-left" >Cancelar</button>
                     <div class="form-footer">
                         <div class="clearfix">
                             <p class="new-here"><a href="user-signup-v2.html">BrackApp</a></p>

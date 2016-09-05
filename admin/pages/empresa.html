@@ -38,7 +38,7 @@
 
             </thead>
             <tbody>
-              <tr ng-repeat="emp in Profesionales| filter:filter">
+              <tr ng-repeat="emp in Profesionales| filter:filter" ng-class="{'warning-class': emp.estado === 'Inactivo'}">
                 <td>{{emp.identificacion}}</td>
                 <td>{{emp.razonSocial}} </td>
                 <td>{{emp.correo}} </td>
@@ -127,7 +127,7 @@
           </div>
         </div>
         <div class="modal-footer text-center">
-          <button type="button" class="btn btn-danger btn-embossed bnt-square" ng-click="save()"><i class="fa fa-check"></i> Guardar</button>
+          <button type="button" class="btn btn-danger btn-embossed bnt-square" ng-click="savePago()"><i class="fa fa-check"></i> Guardar</button>
         </div>
       </div>
     </div>
@@ -135,3 +135,10 @@
 
 
 </div>
+<style>
+  .warning-class {
+    background-color: #BB0000;
+    color: white;
+  }
+
+</style>

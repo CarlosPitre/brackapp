@@ -272,9 +272,10 @@ class Profesionales extends REST_Controller {
 		$diasMes = ($valor/$valormes)*$dias;
 		$diasRestantes = $profesional->diasRestantes + $diasMes;
 		
-		$datosProfesional = array('diasRestantes' => $diasRestantes);
+		$datosProfesional = array('diasRestantes' => $diasRestantes, 'estado' => 'Activo');
 		$updateProfesional = $this->model_profesional->update($datosProfesional,$this->post("id"));
 		if ($updateProfesional) {
+
 			$message = "Datos Guardados Correctamente";
 			$this->response([
 					'msg' => $message,

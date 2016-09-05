@@ -7,7 +7,7 @@ app.controller('empresaCtrl', function ($scope, empresaService) {
     var promiseGet = empresaService.getEmpresas();
     promiseGet.then(function (pl) {
         $scope.Profesionales = pl.data;
-        console.log(JSON.stringify($scope.Profesionales));
+
     },
     function (errorPl) {
     	console.log('Error Al Cargar Datos', errorPl);
@@ -21,12 +21,14 @@ app.controller('empresaCtrl', function ($scope, empresaService) {
 
   $scope.savePago = function  () {
     var data = {
-      idProfesional : $scope.Profesional.id,
+      id : $scope.Profesional.id,
       valorPago : $scope.Profesional.valorPago
     };
     var promiseGet = empresaService.postPago(data);
     promiseGet.then(function (pl) {
         loadProfesionales()
+        alert(pl.data.msg);
+        $("#modalPago").modal("hide");
     },
     function (errorPl) {
       console.log('Error Al Cargar Datos', errorPl);

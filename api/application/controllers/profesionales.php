@@ -259,7 +259,35 @@ class Profesionales extends REST_Controller {
 		};
 	}
 
-	
+	public function pagos_post()
+	{
+		$valor = $this->post("valorPago");
+		$id = $this->post("id");
+		$queryValores = $this->db->select('*')->from('valores')->where('id','1')->get();
+		$valores = $queryValores->row();
+		$queryProfesional = $this->db->select('diasRestantes')->from('profesional')->where('id',$id)->get();
+		$profesional = $queryProfesional->row();
+		$valormes = $valores->valor;
+		$dias = $valores->dias;
+		$diasMes = ($valor/$valormes)*$dias;
+		$diasRestantes = $profesional->diasRestantes + $diasMes;
+		
+		$datosProfesional = array('diasRestantes' => $diasRestantes);
+		$updateProfesional = $this->model_profesional->update($datosProfesional,$this->post("id"));
+		if ($updateProfesional) {
+			$message = "Datos Guardados Correctamente";
+			$this->response([
+					'msg' => $message,
+					'status' => 0
+				], REST_Controller::HTTP_CREATED);
+		}else{
+			$message = "Error";
+			$this->response([
+					'msg' => $message,
+					'status' => 0
+				], REST_Controller::HTTP_BAD_REQUEST);
+		}
+	}
 
 
 }

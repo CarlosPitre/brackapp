@@ -28,11 +28,11 @@
                         </tr>
                       </thead>
                       <tbody>
-                        <tr ng-repeat="res in Respuestas | filter:filter ">
-                          <td>{{res.id}}</td>
-                          <td>{{res.nombre}} </td>
+                        <tr ng-repeat="respta in Respuestas | filter:filter ">
+                          <td>{{respta.id}}</td>
+                          <td>{{respta.nombre}} </td>
                           <td>
-                            <a href="javascript:;" ng-click="delete(res)">Eliminar</a>
+                            <a href="javascript:;" ng-click="delete(respta)">Eliminar</a>
                           </td>
                         </tr>
                       </tbody>

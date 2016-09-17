@@ -46,7 +46,8 @@ app.controller('respuestaCtrl',  function($scope,respuestaService,pluginsService
 	$scope.delete = function  (respuesta) {
 		var datos = {
 			id : respuesta.id
-		};
+		}
+        console.log(JSON.stringify(datos));
 		var promiseGet = respuestaService.delete(datos); 
 		promiseGet.then(function (pl) {
             alert(pl.data);

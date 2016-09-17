@@ -24,6 +24,11 @@ var app;
                     controller : 'empresaCtrl'
                 }
             )
+            .when("/admin/respuestas",{
+                    templateUrl: 'pages/respuestas.html',
+                    controller : 'respuestaCtrl'
+                }
+            )
             .otherwise({
                 redirectTo:"/inicio"
             });

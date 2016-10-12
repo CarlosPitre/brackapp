@@ -1,56 +1,73 @@
-<div class="container" id="lockscreen-block">
-      <div class="col-md-8 col-md-offset-1">
-          <div class="account-wall">
-              <div class="user-image">
+<style>
+  html, body {
+  height: 100%;
+}
+  .searchbox{
+    background: rgba(45,45,45, 0.8);
+    position: absolute;top:-10px;z-index: 1000;
+    padding-top: 10px;
+    border-radius: 5px;
+    
+  }
 
-              </div>
-              <div class="col-md-8">
-              	 <h2 style="color:#1f3649">Bienvenido a <strong>BRAKAPP</strong>!</h2>
-                  <p style="color:#1f3649">Por favor escribe el servicio que buscas.</p>
-                  <div class="input-group">
 
-                     <angucomplete ng-model="busca" id="ex2" placeholder="Ejem: Plomeria, Mantenimiento de Computadores, etc..." pause="300"  localdata="Servicio" selectedobject="selectedServicio" searchfields="descripcion" titlefield="descripcion" descriptionfield="tipo" minlength="1" inputclass="form-control-buscar" matchclass="highlight" />
+  .btn-success
+  {
+    background:#0284cb;
+  }
 
-                    <!--<input id="filtro" type="text" class="span4 form-control-buscar" placeholder="Ejem: Plomeria, Mantenimiento de Computadores, etc..." autocomplete="off" />-->
+  .btn-success:hover
+  {
+    background: #0268A1;
+  }
 
-                     <span class="input-group-btn">
-                        <a href="javascript:;" class="btn btn-success" style="color:white;" ng-click="Buscar(selectedServicio.originalObject)">Buscar</a>
-                      </span>
-                  </div>
-              </div>
-          </div>
+  .mybutton
+  {
+    
+  }
 
-      </div>
+  .mlp
+  {
+    top: 50%;
+    margin-top: -1em; /*set to a negative number 1/2 of your height*/
+    position: relative;z-index: 1
+    
+  }
 
+  .tcnt
+  {
+    width:100%; padding-top: 4px;
+  }
+
+  
+
+
+
+
+
+
+</style>
+
+
+<div class="tcnt">
+<div class="container mlp" style="">
+  <div class="col-md-8 col-md-push-2 col-xs-12 searchbox cont" >
+    <div class="input-group">
+
+       <angucomplete ng-model="busca" id="ex2" placeholder="Ejem: Plomeria, Mantenimiento de Computadores, etc..." pause="300"  localdata="Servicio" selectedobject="selectedServicio" searchfields="descripcion" titlefield="descripcion" descriptionfield="tipo" minlength="1" inputclass="form-control-buscar" matchclass="highlight" class="search"/>
+
+      <!--<input id="filtro" type="text" class="span4 form-control-buscar" placeholder="Ejem: Plomeria, Mantenimiento de Computadores, etc..." autocomplete="off" />-->
+
+       <span class="input-group-btn">
+          <a href="javascript:;" class="btn btn-success mybutton" style="color:white;" ng-click="Buscar(selectedServicio.originalObject)">Buscar</a>
+        </span>
+    </div>
   </div>
 
-<div class="container" id="lockscreen-block">
-      <div class="col-md-8 col-md-offset-1">
-          <div class="account-wall">
-              <div class="row">
-                <div class="col-md-8 col-md-offset-2">
-                  <div class="col-md-1">
-                   <button class="btn btn-sm btn-icon btn-rounded btn-success btn-lg" ><i class="fa fa-facebook"></i></button>
-                  </div>
-                  <div class="col-md-1">
-                  <button class="btn btn-sm btn-icon btn-rounded btn-success btn-lg" ><i class="fa fa-google"></i></button>
-                  </div>
-                  <div class="col-md-1">
-                  <button class="btn btn-sm btn-icon btn-rounded btn-success btn-lg" ><i class="fa fa-instagram"></i></button>
-                  </div>
-                  <div class="col-md-1">
-                  <button class="btn btn-sm btn-icon btn-rounded btn-success btn-lg" ><i class="fa fa-twitter"></i></button>
-                  </div>
-                  <div class="col-md-1">
-                  <button class="btn btn-sm btn-icon btn-rounded btn-success btn-lg" ><i class="fa fa-android"></i></button>
-                  </div>
-                  <div class="col-md-1">
-                  <button class="btn btn-sm btn-icon btn-rounded btn-success btn-lg" ><i class="fa fa-apple"></i></button>
-                  </div>
-                </div>
-              </div>
-          </div>
+</div>
+ 
+</div>
 
-      </div>
 
+</div>
 </div>
